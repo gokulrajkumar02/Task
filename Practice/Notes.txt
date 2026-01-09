@@ -1,0 +1,49 @@
+1.<!DOCTYPE html> -> html and html5
+2.<html lang="en">
+git and github
+push,pull,commit,add
+
+
+***Semantic Html - it have a meaning full tag like header,footer,aside,etc
+   purpose : SEC - Search engine optimization - using this my website can       		   
+            get high rank - so it showed in beginning of my search
+    Search engines try to understand your page content.👉 Semantic tags help them understand better.
+
+    aside tag - if there is an nav bar on left or right you want to you use the aside tag - (to tell          the browser --> aside bar like w3 school)
+
+  Semantic tag improves SEO
+
+***Attributes : 
+
+    <input type="radio" name="1" id = "one"> <label for="one">Women</label>
+    <input type="radio" name="1" id ="two"> <label for="two">men</label>
+
+	-- name is same for radio
+ 	-- id and for is same for fill the radio onclick on the label
+
+
+	<form action="login.php" method="post">
+  		<input type="text" name="username" value="Gokul">
+  		<input type="password" name="password" value="1234">
+  		<button type="submit">Login</button>
+	</form>
+	--on submit it goes to login.php - the data is transfer using name only (without name the form data is not stored or tranfered):
+
+--alt attribute in img can also act as  reader for blind person -> for blind person the alt text is given as audio
+
+***Forms
+	<select name="course" id="">
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="CSBS">CSBS</option>
+        </select>
+	--name = "course" is commonly used for all options
+
+	<form action="/sample.html" method="put" id="id_form">
+	--using the form tag id = "id_form" you can submit the from using this (but you want to use 	attribute form ="id_form") -- the button may be outside of the form.
+
+*** global html attributes
+ 	--dir - bdo(global html attributes) this tag only reverse the content else tag start from right or left syntax (<bdo dir="rtl">gokul</bdo>)
+	-- "contenteditable = true"
+	-- <button accesskey="s">Save</button> press to alt+s to click the button
+	--tabindex - syntax(tabindex = "1") onclicking  tab button it goes to the particular content focus 
