@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Task7.css">
+</head>
+<body>
+    <center> 
+        <main id="main">
+            <!-- <div> -->
+                <nav>
+                    <a href="">LinkedIn</a> &nbsp;
+                    <a href="">Gamil</a>
+                    <hr>
+                </nav>
+                <br>
+            <!-- </div> -->
+            <section id="form">
+                <form >
+                    <label for="">Name :</label> <input type="text"  name="name" required id="userName">
+                    <br>
+                <br>
+                <label for="">Phone-Number :</label> &nbsp; <input type="number" name="Phone-Number" required id="userPhoneNumber">
+                <br>
+                <br>
+                <label for="">Date-of-birth :</label> &nbsp; <input type="date" name="Date-of-birth" required id="userDOB"/>
+                <br>
+                <br>
+                <label for="">Gender :</label> &nbsp;
+                <input type="radio" name="Gender" value="Men" id="gen1"> <label for="gen1">Men</label>
+                <input type="radio" name="Gender" value="Women" id="gen2"> <label for="gen2">Women</label>
+                <h3>Tech Skills :</h3>
+                <input type="checkbox" name="Tech-Skills" value="Java" id="techJava"> &nbsp;<label for="">Java</label>
+                <input type="checkbox" name="Tech-Skills" value="Front-End" id="techFrontEnd"> &nbsp;<label for="">Front-End</label>
+                <input type="checkbox" name="Tech-Skills" value="UI/UX" id="techUIUX"> &nbsp;<label for="">UI/UX</label>
+                <input type="checkbox" name="Tech-Skills" value="Python" id="techPython"> &nbsp;<label for="">Python</label>
+                <br> <br>
+                <textarea id="textArea" rows="7" cols="20" placeholder="Enter Your Project Details..." name ="Discription" required ></textarea>
+                <br>
+                <br>
+                <!-- <label for="">Upload Your Resume :</label>
+                <input type="file" accept=".pdf" name="Resume" required> -->
+                <br>
+                <label for="">Password :</label> <input type="password" name="password" minlength="8" maxlength="16" required id="userPassword">
+                <br>
+                <br>
+                <button type="submit" id="btn-submit">Click to Submit</button>
+            </form>
+        </section>
+        
+    </main>
+    <p id="formValue"></p>
+    <p id="formData"></p>
+</center>
+
+    <script src="Task7.js"></script>
+
+
+</body>
+</html>
