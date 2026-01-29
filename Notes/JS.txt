@@ -1,0 +1,755 @@
+Refer ---> Practice/JS/function.js
+
+*********JavaScript is fundamentally synchronous and single-threaded
+
+Road_map link - https://roadmap.sh/javascript
+
+Source Link - https://javascript.info/
+
+
+& - it is use for bitwise operations
+&& - used for condition check 
+(| and ||) - like & and &&
+alert - 
+prompt - prompt("Enter your age","default value");
+     comfirm - comfirm("Your are is above 18") - it is about yes or no
+     and also comfirm will return a Boolean value true or false
+
+unary addition = +"5" + -"6" - it convert the "5"(string) to number +5
+		     	     - it convert the -"6"(string) to -6
+		then the output is -1::
+
+***auto - type conversion :: 
+   
+console.log("5" / "10") the auto type conversion is happend (string to number and then perform an operation)
+console.log("5" * "10") the auto type conversion is happend (string to number and then perform an operation)
+console.log("5" - "10") the auto type conversion is happend (string to number and then perform an operation)
+like this we cannot do it for addition - if we do it is converted as a string (console.log("5" + "6")) - output:56
+
+*** type conversion ::
+ 1) let str = "123";
+	console.log(Number(str)) - the output type is number
+ 2) let st = "  1 2     3   "
+	console.log(Number(st)) - output is NaN (Not a number)
+*** multiplication is differ
+ 1) let n = 2; 
+    n *= 3 + 5; - this will be converted into n = n * (3 + 5) so the output is differ
+    console.log(n) - output is 16
+ 2) let n = 2;
+    n = n * 3 + 5;
+    console.log(n) - output is 11
+
+*** ( Precedence table )
+
+Precedence	Name	Sign
+…	…	…
+14	unary plus	+
+14	unary negation	-
+13	exponentiation	**
+12	multiplication	*
+12	division	/
+11	addition	+
+11	subtraction	-
+…	…	…
+2	assignment	=
+
+*** comma operator ::
+ let a = (1 + 2 , 3 + 4); ---> 1+2 is ignored
+ 3 + 4 is 7 is stored in a
+ after comma the last value is stored in the variable
+
+Math.floor - 4.9 to 4
+Math.ceil - 4.9 to 5
+
+hoisting reason ---> temporal dead zone using var can we archive the hoisting
+
+snake case ---> sum_num
+kebab case ---> sum-num
+camel case ---> sumNum
+pascel case ---> SumNum
+
+hoisting can't be use in let and const function and variable
+
+***  && ---> alert(true && "ok" && "1") - output is 1
+   if first is false it will return it otherwise move to next --- it will be repeated upto last
+   if all true , it return the last 
+   console.log(10 && 2 && null && 3 ); for this it give a null as output
+
+*** || ---> the first true getting value  is shown as a output
+     console.log("" || ""|| "Notepad"||"Java-script") --> output will be notepad.
+     if the all values are false it return's the last value 	
+
+*** !(Not) - it will give the opposite value to the given value --> the Boolean value is the output
+             console.log(!0)  ---> output true
+*** !!(Nullish Coalescing) -- it just gives the Boolean value to the content 
+      !!"java" - it is not-empty String so it is true
+      !!"" - it is a empty string, so it is false;
+
+*** ?? - 1 && 2 - if first one defined it return's the first -- 
+	defined means let a = "java" or let a= 10; not like this let a=null;
+	defined value should not be null
+    working with this ?? we want to use the parentheses to tell the precedence to the compiler
+*** for loop
+	let i = 0;
+
+	for (; i < 3;) {
+  	    alert( i++ );
+	} 
+
+completed upto 2.15
+
+*** we set a default value for the function(if the value is not given to the function):
+    like this 
+    function showMessage(text="Hello") {
+    // ...
+       console.log(text);
+  
+    }
+
+    showMessage(10);
+
+*** call-back functions ::
+function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+function showOk() {
+  alert( "You agreed." );
+}
+
+function showCancel() {
+  alert( "You canceled the execution." );
+}
+
+// usage: functions showOk, showCancel are passed as arguments to ask
+ask("Do you agree?", showOk, showCancel);
+***
+
+*** function store in a value is function expression -- example 
+    let sum = function(a,b){
+         return a + b;	
+    }
+    console.log(sum(2,3));
+
+*** we can use only function declaration for hoisting
+
+*** different function using if-else part:::
+
+	let age = prompt("What is your age?", 18);
+
+	let welcome;
+
+	if (age < 18) {
+
+  	   welcome = function() {
+    	   alert("Hello!");
+  	};
+
+	} else {
+
+  	    welcome = function() {
+   	    alert("Greetings!");
+  	};
+
+	}
+
+	welcome();
+*** to return a object , use the parentheses:::
+const getUser = () => ({ name: "Gokul" });
+
+
+*** curly braces is used for multiple line in arrow function 
+    there is a single line in arrow functions we can use like this type of function -- 
+	let sum = (a, b) => a + b; -- in this the a + b value is return automatically:
+	and then console.log(sum);
+
+*** ALL FUNCTIONS:::
+We covered three ways to create a function in JavaScript:
+
+ 1) Function Declaration: the function in the main code flow
+
+function sum(a, b) {
+  let result = a + b;
+
+  return result;
+}
+ 2) Function Expression: the function in the context of an expression
+
+let sum = function(a, b) {
+  let result = a + b;
+
+  return result;
+};
+3) Arrow functions:
+
+// expression on the right side
+    let sum = (a, b) => a + b;
+
+// or multi-line syntax with { ... }, need return here:
+    let sum = (a, b) => {
+    // ...
+        return a + b;
+    }
+
+   // without arguments
+    let sayHi = () => alert("Hello");
+
+    // with a single argument
+    let double = n => n * 2; 
+ 	 
+
+***ERROR 
+  Syntax error 
+   	let a = 10;
+        let a = 10000;
+  type error ::
+ 	const a = 1000;
+ 	 a = "g";
+  reference error :
+         console.log(a);
+  	 let a = 10;
+
+temporal dead zone :: time between the hoisting and initilization to the variable:
+    example :
+	console.log(a); - hoisting a
+    	let b = 10;
+ 	let a = "g" - time gap between the hoisting and initilization
+
+*** the const variable should be declared and initilized in a same line only. const val;--syntax error
+
+*** map -- it is used when you a new array and performed value is stored in the new array
+     let val = [1,2,3,4,5];
+     let double = val.map(i => i* 2)
+     console.log(val);
+     console.log(doubled);
+    --- the value is doubled and stored in a new array (doubled)
+
+*** for-each loop - Used when you want to perform an action on each element, but you don’t need a new array.
+		and also you can't break the loop(connot use break and continue)
+		--- cannot give a new array.
+		--- it is only use to iterate a array only
+     let val = [1,2,3,4,5];
+     val.foreach(i => console.log(i*2) ); 
+
+
+*** for ... of loop - it give only values from the array also you can break the loop
+	let colors = ["red", "blue", "green"];
+
+	for (let color of colors) {
+  	      console.log(color);
+	}
+
+*** for ... in loop - Used when you want to loop through the keys (properties) of an object.
+		      also you can break the loop
+	let user = {
+  		name: "Gokul",
+  		age: 20
+	};
+
+	for (let key in user) {
+  		console.log(key, user[key]);
+	}
+
+
+*** object in JS ::
+     use dot for put and get the data from object
+ 	 let obj = {};
+	 obj.name ="Bob"
+         obj.age = 30;
+
+	Dot notation (.) — most common
+
+	Use when:
+
+	***Property name is fixed
+
+	***Property name is a valid identifier
+
+	***You know the key at coding time      
+
+
+*** insert to the object and get the value from object using square bracket:::
+	
+	let fruit = prompt("Which fruit to buy?", "apple"); // this user input is given to the object name for--> fruit
+	let bag = {
+  		[fruit]: 5, 
+	};
+
+	alert( bag.apple );
+
+
+	let user = {
+  		name: "John",
+  		age: 30
+	};
+
+	let key = prompt("What do you want to know about the user?", "name");
+
+	// access by variable
+	alert( user[key] );
+ 
+	**RULES to use brackets :
+	
+		Bracket notation ([ ]) — more powerful
+
+		Use when:
+
+		Property name is dynamic (stored in a variable)
+
+		Property name contains spaces
+
+		Property name contains special characters
+
+		Property name is a number
+
+
+*** short-end property to return an object and then it stored in a variable
+	function makeUser(name, age) {
+  		return {
+    		name: name,
+    		age: age,
+    		// ...other properties
+  		};
+	}
+
+	let user = makeUser("John", 30);
+	alert(user.name);
+
+*** special operator (in) used to check the key is present in the object or not
+
+	let user = { name: "John", age: 30 };
+	alert( "age" in user ); // true
+
+*** in object - the key is a number then it is sorted in ascending order.
+
+*** object copy with reference -- copy value and same reference:
+     let obj1 = {name : "java"};
+     let obj2 = obj1; -- the 2 object reference are same , if use make change in any one it also change in another also
+
+*** clone with object -- copy value but different reference:::
+ 	clone using for in loop:::
+		let user = {
+  		name: "John",
+  		age: 30
+		};
+
+	let clone = {}; // the new empty object
+
+	// let's copy all user properties into it
+	for (let key in user) {
+  		clone[key] = user[key];
+	}
+
+	// now clone is a fully independent object with the same content
+	clone.name = "Pete"; // changed the data in it
+
+	alert( user.name ); 
+
+ syntax for Object.assign -- Object.assign(destination,source1,source2,....sourcen)
+
+
+    clone using a methods -- Object.assign :::
+	let user = { name: "John" };
+
+	let permissions1 = { canView: true };
+	let permissions2 = { canEdit: true };
+
+	// copies all properties from permissions1 and permissions2 into user
+	Object.assign(user, permissions1, permissions2);
+
+	// now user = { name: "John", canView: true, canEdit: true }
+	alert(user.name); // John
+	alert(user.canView); // true
+	alert(user.canEdit);
+
+    clone using empty object as destination and then stored in varibale
+
+	let user = {
+  	     name: "John",
+  	     age: 30
+	};
+
+	let clone = Object.assign({}, user);
+
+	alert(clone.name); // John
+	alert(clone.age);
+
+   *** in this above clone nested object has the same reference after the clone -- to overcome this use structureclone(object);
+
+
+*** structuredclone:::
+	let user = {
+  	    name: "John",
+  	    sizes: {
+            	height: 182,
+        	width: 50
+  	      }
+	};
+
+	let clone = structuredClone(user);
+
+	alert( user.sizes === clone.sizes ); // false, different objects
+
+	// user and clone are totally unrelated now
+	user.sizes.width = 60;    // change a property from one place
+	alert(clone.sizes.width); // 50 is the output
+
+  *** it clone the object deeply - so it can handle the circular reference
+
+     let user = {};
+	// let's create a circular reference:
+	// user.me references the user itself
+     user.me = user;
+
+     let clone = structuredClone(user);
+     alert(clone.me === clone); // true is the ouput
+
+     ***in this above code - the clone is also copied but the circular reference is pointed to the cloned object.
+	
+	Creates a new object clone
+	Copies properties
+   	Detects that me refers back to the original object
+	Rebuilds the same circular structure in the clone     
+
+***Parameters - default parameter, Rest Parameter - destructuring Parameter - 
+   default para - in the function the default value is initialized 
+   Rest para - function(...number) - the three dot variable will take the all input in single data type and also 
+		place last in the function parameter
+   Dstructuring para - the object is given as a argument and the de-structured and get it as an parameter 
+ 			example ::
+				function obj({name, age}){
+					console.log(name," ",age);
+				}
+				obj({name : "Gokul", age : 21})
+
+*** IIFEs (Immediately Invoked Function Expressions)
+	(function () {
+  	    let text = "Hello! I called myself";
+    	    console.log(text);
+	})()
+
+	IIFE's arrow function
+		((name) => {
+  		     let text = "Hello " + name;
+		})("John Doe");
+
+
+*** Array methods :::
+    map - transformation of the original array to new array with the functions:
+
+	let val = [1,2,3,4,5];
+        let double = val.map( item => item * 2)
+	console.log(double);
+   -- it will form an new array
+   
+   filter - transformation of the new array of value with satisfied the given condition
+        let val = [1,2,3,4,5];
+        let filtered = val.filter( item => item < 5)
+        console.log(filtered); // output 1,2,3,4..
+
+   reduce - transform the original array to single 
+
+	let val = [1,2,3,4,5];
+ 	let sum_val = val.reduce((acc,curr) => acc + curr,0) // 0 tis the default value of accumulator
+        console.log(sum_val)
+	
+*** in arrow function don't have this keyword if you use it . it will be undefined or error
+like this function and inside there is an arrow function so we can access the name--> kumar.
+	const user = {
+    		name: "Kumar",
+    		greet() {
+        	const name = "yes";
+        	const ko = () => {
+            	     console.log(this.name)
+        	}
+        	ko()
+    		},
+	};
+
+	user.greet();
+
+*** in setTimeOut and setInterval - the print statement executes first and then the promise will run if exists and  
+    by the time in the setTimeOut and setInterval it will executed
+
+***closure - bundling a function with its lexical scope and then retuned - image in slack(you)***
+	function closure() {
+    	let l = 0;
+    	function outer() { 
+        	let v = 10; // this variable is enclosed in the closure in bundling
+        	function inner() {
+            		v++;
+            		l++;
+            		console.log(v);
+            		console.log(l);
+        	}
+        	inner();
+        	return inner; // returning the inner function (closure)
+    		}
+    		return outer();
+	}
+	let afterClosure = closure();
+	afterClosure(); // calling the inner function again
+
+
+***Event Loop: It continuously checks the call stack and, if empty, moves tasks from the queue to the stack for execution.
+***
+	inside call stack - there  is a global execution context and then functions are stored for execution
+			    it quickly execute the content inside the call stack... and pop-up the function
+			    at last it also pop-up the global execution content also
+
+*** Web-API's --  this are not a part of JS, this are a part of browser's
+	* setTimeOut
+	* DOM API's - document.getElementById etc..... and addEventListener
+	* fetch
+	* localStorage
+	* console
+	* locations
+ the browser gives a access to use this Web-API's in JavaScript 
+ ---- this all web-API's are given through the window.setTimeOut to JavaScript 
+
+  window is global object- inside that the web-api's are present so, don't use the window keyword to use the web-api's
+
+   it setTimeOut and the fetch are executed in WEB-API's, after that it is push to callback queue
+
+  slack(you) - 2 screenshot - 1) setTimeOut - callback queue
+		              2) fetch in microtask queue
+
+
+****DOM --- Document Object Model
+	
+	*-The DOM (Document Object Model) is a tree-like representation of an HTML document that allows JavaScript to 		dynamically access, modify, and control web page elements.
+
+	With DOM ---> You can:
+
+		Change text
+
+		Change colors
+
+		Add elements
+
+		Remove elements
+
+		Handle clicks
+
+		Validate forms
+
+*** BOM - Browser Object Model :
+	it allow the javascript to access the browser or interacts with the browser itself
+  		-- window, location, history, navigation, screen
+
+in tag - innerText and in input field -- .value --- both used to get the value..
+
+innerText -- this text set to the HTML
+innerHTML -- <i>kjihuhiejf</i> - this text set to the HTML tag as italic
+
+EventListener ::: difference
+everytime changes -- input
+onclick on outside of input or press enter -- change
+
+*** Promise - are used to handle async operation in js 
+initially - the promise create a empty object and when it is completed it's execution and the empty object will be filled with the response data
+
+we can use promise chaining instead of many callbacks 
+
+	const promise = fetch(api) // it will return a promise
+
+	promise.then(function(orderId){
+   		showDetails(orderId));
+	})
+
+fetch
+axios
+
+Login page
+
+***slice - to get a array element 
+	const ele = [1,2,3,4,5,6]
+	console.log(ele.slice(0,3))
+ ele.slice(start,end) --> start and end is index
+
+***splice - it will modify the original array
+      array.splice(startIndex, deleteCount, item1, item2, ...);
+      start index for delete, deleteCount to delete the element from index, after delete add element from start index
+
+	const arr =[1,2,3,4,5]
+   	arr.splice(0,2,8,9)
+	from 0 index , the next two element are removed and 8,9 is added
+ 	after splice the array will be -> [8,9,3,4,5]
+
+
+*** event deleation in js
+
+    <ul id="menu">
+        <li>Items 1</li>
+        <li>Items 2</li>
+        <li>Items 3</li>
+    </ul>
+    <script>
+         const menu = document.getElementById("menu");
+         menu.addEventListener("click", (e) => {
+            alert(e.target.innerText);
+         })
+    </script>
+
+
+*** Event bubbling -- it was an default behavior of the code
+    <div id="parent">
+  	<button id="child">Click Me</button>
+    </div>
+
+    <script>
+        document.getElementById("parent").addEventListener("click", () => {
+        console.log("Parent clicked");
+         },false);
+
+       document.getElementById("child").addEventListener("click", () => {
+       console.log("Child clicked");
+      });
+</script>
+
+--- when you click on the child ---> click me ->> the child event and also a parent event also called in this event bubbling
+***--- the third variable is default set to false - if you change true-----> it was an event capturing
+
+input : when you click on the click in your webpage
+Output is ::: child clicked
+	      parent clicked
+
+
+*** event capturing:::
+
+<div id="parent">
+  	<button id="child">Click Me</button>
+    </div>
+
+    <script>
+        document.getElementById("parent").addEventListener("click", () => {
+        console.log("Parent clicked");
+         },true);
+
+       document.getElementById("child").addEventListener("click", () => {
+       console.log("Child clicked");
+      },true);
+</script>
+
+--- when you click on the child - the third variable is true, then when you click on the child, first the grand parent ,                                       parent is called , then the child is called in addEventListener
+
+
+*** removeEventListener:::
+
+   **Using { once: true } (Modern way)**
+
+  **Browser automatically removes the listener after one run:**
+
+
+
+      button.addEventListener("click", () => {
+
+      console.log("Runs only once");
+
+      }, {**once: true })**
+
+
+
+
+
+*** Correct way to removeEventListener::: for this, callback function does not work properly**
+
+        <button id="btn">Click me</button>
+
+      <script>
+
+           const button = document.getElementById("btn");
+
+
+
+           function onceHandler() {
+
+            alert("Clicked only once!");
+
+              button.removeEventListener("click", onceHandler);
+
+           }
+
+
+
+           button.addEventListener("click", onceHandler);
+
+     </script>
+
+
+
+
+
+*** Higher-order functions
+
+
+
+A Higher Order Function is a function that does at least one of these:
+
+   1) Takes another function as an argument -- callback
+
+   2) Returns a function as its result --- (one function return an another function )
+
+        example :::
+
+        function multiplier(factor) {
+
+ 		return function(num) {
+
+   			return num * factor;
+
+ 		};
+
+	}
+
+
+
+	const double = multiplier(2);
+	console.log(double(5)); // 10
+
+*** give names like this
+
+let isTimerStartStop = false;
+let isTimerPauseContinue = false; 
+
+*** ?- operator in TS:
+processPaymentId?.map(item => {
+        item.status.toLowerCase() ==="pending" ? item.status = "Paid" : 0
+    });
+?. means “only continue if this is NOT null or undefined”
+
+
+*** ! - operator in TS:
+   currentProduct!.stock += 1;
+   Trust me, this value is NOT null or undefined.
+
+
+***  Why do we need call, apply, and bind?
+
+They are used to control the value of this inside a function.
+
+   1) call
+       functionName.call(thisArg, arg1, arg2, ...) -- syntax
+   2) apply 
+	functionName.call(thisArg, [arg1, arg2,...]) -- syntax
+   3) bind 
+	const newFunction = functionName.bind(thisArg, arg1, arg2, ...)
+	newFunction()
+
+	Example :::
+         function test(a, b) {
+             console.log(this.name, a, b);
+         }
+
+         const obj = { name: "Gokul" };
+
+ 	test.call(obj, 1, 2);      // Gokul 1 2
+	test.apply(obj, [1, 2]);   // Gokul 1 2
+
+	const newFunc = test.bind(obj, 1, 2);
+	newFunc();                // Gokul 1 2
+
+
+
+

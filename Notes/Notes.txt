@@ -1,0 +1,132 @@
+1.<!DOCTYPE html> -> html and html5
+2.<html lang="en">
+git and github
+push,pull,commit,add
+
+*****semantic tags
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+
+
+***Semantic Html - it have a meaning full tag like header,footer,aside,etc
+   purpose : SEC - Search engine optimization - using this my website can       		   
+            get high rank - so it showed in beginning of my search
+    Search engines try to understand your page content.👉 Semantic tags help them understand better.
+
+    aside tag - if there is an nav bar on left or right you want to you use the aside tag - (to tell          the browser --> aside bar like w3 school)
+
+  Semantic tag improves SEO
+
+***Attributes : 
+
+    <input type="radio" name="1" id = "one"> <label for="one">Women</label>
+    <input type="radio" name="1" id ="two"> <label for="two">men</label>
+
+	-- name is same for radio
+ 	-- id and for is same for fill the radio onclick on the label
+
+
+	<form action="login.php" method="post">
+  		<input type="text" name="username" value="Gokul">
+  		<input type="password" name="password" value="1234">
+  		<button type="submit">Login</button>
+	</form>
+	--on submit it goes to login.php - the data is transfer using name only (without name the form data is not stored or tranfered):
+
+--alt attribute in img can also act as  reader for blind person -> for blind person the alt text is given as audio
+
+***Forms
+	<select name="course" id="">
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="CSBS">CSBS</option>
+        </select>
+	--name = "course" is commonly used for all options
+
+	<form action="/sample.html" method="put" id="id_form">
+	--using the form tag id = "id_form" you can submit the from using this (but you want to use 	attribute form ="id_form") -- the button may be outside of the form.
+
+*** global html attributes
+ 	--dir - bdo(global html attributes) this tag only reverse the content else tag start from right or left syntax (<bdo dir="rtl">gokul</bdo>)
+	-- "contenteditable = true"
+	-- <button accesskey="s">Save</button> press to alt+s to click the button
+	--tabindex - syntax(tabindex = "1") onclicking  tab button it goes to the particular content focus
+
+     ***<label for="email">Email</label> <input type="text" required/>
+	--- label - for is used for screen readers to read it as email and exit text(input box)
+     *** utf-8
+	you this the browser can give the correct emoji and symbols and correct language
+
+
+***CSS
+
+rgba - red green blue (alpha-> 0 to 1 (transparent))) 
+
+opacity - transparent the background-color and text also
+rgba = transparent the background-color only
+
+***Margin Collapse -- refer w3school
+Heading 2
+In this example the h1 element has a bottom margin of 50px and the h2 element has a top margin of 20px. So, the vertical margin between h1 and h2 should have been 70px (50px + 20px). However, due to margin collapse, the actual margin ends up being 50px.
+
+  -- margin has auto as value 
+  -- padding not have a auto as value
+
+  -- box-sizing : content-box; width and padding is also applied (width : 300px and padding : 25px)
+		  -- total width of the content is 350px;
+  -- box-sizing : border-box; width and padding is with in the width(width : 300px and padding : 25px)
+		  -- total width of the content is 300px;
+
+--align-content works only if you have: -->flex-wrap: wrap;
+
+--flex-direction - row,column,row-reverse,column-reverse.
+--flex-wrap - wrap,nowrap,wrap-reverse
+--align-content : space-between,space-around,space-evenly - is work on align-content 
+--align-items : center;
+
+flex-wrap : align-content -> to apply to all row
+align-item - If items are in one line
+
+--order is an attribute we can use it in flex to arrange the items (
+	<div class="flex-container">
+  	 <div style="order: 3">1</div>
+  	 <div style="order: 2">2</div>
+  	 <div style="order: 4">3</div>
+  	 <div style="order: 1">4</div>
+	</div>
+	)
+
+--flex shrink -- How much a flex item is allowed to shrink when there is not enough space inside the container.
+
+| Value | Meaning                                            |
+| ----- | -------------------------------------------------- |
+| 0     | Item will never not shrink at all                    |
+| 1     | Normal shrink (default)                            |
+| 2     | Shrinks **twice as faster** compared to items with 1 |
+
+-- 100vh & 100vw --It give you the total width..
+
+---grid-area: 2 / 2 / span 2 / span 2;
+	      start / end / total row / total column	
+
+we cannot set height and width for inline element--> for this problem we are moving to inline and block level element
+
+*******
+	Use fixed size for UI elements - Button,input box,radio etc..
+	Avoid fixed size for content containers - Div that wraps text,sidebar, chat container etc - like big containers
+
+
+flex-grow -- for the space
+flem-strink -- min size for the element
+flex - basic - width of the element at the initial state

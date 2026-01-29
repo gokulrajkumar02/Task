@@ -1,0 +1,10 @@
+*** React is a library - Focuses mainly on the View (UI) layer (so is a library)
+
+React :
+	** code re-useable
+	** virtual DOM - Updates Virtual DOM (lightweight copy) --> Compares changes (diffing) -->Updates only the changed parts in real DOM
+	** React uses Declarative UI - <h1>{isLoggedIn ? "Welcome" : "Please login"}</h1>
+	** One-way Data Flow - parent to child
+	** JSX -- JS,HTML,CSS in a single a same file
+
+export two type -- default , named 

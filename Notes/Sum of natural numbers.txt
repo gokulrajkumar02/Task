@@ -1,0 +1,8 @@
+Sum of natural numbers 
+palindrome
+factorial
+3 program completed - check on Monday
+temporal dead zone - say on Monday
+
+3 function 
+array methods

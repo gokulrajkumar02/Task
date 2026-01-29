@@ -1,0 +1,24 @@
+label for done
+
+utf-8 done
+
+<form action="../Practice/sample.html" method="post"> 
+405 - bro will say
+
+semantic html done
+margin 
+padding - no auto
+box- sizing
+flex-direction - row,column,row-reverse,column-reverse.
+flex-wrap - wrap,nowrap,wrap-reverse
+align-content : space-between,space-around,space-evenly - is work on align-content 
+align-items : center;
+order
+flex-grow -- for the space
+flem-strink -- min size for the element
+flex - basic - width of
+ the element at the initial state
+
+
+rgba
+hsl

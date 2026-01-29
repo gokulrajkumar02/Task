@@ -1,0 +1,16 @@
+.left {
+  min-width: 60%;
+  background: url("./LoginImage.png");
+  background-size: 100% 100%;
+  background-position: center;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+@media (max-width: 750px) {
+  .left {
+    min-height: 50%;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 20px;
+  }
+}

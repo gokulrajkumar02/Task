@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            position: relative;
+        }
+        .one{
+            position: absolute;
+            background-color: violet;
+            z-index: 5;
+        }
+        .two{
+            position: absolute;
+            background-color: rgb(226, 226, 226);
+            z-index: 4;
+        }
+        .three{
+            position: absolute;
+            background-color: teal;
+            z-index: 3;
+        }
+        .four{
+            position: absolute;
+            background-color: rgb(255, 0, 149);
+            z-index: 2;
+        }
+        .five{
+            position: absolute;
+            background-color: rgb(64, 0, 255);
+            z-index: 1;
+        }
+        p{
+            min-height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="box one">11111</div>
+        <div class="box two">222222222</div>
+        <div class="box three">33333333333333</div>
+        <div class="box four">4444444444444444444444</div>
+        <div class="box five">555555555555555555555555555</div>
+    </div>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus modi ipsum ratione at, numquam repellat architecto, et exercitationem aliquam tenetur mollitia possimus velit quidem maxime, temporibus blanditiis commodi laborum quisquam!</p>
+    <p>jkl</p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+
+  nav {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  /* Hide checkbox */
+  #menu-toggle {
+    display: none;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    font-size: 26px;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Menu */
+  .menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  .menu a {
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Mobile view */
+  @media (max-width: 600px) {
+    .hamburger {
+      display: block;
+    }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      background: #444;
+      padding: 10px;
+    }
+
+    /* This is the magic */
+    #menu-toggle:checked + .menu {
+      display: flex;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-bar">
+    <div class="logo">MySite</div>
+    <label for="menu-toggle" class="hamburger">☰</label>
+  </div>
+
+  <!-- Hidden checkbox -->
+  
+  <input type="checkbox" id="menu-toggle">
+  <!-- Menu -->
+  <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+  </div>
+</nav>
+
+</body>
+</html>

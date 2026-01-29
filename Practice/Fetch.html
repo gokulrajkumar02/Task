@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <input type="number" min ="1" max = "100" id="input-box">
+    <p id = "title"></p>
+    <p id="body"></p>
+    <script>
+
+        const inputBox = document.getElementById("input-box");
+        const title = document.getElementById("title");
+        const body = document.getElementById("body");
+        inputBox.addEventListener("input", () => {
+            (inputBox.value != "undefined" && inputBox.value != "" ) ? (
+            axios.get(`https://jsonplaceholder.typicode.com/posts/${inputBox.value}`)
+            .then(response => response.data)
+            .then(data => {
+                title.innerText = data.title
+                body.innerHTML = `<i>${data.body}</i>`
+            })  ): 0;
+        })
+        
+    </script>
+</body>
+</html>

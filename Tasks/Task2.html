@@ -12,28 +12,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* justify-content: center; */
+            justify-content: center;
         }
+        
 
     </style>
 </head>
 <body>
+    
     <center>
 
-    
-    <div class="main">
-        <!-- <div> -->
-            <nav>
-                <a href="">LinkedIn</a> &nbsp;
-                <a href="">Gamil</a>
-                <hr>
-            </nav>
-            <br>
-        <!-- </div> -->
-        <div class="form">
-            <form action="../Practice/sample.html" method="get">
-                <label for="">Name :</label> <input type="text"  name="name" required>
+        
+        <main class="main">
+            <!-- <div> -->
+                <nav>
+                    <a href="">LinkedIn</a> &nbsp;
+                    <a href="">Gamil</a>
+                    <hr>
+                </nav>
                 <br>
+            <!-- </div> -->
+            <section class="form">
+                <form action="../Practice/simple.php" method="post">
+                    <label for="">Name :</label> <input type="text"  name="name" required>
+                    <br>
                 <br>
                 <label for="">Phone-Number :</label> &nbsp; <input type="number" name="Phone-Number" required>
                 <br>
@@ -62,8 +64,9 @@
                 <br>
                 <button type="submit">Click to Submit</button>
             </form>
-        </div>
-    </div>
-    </center>
+        </section>
+    </main>
+</center>
+    
 </body>
 </html>

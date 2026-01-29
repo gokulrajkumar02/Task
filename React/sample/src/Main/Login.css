@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.Container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  background: linear-gradient(
+    to bottom right,
+    rgb(182, 116, 252),
+    rgb(189, 169, 204)
+  );
+}
+.loginContainer {
+  height: 80%;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+}
+@media (max-width: 750px) {
+  .loginContainer {
+    flex-direction: column;
+  }
+  .loginContainer {
+    height: 100vh;
+  }
+}

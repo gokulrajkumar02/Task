@@ -1,74 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        table,tr,th,td{
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-</head>
-<body>
-    <details>
-        <p>bhjvf</p>
-        <summary>Summary</summary> 
-    </details>
+<html>
+    <head>
+        <style>
+* {
+  box-sizing: border-box;
+}
+body{
+display:flex;
+justify-content: center;
+align-items:center;
+flex-direction:column;
+ /* min-height: 90vh; */
+ height: 100%;
 
-    <p>gg</p>
-    
-    
-    <input type="text" value="gokul">
-    
-    <form action="/sample.html" method="get" id="id_form">
-        <br>
-        <label for="" tabindex="1">User name</label>
-        <input type="text" name="username" required tabindex="2"/> 
-        <br>
-        <br>
-        <label for="1" tabindex="3">Password</label> <input type="text" name="Password" id="1" required/>
-        <input type="radio" name="gender"  id = "one"> <label for="one">Women</label>
-        <input type="radio" name="gender" id ="two"value="men"> <label for="two">men</label>
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height : 60%;
+  width: 80%;
+  justify-content : center;
+  align-items:center;
+  border : 3px dotted black;
+  flex-wrap: wrap;
+}
 
-        <select name="course" id="">
-            <option value="CSE">CSE</option>
-            <option value="IT">IT</option>
-            <option value="CSBS">CSBS</option>
-        </select>
-    </form>
-    <button type="submit" value="login" form="id_form" accesskey="s" tabindex="4">Submit</button>
-    <br>
-    <hr>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="2">thank you</td>
-            </tr>
-        </tfoot>
-
-        <tbody>
-            <tr>
-                <td>Gokul</td>
-                <td>CSE</td>
-                <td>21</td>
-            </tr>
-        </tbody>
-        
-    </table>
-
-    <p dir="rtl">gokul</p>
-    <bdo dir="rtl">gokul</bdo>
-    <p contenteditable="true">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum cumque unde animi explicabo recusandae neque eum, esse ea provident numquam distinctio iure fuga quasi alias fugit officiis libero suscipit excepturi.</p>
-    <h2 draggable="true" >Header</h2>
-    
-</body>
+.flex-item {
+  display : flex;
+  margin : 10px;
+  background-color: #f1f1f1;
+  /* padding: 10px; */
+  font-size: 30px;
+  justify-content:center;
+  align-items:center;
+  width: 100px;
+  border : 1px solid black;
+  background-color : green;
+  height : 300px;
+}
+        </style>
+    </head>
+    <body>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt sapiente sit at optio repudiandae a deserunt provident impedit quis laudantium laborum, et, beatae pariatur, inventore quia! Voluptate in exercitationem itaque!</p>
+        <div class="flex-container">
+            <div class="flex-item" style="flex-basis:250px;">1</div>
+            <div class="flex-item" style="flex-basis:250px;display: flex;flex-direction: column;">
+                <div style="display: flex; flex-grow: 1;border: 1px solid black;height: 100%;width: 100%;justify-content: center;align-items: center;">4</div>
+                <div style="display: flex;flex-grow: 1;border: 1px solid black;height: 100%;width: 100%;justify-content: center;align-items: center;">5</div>
+                <div style="display: flex;flex-grow: 1;border: 1px solid black;height: 100%;width: 100%;justify-content: center;align-items: center;">6</div>
+            </div>
+            <div class="flex-item" style="flex-basis:250px;">3</div>
+        </div>
+    </body>
 </html>
