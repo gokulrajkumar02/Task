@@ -1,9 +1,13 @@
-import Login from "./Main/login"
-
+import { BrowserRouter} from "react-router-dom"
+import LoginRouter from "./Router/LoginRouter"
 function App()  {
   
   return (
-      <Login/>
+    
+  <BrowserRouter>
+      <LoginRouter/>
+  </BrowserRouter>
+
   )
 }
 

@@ -1,6 +1,24 @@
-input {
+.input-btn input {
   padding: 15px;
   border-radius: 30px;
   width: 90%;
   border: 1px solid gray;
 }
+
+.passwordsShow{
+  position: absolute;
+  right: 40px;
+}
+.input-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  cursor: pointer;
+}
+span{
+  cursor: pointer;
+}
+
+

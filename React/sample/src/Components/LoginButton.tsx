@@ -1,11 +1,36 @@
+import { useState } from "react";
 import "./LoginButton.css";
 
 type Prop = {
   placeHolder: string;
   type: string;
+  name: string;
+  value: string;
+  onChange: (e: any) => void;
 };
-const LogInButton = ({ placeHolder, type }: Prop) => {
-  return <input type={type} className="loginButton" placeholder={placeHolder} />;
+const LogInButton = ({ placeHolder, type, name, value, onChange }: Prop) => {
+  const [showpassword, setShowPassword] = useState(false);
+
+  return (
+    <div className="input-btn">
+      <input
+        type={type === "password" && showpassword ? "text" : type}
+        placeholder={placeHolder}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+
+      {type === "password" && (
+        <span
+          className="passwordsShow"
+          onClick={() => setShowPassword(!showpassword)}
+        >
+          {showpassword ? "👁" : "👁️"}
+        </span>
+      )}
+    </div>
+  );
 };
 
 export default LogInButton;

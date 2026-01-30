@@ -21,7 +21,7 @@
   align-items: center;
   gap: 20px;
   /* padding-left: 15px; */
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 .loginBtn {
   padding: 15px;
@@ -33,6 +33,7 @@
   display: flex;
   justify-content: center;
   border: 1px solid black;
+  cursor: pointer;
 }
 p {
   font-size: 15px;
