@@ -1,0 +1,51 @@
+react  is library routor,axios is imported in other library developed by facebook - front-end application
+nextJs is framework - build with the core of react and develop by vercel - for full stack
+application
+
+react - CSR - client side rendering - goes to browser UI loading speed is high - youtube
+next CSR & SSR(default) - server side rendering - server to browser UI loading speed according to internet
+
+NETWORK Boundary: - 
+   we can set each of the component as CSR or SSR
+   ex: Instagram post - image is SSR
+			likes, commands are CSR 
+
+Back-end api's using nextJS 
+nextJs current version is 16
+
+import alies - @ it goes to root folder and we can import file easily
+
+ISR - it solves the problem between SSR (always fresh but slow) and SSG (fast but outdated).
+   Fast like SSG ⚡
+   Fresh like SSR 🔄
+
+	After 10 seconds → the NEXT visitor triggers background regeneration
+	So users cause the update — not a clock.
+
+	fetch("https://api.com/products", {
+  		next: { revalidate: 10 },
+	});
+
+User opens page.
+
+No cache exists
+Server fetches DB/API
+Server creates HTML
+Server stores HTML in cache (CDN)
+Server sends page to user
+
+
+Many users visit.
+
+They DO NOT hit database.
+
+They get cached HTML instantly ⚡
+
+Cache → Browser
+
+
+
+*** layout in the root folder can be controlled by group route and conditional rendering
+
+***Suspense in NextJS
+  1)  Streaming SSR = Showing parts of page as soon as they are ready instead of waiting for whole page

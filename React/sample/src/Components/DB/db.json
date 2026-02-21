@@ -1,0 +1,93 @@
+{
+  "USER": [
+    {
+      "id": 1313,
+      "userName": "Akanksha",
+      "emailId": "akanksha@gmail.com",
+      "fullName": "Akanksha Asutkar",
+      "role": "main",
+      "createdDate": "2024-10-05T14:20:24.537",
+      "password": "1122",
+      "projectName": "CollegeProject",
+      "refreshToken": "pcYWHaTKAZkX6E3v27tpBgTE2QEmbKewL9qBF3L7UKY=",
+      "refreshTokenExpiryTime": "2025-06-30T11:24:18.59"
+    },
+    {
+      "id": 1316,
+      "userName": "Maya",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "student",
+      "createdDate": "2024-10-05T16:12:16.65",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-05T16:12:16.65"
+    },
+    {
+      "id": 1501,
+      "userName": "okk",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "string",
+      "createdDate": "2024-10-19T11:29:35.51",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-19T11:29:35.51"
+    },
+    {
+      "id": 1502,
+      "userName": "okk1",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "string",
+      "createdDate": "2024-10-19T11:29:35.51",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-19T11:29:35.51"
+    },
+    {
+      "id": 1503,
+      "userName": "okk2",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "string",
+      "createdDate": "2024-10-19T11:29:35.51",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-19T11:29:35.51"
+    },
+    {
+      "id": 1504,
+      "userName": "hani",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "string",
+      "createdDate": "2024-10-19T11:38:06.553",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-19T11:38:06.553"
+    },
+    {
+      "id": 1505,
+      "userName": "sonu2",
+      "emailId": "string",
+      "fullName": "string",
+      "role": "string",
+      "createdDate": "2024-10-19T11:38:06.553",
+      "password": "string",
+      "projectName": "CollegeProject",
+      "refreshToken": "string",
+      "refreshTokenExpiryTime": "2024-10-19T11:38:06.553"
+    },
+    {
+      "id": 1506,
+      "name": "iuhgve",
+      "age": 90
+    }
+  ]
+}

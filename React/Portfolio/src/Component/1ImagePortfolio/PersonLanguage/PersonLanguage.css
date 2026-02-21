@@ -1,0 +1,28 @@
+* {
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+}
+
+.person-language-container {
+  height: 153px;
+  width: 220px;
+  /* border: 1px solid black; */
+  margin-top: 25px;
+  margin-left: 40px;
+}
+.person-language-container-title {
+  width: 95px;
+  height: 22px;
+  font-size: 18px;
+  line-height: 124%;
+  font-weight: 500;
+  color: #2b2b2b;
+  margin-bottom: 10px;
+}
+.person-language-container-hr {
+  margin-top: 25px;
+  width: 220px;
+  height: 1px;
+  background-color: #f0f0f6;
+  margin-left: 40px;
+}

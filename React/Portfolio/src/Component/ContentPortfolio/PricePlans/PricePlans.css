@@ -1,0 +1,29 @@
+.price-plans-container{
+    margin-top: 70px;
+    height: 793px;
+    width: 970px;
+}
+.price-plans-container-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.price-plans-container-content-title{
+    width: 174px;
+    height: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 124%;
+    letter-spacing: 0%;
+}
+.price-plans-container-content-para{
+    width:438px ;
+    height: 68px;
+    margin-top: 25px;
+    text-align: center;
+}
+.price-plans-container-value{
+    margin-top: 50px;
+    column-gap: 21px;
+    display: flex;
+}

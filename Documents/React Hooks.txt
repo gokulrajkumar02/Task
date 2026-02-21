@@ -1,0 +1,336 @@
+React Hooks::   ----- rafce
+
+1) USESTATE:
+
+      const [count, setCount] = useState(0);
+	count → state value
+	setCount → setter function
+
+   *- setState (from useState) is asynchronous in behavior, and React often uses batching to optimize performance.
+
+   Batching means:	
+       * - React groups multiple state updates into a single re-render for performance.
+       * - React groups multiple state updates into a single re-render instead of re-rendering after every update.
+       * - Batching is about re-render not a correct output or value
+       * - Batching combines rendering
+
+   Batching Example :
+	const handleClick = () => {
+  		setCount(count + 1);
+  		setCount(count + 1);
+  		setCount(count + 1);
+	};
+	
+    in this Batching example - count is increment to 3 but it re-render only one time (remove strict mode in indexjs)
+     the three setCount is called batching
+
+	* corrct way to update 
+		setCount(prev => prev + 1);
+		setCount(prev => prev + 1);
+
+	Perform only one re-render   → That is batching
+
+
+  *** Without Batching :: (remove strict mode in index.js) - to see the difference between the batching and without batching
+	const handleClick = () => {
+    		// First update → forces immediate render
+    		flushSync(() => {---- one re-render
+      		setCount(c => c + 1);
+    		});
+
+   		 // Second update → forces another render
+    		flushSync(() => {  ---- another re-render
+      		setCount(c => c + 1);
+    		});
+  		};
+   *** useState is asynchronous in behavior because of this storage ::
+       setCount(1) →
+  	   store update in queue 
+  	   finish current event 
+  	   process all queued updates 
+  	   re-render component
+
+    Why did React design it this way?
+    Three solid reasons:
+
+   1. Performance (most important)
+	If React updated immediately:
+
+	setCount(...)
+	render
+	setName(...)
+	render
+	setAge(...)
+	render
+
+	That would cause 3 renders → slow UI
+
+	Instead React does:
+	queue updates
+	render once
+
+     useState - life - cycle -- setState → queued → processed later → UI updated
+
+     useState values --> number , string, Boolean, object, array, function(rarely used) , null
+
+     can use the useState({}) to collect the form data
+     ex: const [formData, setFormData] = useState({
+	name : "",
+	age : ""
+     })
+
+     handlechange = (e) =>{
+	const {name, value} = e.target
+        setFormData(prev => ({...prev,[name] : value }));
+	}
+    *** the input field contains name attribute and value attribute to store the value to useSate{}
+
+useState is used for store data in  to-do-list, Login form, register form, toggle button, API output storage, CRUD Applications..
+
+
+2) useEffect - useEffect is a React Hook used to perform side effects after rendering.
+
+     * - useEffect always runs after the component renders and commits to the DOM.
+    Render process:
+
+	State change
+		→ Component re-renders
+		→ DOM updated
+		→ useEffect runs
+
+		So: --- > useEffect runs after paint, not during render.
+Three type in useEffect : 
+
+   1 ---> useEffect(() => {
+  		console.log("Runs every time");
+		});
+
+	No dependency array → runs after every render
+
+  2 ---> useEffect(() => {
+  		console.log("Runs only on first render");
+	}, []);
+    
+      Empty dependency array → runs only once
+
+  3 ---> useEffect(() => {
+  	    	console.log("Runs when count changes");
+	}, [count]);
+	
+       Runs every time when the count changes
+
+
+	***useEffect is asynchronous relative to render
+
+		Meaning:
+		   It does not block rendering
+		   React renders UI first
+		   Then executes useEffect later
+		   useEffect itself is not async by default,
+
+    	you can add async to the useEffect
+	useEffect(() => {
+  		async function fetchData() {
+    		const res = await fetch(...);
+  	   }
+	   fetchData();
+	}, []);
+
+
+
+     working of useEffect ::: 
+ 	1) Component renders (pure function runs)
+        2) React collects effects into a list:
+
+		effectQueue = [
+  			effect1,
+  			effect2,
+  			effect3
+		]
+
+        3) React updates DOM (commit phase)
+        4) After DOM paint → React runs effects from the queue
+
+              This is why effects see updated DOM.
+
+useEffect used in Project example ::
+
+	*API calls	Fetch data when page loads
+ 	*Authentication	Check token on app start
+             useEffect(() => {
+  		const token = localStorage.getItem("token");
+		if (token) {
+    			setIsLoggedIn(true); // authentication of the user login
+  		}
+	     }, []);
+
+	*Theme	Apply dark/light mode
+	*Chat apps	WebSocket connect/disconnect
+	*Timers	setInterval / clearInterval
+	*Analytics	Track page visit
+	*Forms	Auto-save drafts - save the typed message in localStorage and then get from localStorage using a useEffect 
+		Ex: Notes apps
+
+3) useCallback :::
+       ***useCallback remembers (memoizes) a function so that React does not create a new function on every render unless dependencies change.
+
+	Syntax for useCallback :::
+	     const handleClick = useCallback(function, dependency)
+
+	with empty bracket::
+	
+	import { useState, useCallback } from "react";
+
+	const Child = React.memo(({ onClick }) => {
+  		console.log("Child rendered");
+  		return <button onClick={onClick}>Click Child</button>;
+	});
+
+	function App() {
+  		const [count, setCount] = useState(0);
+		const handleClick = useCallback(() => {
+    			console.log("Child clicked");
+  		}, []);
+
+  		return (
+    		<>
+      			<h1>{count}</h1>
+      			<button onClick={() => setCount(count + 1)}>Increase</button>
+      			<Child onClick={handleClick} />
+    		</>
+  	);
+	}
+     *** the child is rendered on the mount only 
+     *** The function is created only once (on first render)
+     *** It is never recreated again (using the [] in useCallback)
+     *** without using useCallBack the child is re-rendered on every state changes
+ 
+  When SHOULD you use useCallback?
+
+  Use it when:
+
+    ✅ Passing function to child wrapped in React.memo
+    ✅ Heavy components re-render unnecessarily
+    ✅ Large lists
+    ✅ Expensive computations triggered by function
+    ✅ Performance optimization needed
+
+
+*** when onclick on the button the value changes in state and the useEffect is also mention with the state so it is also re-call
+    so, in this doubt is useState is change first or useEffect is re-called first ???
+	answer :: 1) setState is called
+		2) React schedules a re-render
+		3) Component renders with NEW state
+		4) DOM updates on screen
+		5) useEffect runs - it always runs at last
+
+
+*** Render Props Technique in React - receive a function as prop	
+
+Mouse.js...
+import MouseTracker from "./MouseTracker";
+
+export default function Mouse() {
+  return (
+    <>
+      {/* UI 1 */}
+      <MouseTracker>
+        {(pos) => (
+          <h1>
+            Mouse at: {pos.x}, {pos.y}
+          </h1>
+        )}
+      </MouseTracker>
+
+      {/* UI 2 */}
+      <MouseTracker>
+        {(pos) => (
+          <div
+            style={{
+              position: "absolute",
+              left: pos.x,
+              top: pos.y,
+              width: 20,
+              height: 20,
+              background: "red",
+              borderRadius: "50%",
+            }}
+          />
+        )}
+      </MouseTracker>
+    </>
+  );
+}
+
+MouseTracker.js
+import { useState } from "react";
+
+const MouseTracker = ({ children }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setPosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
+  return (
+    <div style={{ height: "100vh" }} onMouseMove={handleMouseMove}>
+      {children(position)}
+    </div>
+  );
+};
+
+export default MouseTracker;
+*** forwordRef in react:::: 
+
+	forwardRef is a React API that allows a parent component to pass a ref through a child component to access a DOM element 	inside that child.
+
+	It “forwards” the ref from parent → child → real DOM node.
+   Example :::
+
+	CustomInput.js(child)
+	import { forwardRef } from "react";
+
+	const CustomInput = forwardRef((props, ref) => {
+  		return <input ref={ref} {...props} />;
+	});
+
+	export default CustomInput;
+
+	Parent.js 
+
+	import { useRef } from "react";
+	import CustomInput from "./CustomInput";
+
+	export default function App() {
+  	const inputRef = useRef();
+
+  		return (
+    		<>
+      		<CustomInput ref={inputRef} placeholder="Type here..." />
+      		<button onClick={() => inputRef.current.focus()}>
+        	Focus Input
+      		</button>
+    </>
+  );
+}
+
+	click on the button it will focus on the input box through the different component using a router also:::
+
+	
+*** React - redex in react ::::
+
+1 store 
+
+2 action --> increment or decrement 
+	const incrementByAmount = {type :"INCREMENT", payload : 1000} // payload is optional -> it was an increment value
+3 reducers
+
+using useSelector you can connect your react to redux	and take the current value from redux
+using dispatch you can call the function in the creteSlice useDispatch
+
+
+useForm in react : (gpt)
+	reset(data) ⇒ defaultValues becomes data ⇒ isDirty becomes false.

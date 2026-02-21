@@ -4,7 +4,7 @@ import ToDoItems from "./Components/ToDoItems";
 
 class ToDoApp extends Component{
     render(){
-        return <ToDoItems/>
+        return <ToDoItems prop={"prooef"}/>
         
     }
 }

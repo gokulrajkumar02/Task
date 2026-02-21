@@ -1,0 +1,63 @@
+.my-service-grid-container {
+  background: #ffffff;
+  height: 225px;
+  width: 310px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.my-service-grid-container-image{
+    width: 68px;
+    height: 68px;
+    margin-top: 28px;
+}
+.my-service-grid-container-title{
+    margin-top: 26px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 124%;
+     color: #2B2B2B;
+    
+}
+.my-service-grid-container-content{
+    margin-top: 15px;
+    color: #767676;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+.my-service-grid-container-Advertising{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.my-service-grid-container-Advertising > h2{
+    height: 22px;
+    width: 99px;
+    margin-top: 31px;
+    color: #2B2B2B;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 124%; 
+}
+.my-service-grid-container-Advertising > :nth-child(2){
+    width: 260px;
+    height: 78px;
+    color: #767676;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 22px;
+}
+.my-service-grid-container-Advertising > :nth-child(3){
+    color :#FFB400;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-top: 27px;
+}

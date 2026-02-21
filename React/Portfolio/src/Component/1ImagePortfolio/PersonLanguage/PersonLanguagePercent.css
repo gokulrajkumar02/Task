@@ -1,0 +1,22 @@
+.person-language-percent-container{
+    height: 24px;
+    width: 220px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #767676;
+}
+.person-language-percent-outer{
+    height: 6px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    border-radius: 2px;
+    border: 1px solid #FFB400;
+}
+.person-language-percent-inner{
+    height: 2px;
+    background-color: #FFB400;
+}

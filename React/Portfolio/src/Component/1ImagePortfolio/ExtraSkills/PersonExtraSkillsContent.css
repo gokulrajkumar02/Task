@@ -1,0 +1,17 @@
+*{
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.person-extra-skills-content-container{
+    height : 24px;
+    margin-top: 5px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    color: #767676;
+}
+.person-extra-skills-content-container > img{
+    height: 15px;
+    width: 15px;
+}

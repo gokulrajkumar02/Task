@@ -1,0 +1,35 @@
+*{
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+}
+.person-details-container{
+    width: 220px;
+    height: 126px;
+    /* border: 1px solid black; */
+    margin-top: 25px;
+    margin-left: 40px;
+    row-gap : 9px;
+    display: flex;
+    flex-direction: column;
+}
+.person-details-container-box{
+    display: flex;
+    width: 220px;
+    height: 25px;
+    /* border: 1px solid black; */
+    justify-content: space-between;
+    align-items: center;
+}
+.person-details-container-box-title{
+    background-color: #FFB400;
+}
+.person-details-container > :nth-child(3) > :nth-child(2) {
+    color: green;
+}
+.person-details-container-hr{
+    margin-top: 25px;
+    width: 220px;
+    height: 1px;
+    background-color: #F0F0F6;
+    margin-left: 40px;
+}

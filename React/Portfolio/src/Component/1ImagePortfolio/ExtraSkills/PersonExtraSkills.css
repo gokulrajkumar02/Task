@@ -1,0 +1,21 @@
+.person-extra-skills-container{
+    width: 220px;
+    height: 148px;
+    margin-left: 40px;
+    margin-top: 25px;
+    /* border: 1px solid black; */
+}
+.person-extra-skills-title{
+    width: 100px;
+    height: 22px;
+    color: #2B2B2B;
+    font-size: 18px;
+    font-weight: 500;
+}
+.person-extra-skills-container-hr{
+    margin-top: 25px;
+    width: 220px;
+    height: 1px;
+    background-color: #F0F0F6;
+    margin-left: 40px;
+}

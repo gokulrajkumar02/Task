@@ -8,3 +8,8 @@ React :
 	** JSX -- JS,HTML,CSS in a single a same file
 
 export two type -- default , named 
+
+useState -> react batch update , asybchoris ,s ynchronous
+useEffect -> when how under the hood
+useCallback , useMemo
+UseRef -> induratry many places 

@@ -1,0 +1,124 @@
+.container {
+  max-height: 100%;
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a,
+Link,
+span {
+  text-decoration: none;
+  color: white;
+}
+.menu-bar,
+.menu-label {
+  display: none;
+  color: white;
+}
+.container{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.Nav-bar {
+  width: 100%;
+  background-color: rgb(117, 113, 144);
+  height: 10%;
+  padding: 18px 0;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 3;
+}
+.Nav-logo {
+  /* border: 1px solid black; */
+  height: 50%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Nav-logo img {
+  height: 50px;
+  width: 50px; 
+  border-radius: 50%;
+  margin-right: 10px;
+  /* background-color: white; */
+}
+
+.Nav-items {
+  /* border: 1px solid black; */
+  height: 50%;
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Nav-image {
+  /* border: 1px solid black;  */
+  height: 50%;
+  width: 20%;
+  display: flex;
+  /* align-items: center; */
+  justify-content :space-between;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (max-width: 1020px) {
+  .Nav-bar {
+    flex-direction: column;
+    height: 25%;
+    /* width: 100; */
+    gap: 10px;
+  }
+  .Nav-items {
+    justify-content: space-around;
+    width: 100%;
+    /* border: 1px solid black; */
+  }
+}
+
+@media (max-width: 570px) {
+  .Nav-items {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 50vh;
+    width: 100%;
+    background: rgb(18, 4, 108);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 25px;
+    gap: 25px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+  .Nav-bar {
+    position: relative;
+    height: 20%;
+    width: 100%;
+  }
+  .menu-label {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .menu-bar:checked ~ .Nav-items {
+    transform: translateX(0%);
+  }
+  .container {
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+  }
+}

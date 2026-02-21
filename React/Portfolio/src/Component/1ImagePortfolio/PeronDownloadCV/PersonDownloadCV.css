@@ -1,0 +1,21 @@
+.person-downloadCV-container{
+    margin-left: 40px;
+    margin-top: 25px;
+    width: 220px;
+    height: 40px;
+    background-color: #FFB400;
+    display: flex;
+    justify-content: center;
+}
+.person-downloadCV-container-label{
+    width: 108px;
+    height: 19.43px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.person-downloadCV-container-image{
+    margin-left: 10px;
+    height: 12px;
+    width: 11.67px;
+    margin-top: 12.29px;
+}
