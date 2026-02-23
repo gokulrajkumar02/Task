@@ -1,7 +1,11 @@
-export default function Home() {
+import LoginForm from "@/Component/LoginForm"
+
+const page = () => {
   return (
-    <div>
-      
-    </div>
-  );
+    
+      <LoginForm /> 
+   
+  )
 }
+
+export default page

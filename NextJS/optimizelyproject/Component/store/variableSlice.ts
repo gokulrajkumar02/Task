@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import generateId from "@/Helper/generateId";
 import fileNameGenerator from "@/Helper/fileNameGenerator";
-import { ReactNode } from "react";
+import { log } from "console";
 
 type Variable = {
   data: any;
@@ -16,16 +16,23 @@ type Variation = {
   name: string;
   id: number;
   description: string;
-  variables: Variable[];
+  variables: Variable[]; 
+};
+ type Login = {
+  username: string;
+  password: string;
+  role: "user" | "admin";
 };
 
 type VariableState = {
+  loginData : Login[];
   variable: Variable[];
   editingVariable: Variable | null;
   variation: Variation[];
 };
 
 const initialState: VariableState = {
+  loginData : [],
   variable: [],
   editingVariable: null,
   variation: [],
@@ -94,6 +101,10 @@ const variableSlice = createSlice({
     deleteVariation: (state, action) => {
       state.variation = state.variation.filter((v) => v.id !== action.payload);
     },
+    setLoginData: (state, action) => {
+      state.loginData = action.payload;
+      console.log("Login Data Updated:", state.loginData);
+    },
   },
 });
 
@@ -106,6 +117,7 @@ export const {
   clearEditingVariable,
   setVariation,
   deleteVariation,
+  setLoginData,
 } = variableSlice.actions;
 
 export default variableSlice.reducer;
