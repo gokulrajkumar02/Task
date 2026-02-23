@@ -1,9 +1,9 @@
-import Accordian from "@/Component/Accordian"
+import Accordion from "@/Component/Accordion"
 
 const page = () => {
   return (
     <div className="w-full h-screen flex justify-center">
-     <Accordian/>
+     <Accordion/>
     </div>
   )
 }
