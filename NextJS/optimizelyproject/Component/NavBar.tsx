@@ -1,31 +1,37 @@
 "use client";
 import { useRouter } from "next/navigation";
-const Nav = () => {
-  const router = useRouter();
+import Link from "next/link"
 
+const NavBar = () => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await fetch("/api/logout");
+    // router.push("/");
+    router.refresh();
+  }
   return (
     <div className="flex w-[20%] border-r border-gray-300 box-border">
       <div className="w-full my-5 border-b border-gray-300 box-border">
         <div className="border-b border-gray-300">
           <p className="text-gray-500 text-[15px] mx-5 ">Rulesets</p>
         </div>
-        <div
+        <Link href="/notFound"
           className="flex flex-col py-2  w-full border-b border-b-gray-300  hover:bg-gray-300 hover:cursor-pointer"
-          onClick={() => router.push("notFound")}
+         
         >
           <label
             htmlFor=""
-            className=" text-blue-800 mx-5 hover:cursor-pointer"
+            className="text-blue-800 mx-5 hover:cursor-pointer"
           >
             Production
           </label>
           <span className="text-gray-500 text-[12px] mx-5 hover:cursor-pointer ">
             Primary Environment
           </span>
-        </div>
-        <div
+        </Link>
+        <Link href="/notFound"
           className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer "
-          onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -36,15 +42,15 @@ const Nav = () => {
           <span className="text-gray-500 text-[12px]  mx-5 hover:cursor-pointer ">
             Environment
           </span>
-        </div>
+        </Link>
 
         <div className="flex items-end h-20 border-b  border-b-gray-300 pb-2">
           <p className="text-gray-500 text-[15px] w-full mx-5 ">Flag Setup</p>
         </div>
 
-        <div
+        <Link href="/Variable"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          onClick={() => router.push("/Variable")}
+       
         >
           <label
             htmlFor=""
@@ -52,10 +58,10 @@ const Nav = () => {
           >
             Variables
           </label>
-        </div>
-        <div
+        </Link>
+        <Link href="/Variations"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
-          onClick={() => router.push("/Variations")}
+          
         >
           <label
             htmlFor=""
@@ -63,11 +69,11 @@ const Nav = () => {
           >
             Variations
           </label>
-        </div>
+        </Link>
 
-        <div
+        <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -75,10 +81,10 @@ const Nav = () => {
           >
             API Values
           </label>
-        </div>
-        <div
+        </Link>
+        <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -86,11 +92,20 @@ const Nav = () => {
           >
             History
           </label>
-        </div>
-
-        <div
+        </Link>
+        <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          onClick={() => router.push("notFound")}
+        >
+          <label
+            htmlFor=""
+            className=" text-blue-800 mx-5 hover:cursor-pointer "
+          >
+            Accordion
+          </label>
+        </Link>
+
+        <Link href="/notFound"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
         >
           <label
             htmlFor=""
@@ -98,10 +113,19 @@ const Nav = () => {
           >
             Settings
           </label>
-        </div>
+        </Link>
+        <Link href ="/" className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer">
+          <label
+            htmlFor=""
+            className="text-blue-800 mx-5 hover:cursor-pointer "
+            onClick={handleLogout}
+          >
+            Logout
+          </label>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Nav;
+export default NavBar;
