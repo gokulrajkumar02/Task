@@ -22,10 +22,19 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     dispatch(setLoginData(data));
     router.push("/Home");
+    router.refresh();
     localStorage.setItem("loginData", JSON.stringify(data));
+
+    await fetch("/api/save-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
   };
 
   return (

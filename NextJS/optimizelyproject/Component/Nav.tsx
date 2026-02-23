@@ -1,8 +1,14 @@
 "use client";
 import { useRouter } from "next/navigation";
+
+
 const Nav = () => {
   const router = useRouter();
-
+  const handleLogout = async () => {
+    await fetch("/api/logout");
+    router.push("/");
+    router.refresh();
+  }
   return (
     <div className="flex w-[20%] border-r border-gray-300 box-border">
       <div className="w-full my-5 border-b border-gray-300 box-border">
@@ -15,7 +21,7 @@ const Nav = () => {
         >
           <label
             htmlFor=""
-            className=" text-blue-800 mx-5 hover:cursor-pointer"
+            className="text-blue-800 mx-5 hover:cursor-pointer"
           >
             Production
           </label>
@@ -87,6 +93,17 @@ const Nav = () => {
             History
           </label>
         </div>
+        <div
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+          onClick={() => router.push("/Accordion")}
+        >
+          <label
+            htmlFor=""
+            className=" text-blue-800 mx-5 hover:cursor-pointer "
+          >
+            Accordion
+          </label>
+        </div>
 
         <div
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
@@ -97,6 +114,15 @@ const Nav = () => {
             className="text-blue-800 mx-5 hover:cursor-pointer "
           >
             Settings
+          </label>
+        </div>
+        <div className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer">
+          <label
+            htmlFor=""
+            className="text-blue-800 mx-5 hover:cursor-pointer "
+            onClick={handleLogout}
+          >
+            Logout
           </label>
         </div>
       </div>
