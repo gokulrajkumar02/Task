@@ -18,10 +18,13 @@ const accordianData = [
 const Accordion = () => {
 
     const [activeIndex, setActiveIndex] = useState(-1);
+    if(!accordianData || accordianData.length === 0) {
+        return <div className="w-full h-screen flex items-center justify-center">No data available</div>
+    }
 
   return (
     <div className="w-full h-screen flex flex-col items-center gap-1 transform transition-all duration-300"> 
-        { accordianData && accordianData.map((item, index) => (
+        {accordianData.map((item, index) => (
             <div key={index} className="w-[80%]">  
                 <div 
                     className="cursor-pointer p-4 bg-gray-200 relative flex items-center"

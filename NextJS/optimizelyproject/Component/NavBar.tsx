@@ -17,7 +17,7 @@ const NavBar = () => {
         </div>
         <Link href="/notFound"
           className="flex flex-col py-2  w-full border-b border-b-gray-300  hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("notFound")}
+         
         >
           <label
             htmlFor=""
@@ -31,7 +31,7 @@ const NavBar = () => {
         </Link>
         <Link href="/notFound"
           className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer "
-          // onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -50,7 +50,7 @@ const NavBar = () => {
 
         <Link href="/Variable"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("/Variable")}
+       
         >
           <label
             htmlFor=""
@@ -61,7 +61,7 @@ const NavBar = () => {
         </Link>
         <Link href="/Variations"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
-          // onClick={() => router.push("/Variations")}
+          
         >
           <label
             htmlFor=""
@@ -73,7 +73,7 @@ const NavBar = () => {
 
         <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -84,7 +84,7 @@ const NavBar = () => {
         </Link>
         <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("notFound")}
+          
         >
           <label
             htmlFor=""
@@ -95,7 +95,6 @@ const NavBar = () => {
         </Link>
         <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("/Accordion")}
         >
           <label
             htmlFor=""
@@ -107,7 +106,6 @@ const NavBar = () => {
 
         <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-          // onClick={() => router.push("notFound")}
         >
           <label
             htmlFor=""
