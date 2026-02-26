@@ -103,6 +103,16 @@ const NavBar = () => {
             Accordion
           </label>
         </Link>
+        <Link href="/WeatherApp"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+        >
+          <label
+            htmlFor=""
+            className=" text-blue-800 mx-5 hover:cursor-pointer "
+          >
+            Weather App
+          </label>
+        </Link>
 
         <Link href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"

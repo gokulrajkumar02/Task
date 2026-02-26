@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
         return reDirect("/");
     }
     if(login && pathname === "/") {
-        return reDirect("/Home");
+        return reDirect("/WeatherApp");
     }
 
     if(restrictedRoutes[storedUser ?.role]?.includes(pathname)) {

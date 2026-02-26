@@ -2,7 +2,6 @@ import LoginForm from "@/Component/LoginForm"
 
 const page = () => {
   return (
-    
       <LoginForm /> 
    
   )
