@@ -16,7 +16,7 @@ const NavBar = () => {
           <p className="text-gray-500 text-[15px] mx-5 ">Rulesets</p>
         </div>
         <Link href="/notFound"
-          className="flex flex-col py-2  w-full border-b border-b-gray-300  hover:bg-gray-300 hover:cursor-pointer"
+          className="flex flex-col py-2  w-full border-b border-b-gray-300  hover:bg-gray-300"
          
         >
           <label
@@ -30,7 +30,7 @@ const NavBar = () => {
           </span>
         </Link>
         <Link href="/notFound"
-          className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer "
+          className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300"
           
         >
           <label
@@ -72,52 +72,62 @@ const NavBar = () => {
         </Link>
 
         <Link href="/notFound"
-          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
           
         >
           <label
             htmlFor=""
-            className=" text-blue-800 mx-5 hover:cursor-pointer "
+            className=" text-blue-800 mx-5 hover:cursor-pointer"
           >
             API Values
           </label>
         </Link>
         <Link href="/notFound"
-          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
           
         >
           <label
             htmlFor=""
-            className=" text-blue-800 mx-5 hover:cursor-pointer "
+            className=" text-blue-800 mx-5 hover:cursor-pointer"
           >
             History
           </label>
         </Link>
-        <Link href="/notFound"
-          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+        <Link href="/Accordion"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
           <label
             htmlFor=""
-            className=" text-blue-800 mx-5 hover:cursor-pointer "
+            className=" text-blue-800 mx-5 hover:cursor-pointer"
           >
             Accordion
           </label>
         </Link>
-
-        <Link href="/notFound"
-          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
+        <Link href="/WeatherApp"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
           <label
             htmlFor=""
-            className="text-blue-800 mx-5 hover:cursor-pointer "
+            className=" text-blue-800 mx-5 hover:cursor-pointer"
+          >
+            Weather App
+          </label>
+        </Link>
+
+        <Link href="/notFound"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
+        >
+          <label
+            htmlFor=""
+            className="text-blue-800 mx-5 hover:cursor-pointer"
           >
             Settings
           </label>
         </Link>
-        <Link href ="/" className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer">
+        <Link href ="/" className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300">
           <label
             htmlFor=""
-            className="text-blue-800 mx-5 hover:cursor-pointer "
+            className="text-blue-800 mx-5 hover:cursor-pointer"
             onClick={handleLogout}
           >
             Logout
