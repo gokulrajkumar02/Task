@@ -7,7 +7,7 @@ import WeatherApi from "@/Helper/WeatherApi";
 import groupDays from "@/Helper/GroupDays ";
 import getMinMax from "@/Helper/MinMaxTemperature";
 import getWeatherIcon from "@/Helper/GetWeatherIcon";
-import {GroupedDay} from "@/Helper/GroupDays "
+import { GroupedDay } from "@/Helper/GroupDays ";
 import getHourlyData from "@/Helper/GetHourlyData";
 import toFahrenheit from "@/Helper/ToFahrenheit";
 import searchLogo from "../public/logo.svg";
@@ -16,33 +16,37 @@ import "../app/globals.css";
 
 interface currentHightlightsType {
   title: string;
-  content: keyof GroupedDay | "";
-  symbol : string | "";
+  content: keyof GroupedDay | null;
+  symbol: string | null;
 }
+type daysTitleType = { shortDayTitle: string; longDayTitle: string };
 
-const currentWeatherHighlights : currentHightlightsType[] = [
-  { title: "Feels Like", content: "apparent_temperature",symbol :""},
-  { title: "Humidity", content: "humidity",symbol : "%"},
-  { title: "Wind", content: "",symbol : "km/hr"},
-  { title: "Precipitation", content: "precipitation", symbol : "mm"},
+const currentWeatherHighlights: currentHightlightsType[] = [
+  { title: "Feels Like", content: "apparent_temperature", symbol: "" },
+  { title: "Humidity", content: "humidity", symbol: "%" },
+  { title: "Wind", content: null, symbol: "km/hr" },
+  { title: "Precipitation", content: "precipitation", symbol: "mm" },
 ];
 
-type daysTitleType = {shortDayTitle :string,longDayTitle : string}
-const daysTitle : daysTitleType[] = [{shortDayTitle :"Mon",longDayTitle :"Monday"}, 
-                    {shortDayTitle :"Tue",longDayTitle :"Tuesday"},
-                    {shortDayTitle :"Wed",longDayTitle :"Wednesday"},
-                    {shortDayTitle :"Thu",longDayTitle :"Thursday"},
-                    {shortDayTitle :"Fri",longDayTitle :"Friday"},
-                    {shortDayTitle :"Sat",longDayTitle :"Saturday"},
-                    {shortDayTitle :"Sun",longDayTitle :"Sunday"},
-  ];
+const daysTitle: daysTitleType[] = [
+  { shortDayTitle: "Mon", longDayTitle: "Monday" },
+  { shortDayTitle: "Tue", longDayTitle: "Tuesday" },
+  { shortDayTitle: "Wed", longDayTitle: "Wednesday" },
+  { shortDayTitle: "Thu", longDayTitle: "Thursday" },
+  { shortDayTitle: "Fri", longDayTitle: "Friday" },
+  { shortDayTitle: "Sat", longDayTitle: "Saturday" },
+  { shortDayTitle: "Sun", longDayTitle: "Sunday" },
+];
 
 const WeatherApp = () => {
   const [city, setCity] = useState("Salem");
   const [searchCity, setSearchCity] = useState("");
   const [units, setUnits] = useState("celsius");
-  const [activeHourlyDay , setActiveHourlyDay] = useState("")
-  const [hourlyTimeTemp, setHourlyTimeTemp] = useState<[string[], number[]]>([[], []]);
+  const [activeHourlyDay, setActiveHourlyDay] = useState("");
+  const [hourlyTimeTemp, setHourlyTimeTemp] = useState<[string[], number[]]>([
+    [],
+    [],
+  ]);
 
   const router = useRouter();
 
@@ -73,38 +77,45 @@ const WeatherApp = () => {
   ];
 
   const getMinMaxTemperature = (index: number) => {
-    return getMinMax(groupedDays[index], units,);
+    return getMinMax(groupedDays[index], units);
   };
 
-  const handleEnter = (e : React.KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === "Enter"){
-      setSearchCity(city)
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setSearchCity(city);
     }
-  }
+  };
 
   useEffect(() => {
-        const selectedDayIndex = rotatedDays.findIndex(
-          (day) => day.shortDayTitle === activeHourlyDay
-        );
-        const startTime = 0;
-        const hourlyTempData =
-          (selectedDayIndex == -1 || selectedDayIndex == 0)
-            ? getHourlyData(groupedDays[0], new Date().getHours())
-            : getHourlyData(groupedDays[selectedDayIndex], startTime);
+    const selectedDayIndex = rotatedDays.findIndex(
+      (day) => day.shortDayTitle === activeHourlyDay,
+    );
+    const startTime = 0;
+    const hourlyTempData =
+      selectedDayIndex == -1 || selectedDayIndex == 0
+        ? getHourlyData(groupedDays[0], new Date().getHours())
+        : getHourlyData(groupedDays[selectedDayIndex], startTime);
 
-        if (!hourlyTempData) return;
+    if (!hourlyTempData) return;
 
-        const convertedFehrenData = [hourlyTempData[0],units == "fahrenheit" ? toFahrenheit(hourlyTempData[1]): hourlyTempData[1],
-        ];
-        setHourlyTimeTemp(convertedFehrenData);
-
-}, [activeHourlyDay, data, units]); 
+    const convertedFehrenData = [
+      hourlyTempData[0],
+      units == "fahrenheit"
+        ? toFahrenheit(hourlyTempData[1])
+        : hourlyTempData[1],
+    ];
+    setHourlyTimeTemp(convertedFehrenData);
+  }, [activeHourlyDay, data, units]);
 
   return (
     <>
       <div className="w-[95%] max-w-6xl p-2 mx-auto">
-        <div className="flex justify-between sticky top-1">
-          <Image src={searchLogo} alt="App-logo" className="w-[150px] sm:w-[197px] h-[40px]"/>
+        <div className="flex justify-between sticky top-0">
+          <Image
+            src={searchLogo}
+            alt="App-logo"
+            className="w-[150px] sm:w-[197px] h-[40px]"
+          />
           <select
             value={units}
             onChange={(e) => setUnits(e.target.value)}
@@ -183,17 +194,32 @@ const WeatherApp = () => {
                             >
                               <h1>{items.title}</h1>
                               <h2>
-                            {items.content === ""
-                            ? data?.weather?.current_weather?.windspeed != null
-                              ? `${data?.weather.current_weather.windspeed} km/hr`
-                              : "-"
-                            : groupedDays?.[0]?.[items.content as keyof GroupedDay]?.[hour] != null
-                              ? `${Math.round(
-                                  (units === "fahrenheit" && items.title === "Feels Like")
-                                    ? ((groupedDays[0][items.content as keyof GroupedDay] as number[])[hour] * 9) / 5 + 32
-                                    : (groupedDays[0][items.content as keyof GroupedDay] as number[])[hour],
-                                )}${items.title === "Feels Like" ? (units === "fahrenheit" ? "°F" : "°C") : ` ${items.symbol}`}`
-                              : "--"}
+                                {items.content === null
+                                  ? data?.weather?.current_weather?.windspeed !=
+                                    null
+                                    ? `${data?.weather.current_weather.windspeed} km/hr`
+                                    : "-"
+                                  : groupedDays?.[0]?.[
+                                        items.content as keyof GroupedDay
+                                      ]?.[hour] != null
+                                    ? `${Math.round(
+                                        units === "fahrenheit" &&
+                                          items.title === "Feels Like"
+                                          ? ((
+                                              groupedDays[0][
+                                                items.content as keyof GroupedDay
+                                              ] as number[]
+                                            )[hour] *
+                                              9) /
+                                              5 +
+                                              32
+                                          : (
+                                              groupedDays[0][
+                                                items.content as keyof GroupedDay
+                                              ] as number[]
+                                            )[hour],
+                                      )}${items.title === "Feels Like" ? (units === "fahrenheit" ? "°F" : "°C") : ` ${items.symbol}`}`
+                                    : "--"}
                               </h2>
                             </div>
                           );
@@ -227,26 +253,56 @@ const WeatherApp = () => {
 
                     <div className="bg-[#1c1f3a] rounded-2xl p-4 pt-0 space-y-4 overflow-auto h-[490px] w-auto scrollbar-hide">
                       <div className="text-white flex justify-between sticky top-0 bg-[#1c1f3a]  py-6 z-10 ">
-                        <h1 className="text-[18px] md:text-[20px]">Hourly forecast</h1>
-                        <select value={activeHourlyDay} onChange={(e) => setActiveHourlyDay(e.target.value)} className="bg-[#3e3a5f] text-white rounded-md px-2 py-1">
-                          {rotatedDays.map((items,index) =>{
-                            return <option key={index} value={items.shortDayTitle} className="bg-[#3e3a5f]">{items.longDayTitle}</option>
+                        <h1 className="text-[18px] md:text-[20px]">
+                          Hourly forecast
+                        </h1>
+                        <select
+                          value={activeHourlyDay}
+                          onChange={(e) => setActiveHourlyDay(e.target.value)}
+                          className="bg-[#3e3a5f] text-white rounded-md px-2 py-1"
+                        >
+                          {rotatedDays.map((items, index) => {
+                            return (
+                              <option
+                                key={index}
+                                value={items.shortDayTitle}
+                                className="bg-[#3e3a5f]"
+                              >
+                                {items.longDayTitle}
+                              </option>
+                            );
                           })}
                         </select>
                       </div>
-                      {hourlyTimeTemp[0].length > 0 ? hourlyTimeTemp[0].map((items,index) => {
-                        const weatherIcon = getWeatherIcon(hourlyTimeTemp[1][index])
-                        return <div key={index} className="h-14 bg-[#2a2d4d] rounded-lg text-white flex justify-around items-center">
-                          <div className="flex gap-2 justify-between">
-                          <h1>{weatherIcon}</h1>
-                          <h1>{items.split("T")[1].split(":")[0] > "10" ? `${Number(items.split("T")[1].split(":")[0]) % 12 + 1} PM`  : `${Number(items.split("T")[1].split(":")[0] ) + 1} AM` }</h1>
-
-                          </div>
-                          <h1>{Math.round(hourlyTimeTemp[1][index])}°</h1>
+                      {hourlyTimeTemp[0].length > 0 ? (
+                        hourlyTimeTemp[0].map((items, index) => {
+                          const weatherIcon = getWeatherIcon(
+                            hourlyTimeTemp[1][index],
+                          );
+                          return (
+                            <div
+                              key={index}
+                              className="h-14 bg-[#2a2d4d] rounded-lg text-white flex justify-around items-center"
+                            >
+                              <div className="flex gap-2 justify-between">
+                                <h1>{weatherIcon}</h1>
+                                <h1>
+                                  {items.split("T")[1].split(":")[0] > "10"
+                                    ? `${(Number(items.split("T")[1].split(":")[0]) % 12) + 1} PM`
+                                    : `${Number(items.split("T")[1].split(":")[0]) + 1} AM`}
+                                </h1>
+                              </div>
+                              <h1>{Math.round(hourlyTimeTemp[1][index])}°</h1>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="flex justify-center">
+                          <p className="h-14 bg-[#2a2d4d] rounded-lg text-white w-[70%] text-[20px] flex justify-center items-center">
+                            Search the City
+                          </p>
                         </div>
-                      }) : <div className="flex justify-center">
-                        <p className="h-14 bg-[#2a2d4d] rounded-lg text-white w-[70%] text-[20px] flex justify-center items-center">Search the City</p>
-                        </div>}
+                      )}
                     </div>
                   </div>
                 </div>
