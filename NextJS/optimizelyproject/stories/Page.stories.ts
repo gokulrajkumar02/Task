@@ -1,0 +1,32 @@
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+
+import { expect, userEvent, within } from 'storybook/test';
+
+import { Page } from './Page';
+
+const meta = {
+  title: 'Example/Page',
+  component: Page,
+  parameters: {
+    layout: 'fullscreen',
+  },
+} satisfies Meta<typeof Page>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const LoggedOut: Story = {};
+
+export const LoggedIn: Story = { 
+  play: async ({ canvasElement }) => {
+
+    const canvas = within(canvasElement);
+    const loginButton = canvas.getByText("Log in");
+    expect(loginButton).toBeInTheDocument();
+    await userEvent.click(loginButton);
+    await expect(loginButton).not.toBeInTheDocument();  
+
+    const logoutButton = canvas.getByText("Log out");
+    expect(logoutButton).toBeInTheDocument();
+  },
+};

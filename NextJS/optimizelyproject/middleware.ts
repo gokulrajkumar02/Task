@@ -21,12 +21,12 @@ export async function middleware(request: NextRequest) {
         return reDirect("/");
     }
     if(login && pathname === "/") {
-        return reDirect("/WeatherApp");
+        return reDirect("/Home");
     }
 
-    if(restrictedRoutes[storedUser ?.role]?.includes(pathname)) {
-        return reDirect("/notFound");
-    }
+    // if(restrictedRoutes[storedUser ?.role]?.includes(pathname)) {
+    //     return reDirect("/notFound");
+    // }
     console.log(pathname);
     console.log("Type of request: ", request.method);
 

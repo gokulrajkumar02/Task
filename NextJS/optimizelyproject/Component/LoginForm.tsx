@@ -24,7 +24,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data: FormData) => {
     dispatch(setLoginData(data));
-    router.push("/Home");
+    router.push("/WeatherApp");
     router.refresh();
     localStorage.setItem("loginData", JSON.stringify(data));
 

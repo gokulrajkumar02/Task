@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./provider";
+import { StatusProvider } from "./StatusContext";
+import ThemeRegistry from "./ThemeRegistry";
 
 export const metadata: Metadata = {
   title: "Optimizely Project",
@@ -9,14 +11,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className="flex h-full w-full">
+      <body className="flex h-screen w-full overflow-x-hidden justify-center">
         <Providers>
-          {children}
+          <ThemeRegistry>
+            <StatusProvider >
+              {children}
+            </StatusProvider>
+          </ThemeRegistry>
         </Providers>
       </body>
     </html>

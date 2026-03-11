@@ -24,7 +24,7 @@ type FormData = {
 const VariationPage = () => {
   const [pageShow, isPageShow] = useState(false);
   const [resetForm, setResetForm] = useState(false);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const Variables = useSelector((state: RootState) => state.variable.variable);
   const variation = useSelector((state: RootState) => state.variable.variation);

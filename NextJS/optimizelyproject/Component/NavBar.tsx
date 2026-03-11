@@ -29,7 +29,7 @@ const NavBar = () => {
             Primary Environment
           </span>
         </Link>
-        <Link href="/notFound"
+        <Link href="/Development"
           className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300"
           
         >

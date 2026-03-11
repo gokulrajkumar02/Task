@@ -1,9 +1,14 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
-import { deleteVariation } from "./store/variableSlice";
+import { copyVariation, deleteVariation } from "./store/variableSlice";
 
-const VariationList = ({ type, setResetFrom, resetForm , setSelectedId}: any) => {
+const VariationList = ({
+  type,
+  setResetFrom,
+  resetForm,
+  setSelectedId,
+}: any) => {
   const dispatch = useDispatch();
 
   const variationData = useSelector(
@@ -18,7 +23,11 @@ const VariationList = ({ type, setResetFrom, resetForm , setSelectedId}: any) =>
           <button
             className="border-2 border-blue-500 px-2 py-1 rounded-md flex items-center hover:cursor-pointer"
             // onClick={() => router.push("/Variable/configurevariable")}
-            onClick={() => (type(true), setResetFrom(!resetForm),setSelectedId(null))}
+            onClick={() => (
+              type(true),
+              setResetFrom(!resetForm),
+              setSelectedId(null)
+            )}
           >
             <svg
               className="w-4 h-4 text-gray-800 dark:text-white"
@@ -59,7 +68,10 @@ const VariationList = ({ type, setResetFrom, resetForm , setSelectedId}: any) =>
               key={item.id}
               className="border border-gray-300 p-3 rounded-md mb-3 flex justify-between items-center"
             >
-              <h1 className="text-[18px] text-blue-600 w-25  hover:cursor-pointer hover:underline" onClick={() => (type(true), setSelectedId(item.id))}>
+              <h1
+                className="text-[18px] text-blue-600 w-25  hover:cursor-pointer hover:underline"
+                onClick={() => (type(true), setSelectedId(item.id))}
+              >
                 {item.name}
               </h1>
               <span>{item.id}</span>
@@ -80,7 +92,10 @@ const VariationList = ({ type, setResetFrom, resetForm , setSelectedId}: any) =>
                     </svg>
                   </abbr>
                 </button>
-                <button className="h-10 w-10 hover:cursor-pointer">
+                <button
+                  className="h-10 w-10 hover:cursor-pointer"
+                  onClick={() => dispatch(copyVariation(item.id))}
+                >
                   <abbr title="copy">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

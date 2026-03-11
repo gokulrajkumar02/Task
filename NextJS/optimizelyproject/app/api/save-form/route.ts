@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   res.cookies.set("user", JSON.stringify(formData), {
     httpOnly: true,
     path: "/",  
-    maxAge: 60* 60, 
+    maxAge: 60* 60*24,
   });
 
   return res;

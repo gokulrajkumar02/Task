@@ -1,0 +1,17 @@
+.input{
+    /* height: 10px; */
+    width: 100px;
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    color: black;
+}
+.large{
+    height:20px;
+}
+.small{
+    height: 10px;
+}
+.medium{
+    height: 15px;
+}
