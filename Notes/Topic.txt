@@ -16,9 +16,5 @@ align-items : center;
 order
 flex-grow -- for the space
 flem-strink -- min size for the element
-flex - basic - width of
- the element at the initial state
+flex - basic - width of the element at the initial state
 
-
-rgba
-hsl

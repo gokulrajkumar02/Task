@@ -24,7 +24,7 @@ const LogInButton = ({ placeHolder, type, name, value, onChange }: Prop) => {
       {type === "password" && (
         <span
           className="passwordsShow"
-          onMouseDown={(e) => e.preventDefault()} 
+          onMouseDown={(e) => e.preventDefault()}
           onClick={() => setShowPassword(!showpassword)}
         >
           {showpassword ? "👁️‍🗨️" : "👁️"}

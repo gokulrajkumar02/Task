@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 
 import "./HomeGrid.css";
 const HomeGrid = () => {
@@ -8,9 +8,8 @@ const HomeGrid = () => {
   useEffect(() => {
     try {
       fetch("https://dummyjson.com/carts")
-      .then((response) => response.json())
-      .then((data) => setData(data.carts));
-      
+        .then((response) => response.json())
+        .then((data) => setData(data.carts));
     } catch (err) {
       console.log(err);
     }
@@ -18,23 +17,26 @@ const HomeGrid = () => {
 
   useEffect(() => {
     if (productsRef.current) {
-    //   productsRef &&
-    //     productsRef.current?.scrollIntoView({ behavior: "smooth"});
-    window.scrollTo({top : productsRef.current.getBoundingClientRect().top +
-    window.pageYOffset +
-    700, behavior : "smooth"})
+      //   productsRef &&
+      //     productsRef.current?.scrollIntoView({ behavior: "smooth"});
+      window.scrollTo({
+        top:
+          productsRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          700,
+        behavior: "smooth",
+      });
     }
   }, []);
 
   // pagination
   const itemsPerPage = 1;
-  const [currentPage , setCurrentPage] = useState(1)
-  const start = (currentPage - 1) * itemsPerPage
-  const end = start + itemsPerPage
+  const [currentPage, setCurrentPage] = useState(1);
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
 
-  const currentPageItem = data.slice(start,end)
+  const currentPageItem = data.slice(start, end);
   const totalPages = Math.ceil(data.length / itemsPerPage);
-
 
   return (
     <div className="product">
@@ -47,7 +49,7 @@ const HomeGrid = () => {
                 <div key={product.id}>
                   <div className="product-card">
                     <label htmlFor="" className="product-title">
-                      {product.title}{" "}
+                      {product.title}
                     </label>
 
                     <img
@@ -63,11 +65,23 @@ const HomeGrid = () => {
               );
             }),
           )}
-  
       </div>
       <center>
-        <button className="move-btn" disabled={currentPage === 1}  onClick={()=> setCurrentPage((prev)=> prev+1)}>Prev</button> &nbsp;
-        <button className="move-btn"  disabled={currentPage == totalPages} onClick={()=> setCurrentPage((prev)=> prev - 1)}>Next</button>
+        <button
+          className="move-btn"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Prev
+        </button>{" "}
+        &nbsp;
+        <button
+          className="move-btn"
+          disabled={currentPage == totalPages}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Next
+        </button>
       </center>
     </div>
   );

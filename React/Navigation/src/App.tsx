@@ -20,9 +20,9 @@ function App() {
 
   const [image, setImage] = useState<boolean>(true);
 
-  const value = useMemo(() => {
-    return {image, setImage} 
-  },[image])
+  const value = useMemo(() => { 
+    return {image, setImage}  
+  },[image]) 
 
   return (
     <UserContext.Provider value={value}>

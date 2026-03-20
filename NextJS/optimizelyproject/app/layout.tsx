@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "./provider";
 import { StatusProvider } from "./StatusContext";
 import ThemeRegistry from "./ThemeRegistry";
+import { LeagueProvider } from "@/Context/LeagueContext";
 
 export const metadata: Metadata = {
   title: "Optimizely Project",
@@ -16,13 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex h-screen w-full overflow-x-hidden justify-center">
+      <body className="flex w-full min-h-screen overflow-x-hidden">
         <Providers>
-          <ThemeRegistry>
-            <StatusProvider >
-              {children}
-            </StatusProvider>
-          </ThemeRegistry>
+          <LeagueProvider>
+            <ThemeRegistry>
+              <StatusProvider>{children}</StatusProvider>
+            </ThemeRegistry>
+          </LeagueProvider>
         </Providers>
       </body>
     </html>

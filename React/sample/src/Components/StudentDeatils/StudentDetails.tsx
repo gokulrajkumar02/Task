@@ -57,18 +57,22 @@ const StudentDetails = () => {
       <form
         action=""
         className="student-form"
-        onSubmit={handleSubmit(onSubmit)}>
-
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="form-group">
           <label htmlFor="">Username or Email : </label>
-          <Controller name="UserName" control={control} defaultValue="" 
+          <Controller
+            name="UserName"
+            control={control}
+            defaultValue=""
             rules={{
-              required : "UserName or email is required",
-              validate : ValidateNameOrEmail
+              required: "UserName or email is required",
+              validate: ValidateNameOrEmail,
             }}
-          render={({field}) => {
-            return <input {...field} placeholder="UserName or Email"/>
-          }}/>
+            render={({ field }) => {
+              return <input {...field} placeholder="UserName or Email" />;
+            }}
+          />
 
           {/* <input
             type="text"
@@ -197,9 +201,7 @@ const StudentDetails = () => {
                   <td>{student.Password}</td>
                   <td>
                     {" "}
-                    <button onClick={() => handleModify(rollNo)}>
-                      Modify
-                    </button>
+                    <button onClick={() => handleModify(rollNo)}>Modify</button>
                   </td>
                 </tr>
               ))}

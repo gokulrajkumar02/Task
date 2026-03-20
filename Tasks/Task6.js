@@ -36,7 +36,7 @@ const filteredCart = (cart) =>{
 
 
 
-const totalAmount = (cart,name)=>{
+const totalAmount = (cart,name) => {
     let total = 0;
     cart.filter(items => {
         (items.name.toLowerCase() == name && items.qty> 0 ) ? total = items.price * items.qty : 0;

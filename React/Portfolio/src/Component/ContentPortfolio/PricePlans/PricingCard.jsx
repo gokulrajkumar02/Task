@@ -12,7 +12,7 @@ const PricingCard = (props) => {
          {id : 5,isSilver: false, isGold: false, idsDimond : true, label : "WordPress Integration"}, 
          {id : 6,isSilver: false, isGold: false, idsDimond : true, label : "5 Websites"}, 
          {id : 7,isSilver: false, isGold: false, idsDimond : true, label : "Unlimited User"}, 
-         {id : 8,isSilver: false, isGold: false, idsDimond : true, label : "20 GB bandwith"}, 
+         {id : 8,isSilver: false, isGold: false, idsDimond : true, label : "20 GB bandwith"} 
   ];
 
   return (
@@ -43,6 +43,7 @@ const PricingCard = (props) => {
             
           })
         )}
+        
         {props.title ==="Gold" && (
           planBenefits.map((items) => {
             return (
@@ -51,9 +52,9 @@ const PricingCard = (props) => {
                 <label htmlFor="" className="pricing-card-container-planbenefits-label">{items.label}</label>
               </div>
             )
-            
           })
         )}
+        
         {props.title ==="Dimond" && (
           planBenefits.map((items) => {
             return (
@@ -65,8 +66,6 @@ const PricingCard = (props) => {
             
           })
         )}
-
-
 
       </div>
       <button

@@ -1,6 +1,5 @@
 import {getProducts} from "../Model/getProduct"
 import {updateStock} from "../Model/updateStock"
-import {getProductsToOrder} from "../Model/createOder"
 import { createOrder } from "../Model/createOder";
 import {orderedProducts} from "../Data/Order"
 import {getOrder} from "../Model/getOrder"

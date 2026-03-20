@@ -7,8 +7,6 @@ export const StatusProvider = ({ children }: { children: React.ReactNode }) => {
   const value = useMemo(() => ({ status, setStatus }), [status]);
   
   return (
-    <div>
       <StatusContext.Provider value={value}>{children}</StatusContext.Provider>
-    </div>
   );
 };

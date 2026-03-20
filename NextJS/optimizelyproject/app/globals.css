@@ -16,7 +16,6 @@
   -webkit-appearance: none;
 }
 
-/* Firefox */
 .progress-bar::-moz-range-track {
   background: transparent;
   border: none;
@@ -39,7 +38,6 @@
   margin-top: 0;
 }
 
-/* Chrome/Safari */
 .progress-bar::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 10px;
@@ -56,5 +54,5 @@
   border: 2px solid #000;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -5px; /* Adjust to center vertically */
+  margin-top: -5px; 
 }

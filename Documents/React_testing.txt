@@ -1,0 +1,54 @@
+testing::
+
+type 
+    unit testing - using in individual building block such as class, function, component --test in isolation
+    integrated testing - focus  on testing  a combination of units and ensure they are work together
+    E2E testing (end to end) -- testing the extire app flow and ensure it works correctly from start to finish
+
+   unit test is bulk  botton of pyramid
+    e2e  test is larger but the number of test is smaller
+
+
+***render (<WeatherApp/>) creating a virtual dom for testing
+    ***virtual DOM is used in screen to getByText
+
+
+testing files naming
+
+.test.tsx or .test.js
+.spec.tsx or .spec.js
+inside the folder __test__ .js or .tsx
+
+only test the it.only or fit
+skip the test it.skip or xit
+
+
+code coverage : how much of your software code is tested
+
+	statement coverage - how many of the statement in the software code is tested
+	Branches coverage - 
+	Function coverage - how many of the function defined is executed 
+	line coverage - how many  of the lines of the source code  have been tested
+
+what to test in react
+
+	test component renders
+	test component renders with props
+	test component renders in different state
+	test component react to events
+
+what not to test
+	implementation details
+	 third party code
+	code this not important from a user point of view
+
+RTL query::
+	to find a single element on the page - 
+getByText - Element MUST exist immediately
+findByText - Element appears later (Async)
+queryByText -You expect something NOT to be there and If element not found → returns null
+
+getAllBy
+fingAllBy
+queryAllBy
+
