@@ -13,7 +13,7 @@ const MyServiceGrid = (props) => {
         />
         <h2 className="my-service-grid-container-title">{props.title}</h2>
         <p className="my-service-grid-container-content">{props.content}</p>
-      </div> ): 
+      </div> ) : 
       (<div className="my-service-grid-container-Advertising"> 
           <h2 >{props.title}</h2>
           <p>{props.content}</p>

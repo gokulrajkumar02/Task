@@ -1,9 +1,30 @@
+export const stadiumNames: Record<string, string> = {
+  "India": "Narendra Modi Stadium",
+  "Australia": "Melbourne Cricket Ground",
+  "England": "Lord's Cricket Ground",
+  "Pakistan": "Gaddafi Stadium",
+  "New Zealand": "Eden Park",
+  "South Africa": "Newlands Cricket Ground",
+  "Sri Lanka": "R Premadasa Stadium",
+  "West Indies": "Kensington Oval",
+  "Chennai Super Kings": "M. A. Chidambaram Stadium",
+  "Mumbai Indians": "Wankhede Stadium",
+  "Royal Challengers Bengaluru": "M. Chinnaswamy Stadium",
+  "Kolkata Knight Riders": "Eden Gardens",
+  "Gujarat Titans": "Narendra Modi Stadium",
+  "Rajasthan Royals": "Sawai Mansingh Stadium",
+  "Sunrisers Hyderabad": "Rajiv Gandhi International Stadium",
+  "Punjab Kings": "IS Bindra Stadium",
+  "Delhi Capitals": "Arun Jaitley Stadium",
+  "Lucknow Super Giants": "BRSABV Ekana Stadium",
+};
+
 export const internationalCricketData = [
   {
     id:1,
     name: "India",
     countryCode: "ind",
-    logo: "/india_logo.png",
+    logo: "/india_logo.jpg",
     players: [
   {
     id: 1,
@@ -614,7 +635,7 @@ export const internationalCricketData = [
     id:5,
     name: "New Zealand",
     countryCode: "NZ",
-    logo:"/new_zealand_logo.png",
+    logo:"/new_zealand_logo.jpg",
     players: [
   {
     id: 1,
@@ -920,7 +941,7 @@ export const internationalCricketData = [
     id:7,
     name: "Sri Lanka",
     countryCode: "SL",
-    logo:"/sri_lanka_logo.png",
+    logo:"/sri_lanka_logo.jpg",
     players: [
   {
     id: 1,
@@ -2033,7 +2054,7 @@ export const iplCricketData = [
   {
     id: 6,
     name: "Dhruv Jurel",
-    role: "WK",
+    role: "AR",
     overall: 84,
     batting: 87,
     bowling: 5,

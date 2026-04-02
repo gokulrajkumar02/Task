@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 const buttons = [
   {
     text: "▶ Start Game",
-    color: "bg-green-500 border-green-700 hover:bg-green-600",
+    color: "bg-green-700 border-green-700 hover:bg-green-600",
     route: "/SelectLeague",
   },
   {
     text: "✖ Exit Game",
-    color: "bg-red-500 border-red-700 hover:bg-red-600",
+    color: "bg-red-700 border-red-700 hover:bg-red-600",
     route: "/Home",
   },
 ];

@@ -116,7 +116,9 @@ const PlayerCard = () => {
         {selectTeam || finalTeam} Team Players
       </h1>
       <div className="w-full h-full flex gap-5">
-        <div className="w-[60%] h-150 md:w-[30%] xl:w-[20%] bg-white overflow-auto shadow-lg hover:cursor-pointer scrollbar-hide">
+        <div className="w-[60%] h-150 md:w-[30%] xl:w-[20%] bg-white overflow-auto shadow-lg scrollbar-hide"
+        tabIndex={0}
+        >
           {availablePlayers?.players?.map((player, index) => (
             <div
               key={player.id}
@@ -158,7 +160,7 @@ const PlayerCard = () => {
                     {player.name}
                   </h1>
 
-                  <span className="text-sm text-blue-600 font-medium">
+                  <span className="text-sm text-blue-800 font-medium">
                     {player.role}
                   </span>
                 </>

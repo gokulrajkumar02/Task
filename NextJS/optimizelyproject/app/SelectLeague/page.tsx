@@ -36,7 +36,7 @@ const SelectLeague = () => {
         <button
           key={index}
           className="z-10 w-[40%] md:w-[25%] lg:w-[12%] py-2
-          bg-blue-500 text-white font-semibold rounded-lg
+          bg-blue-700 text-white font-semibold rounded-lg
           border-2 border-blue-700
           hover:bg-blue-600 hover:scale-110
           transition-all duration-200 cursor-pointer"

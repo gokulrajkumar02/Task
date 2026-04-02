@@ -1,0 +1,1552 @@
+export const cities = [
+  { name: "Chennai", img: "/Chennai.jpg" },
+  { name: "Bengaluru", img: "/Bengaluru.jpg" },
+  { name: "Hyderabad", img: "/Hyderabed.jpg" },
+  { name: "Mumbai", img: "/Mumbai.jpg" },
+  { name: "Pune", img: "/pune.jpg" },
+  { name: "Delhi", img: "/Delhi.jpg" },
+  { name: "Kolkata", img: "/Kolkata.jpg" },
+  { name: "Ahmedabad", img: "/Ahmedabad.jpg" },
+  { name: "Abu Dhabi", img: "/abuDhabi.jpg" },
+  { name: "Dubai", img: "/Dubai.jpg" },
+  { name: "Goa", img: "/Goa.jpg" },
+  { name: "Chandigarh", img: "/Chandigarh.jpg" },
+];
+
+export const cityAlphabet = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+export const locationOptions = [
+  "Mumbai",
+  "Delhi",
+  "Bengaluru",
+  "Hyderabad",
+  "Chennai",
+  "Kolkata",
+  "Pune",
+  "Ahmedabad",
+
+  "Jaipur",
+  "Lucknow",
+  "Chandigarh",
+  "Indore",
+  "Bhopal",
+  "Surat",
+  "Nagpur",
+  "Kochi",
+  "Coimbatore",
+  "Visakhapatnam",
+  "Patna",
+  "Vadodara",
+  "Ludhiana",
+  "Agra",
+  "Nashik",
+  "Faridabad",
+  "Meerut",
+  "Rajkot",
+  "Varanasi",
+  "Srinagar",
+  "Aurangabad",
+  "Dhanbad",
+  "Amritsar",
+  "Allahabad",
+  "Ranchi",
+  "Howrah",
+  "Jabalpur",
+  "Gwalior",
+  "Vijayawada",
+  "Jodhpur",
+  "Madurai",
+  "Raipur",
+  "Kota",
+  "Guwahati",
+  "Solapur",
+  "Hubli",
+  "Mysuru",
+  "Tiruchirappalli",
+
+  "Noida",
+  "Gurgaon",
+  "Ghaziabad",
+  "Thiruvananthapuram",
+  "Warangal",
+  "Salem",
+  "Aligarh",
+  "Bareilly",
+  "Moradabad",
+  "Jalandhar",
+  "Bhubaneswar",
+  "Dehradun",
+  "Ujjain",
+  "Siliguri",
+  "Ajmer",
+  "Kolhapur",
+  "Akola",
+  "Gaya",
+  "Jamnagar",
+  "Mangalore",
+  "Erode",
+  "Belgaum",
+  "Ambattur",
+  "Tirunelveli",
+
+  "Goa",
+  "Udaipur",
+  "Rishikesh",
+  "Shimla",
+  "Manali",
+  "Darjeeling",
+  "Ooty",
+  "Kodaikanal",
+  "Leh",
+  "Gangtok",
+  "Pondicherry",
+  "Amarnath",
+  "Haridwar",
+  "Mount Abu",
+  "Khajuraho",
+  "Hampi",
+  "Mahabalipuram",
+  "New York",
+  "Los Angeles",
+  "Chicago",
+  "San Francisco",
+  "Washington DC",
+  "Boston",
+  "Houston",
+  "Dallas",
+  "Seattle",
+  "Miami",
+  "Atlanta",
+  "Denver",
+
+  "London",
+  "Manchester",
+  "Birmingham",
+  "Liverpool",
+  "Leeds",
+  "Glasgow",
+  "Edinburgh",
+
+  "Paris",
+  "Berlin",
+  "Rome",
+  "Madrid",
+  "Amsterdam",
+  "Barcelona",
+  "Vienna",
+  "Prague",
+  "Budapest",
+  "Zurich",
+  "Munich",
+  "Brussels",
+  "Copenhagen",
+  "Stockholm",
+  "Oslo",
+  "Helsinki",
+  "Lisbon",
+  "Dublin",
+  "Warsaw",
+
+  "Dubai",
+  "Abu Dhabi",
+  "Doha",
+  "Riyadh",
+  "Jeddah",
+  "Kuwait City",
+  "Muscat",
+  "Tel Aviv",
+
+  "Tokyo",
+  "Seoul",
+  "Beijing",
+  "Shanghai",
+  "Hong Kong",
+  "Singapore",
+  "Bangkok",
+  "Kuala Lumpur",
+  "Jakarta",
+  "Manila",
+  "Hanoi",
+  "Ho Chi Minh City",
+  "Taipei",
+  "Osaka",
+  "Kyoto",
+  "Colombo",
+  "Kathmandu",
+  "Dhaka",
+
+  "Sydney",
+  "Melbourne",
+  "Brisbane",
+  "Perth",
+  "Auckland",
+  "Wellington",
+
+  "Cape Town",
+  "Johannesburg",
+  "Nairobi",
+  "Cairo",
+  "Lagos",
+  "Addis Ababa",
+  "Casablanca",
+
+  "Toronto",
+  "Vancouver",
+  "Montreal",
+  "Calgary",
+  "Ottawa",
+  "Edmonton",
+
+  "São Paulo",
+  "Rio de Janeiro",
+  "Buenos Aires",
+  "Santiago",
+  "Lima",
+  "Bogotá",
+].sort();
+
+
+export type SearchEntity = {
+  id: string;
+  display_title: string;
+  display_subtitle: string;
+  image_url: string;
+  entity_type: "EntityTypeMovie" | "EntityTypeEvent" | "EntityTypeRes" | "EntityTypeArtist" | "EntityTypeStore";
+  metadata: Record<string, string>;
+};
+
+export const trendingSearches: SearchEntity[] = [
+  {
+    id: "211577",
+    display_title: "Dhurandhar The Revenge",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/DD-ea86c5a0-1d31-11f1-96c9-4539b6d27dc7.jpg",
+    metadata: { format_id: "goaSOXSVdp0", language: "Tamil +2 more" },
+  },
+  {
+    id: "693bb53f0266bdd14cc5c888",
+    display_title: "Sitar for Mental Health by Rishab Rikhiram Sharma India Tour 2026 | Chennai",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774529962/e0xernbflpjsdvzymuy6.jpg",
+    metadata: { category: "Music", slug: "sitar-for-mental-health-by-rishab-rikhiram-sharma-india-tour-2026-chennai" },
+  },
+  {
+    id: "65484",
+    display_title: "Samco",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/chains/4/65484/b4ddfec42564e21ef0d330595334ba14.jpg",
+    metadata: { road_distance: "18.6", seo_url: "/chennai/samco-alwarpet" },
+  },
+  {
+    id: "67a06c0ad570f4f70c23d264",
+    display_title: "Rishab Rikhiram Sharma",
+    display_subtitle: "artist",
+    entity_type: "EntityTypeArtist",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1739349668/plroeaif9bmftkbqrg7d.jpg",
+    metadata: { slug: "rishab-rikhiram-sharma" },
+  },
+  {
+    id: "1001007",
+    display_title: "Naturals Salon",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174798119847439.png",
+    metadata: { address: "Phoenix Market City, Velachery, Chennai", dist: "10.6", pay_config: "PayBill" },
+  },
+  {
+    id: "213456",
+    display_title: "Youth",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Youth_Poster-3d17c4e0-2444-11f1-8704-ab6f874147b6.jpg",
+    metadata: { format_id: "FptXPunmvC", language: "Tamil" },
+  },
+  {
+    id: "69b263560c701afeebd6ffe6",
+    display_title: "TATA IPL 2026: Match 8 | Delhi Capitals vs Mumbai Indians",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774767256/iptyybuu86uoybiu3pea.jpg",
+    metadata: { category: "Sports", slug: "tata-ipl-2026-match-8--delhi-capitals-vs-mumbai-indians" },
+  },
+  {
+    id: "20852253",
+    display_title: "Amrita Amore",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/3/20852253/d85db1cd92f39cad2fc686b7c93e670d.jpg",
+    metadata: { road_distance: "2.0", seo_url: "/chennai/amrita-amore-chromepet" },
+  },
+  {
+    id: "66fcf1cd8b1301627db0394d",
+    display_title: "P. C. Sorcar",
+    display_subtitle: "artist",
+    entity_type: "EntityTypeArtist",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1728546031/g6h9sx7qohwvbnsc1cea.jpg",
+    metadata: { slug: "p-c-sorcar" },
+  },
+  {
+    id: "1002826",
+    display_title: "Puma",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174178658730421.jpg",
+    metadata: { address: "Selaiyur, Chennai", dist: "4.7", pay_config: "ScanAndPay" },
+  },
+  {
+    id: "212079",
+    display_title: "Happy Raj",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Happy-Raj-6e933bf0-1871-11f1-a857-fd0378823a8e.jpg",
+    metadata: { format_id: "yHvmP7Id5z", language: "Tamil" },
+  },
+  {
+    id: "69c2bb088442088f36764e31",
+    display_title: "TATA IPL 2026: Match 10 | Sunrisers Hyderabad vs Lucknow Super Giants",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774426595/vwgcqia259g328dqkrae.jpg",
+    metadata: { category: "Sports", slug: "tata-ipl-2026-match-10-sunrisers-hyderabad-vs-lucknow-super-giants" },
+  },
+  {
+    id: "20953065",
+    display_title: "California Burrito",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/chains/5/20953065/e20f23bbbdb9971a4cfa1958afb8e03a.jpg",
+    metadata: { road_distance: "11.1", seo_url: "/chennai/california-burrito-guindy" },
+  },
+  {
+    id: "6998662b6f025dc900b9a6c7",
+    display_title: "Dhayaa",
+    display_subtitle: "artist",
+    entity_type: "EntityTypeArtist",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1771595261/bxq8tpp39kc7pzlg4bse.jpg",
+    metadata: { slug: "dhayaa" },
+  },
+  {
+    id: "1000086",
+    display_title: "The Souled Store",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174073126869636.jpg",
+    metadata: { address: "Express Avenue Mall, Royapettah, Chennai", dist: "18.5", pay_config: "PayBill" },
+  },
+  {
+    id: "200953",
+    display_title: "Project Hail Mary",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/P%20Project-Hail-Mary-ac632240-77fb-11f0-bf18-ef07befd2b97.jpg",
+    metadata: { format_id: "eTaRL9n_zJ", language: "English +1 more" },
+  },
+  {
+    id: "69af16a61aa4c8b2a119ce19",
+    display_title: "SongKran | Chennai's Biggest Water Festival in a Theme Park",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1773213101/cegey5qjfjxyxihny9ms.jpg",
+    metadata: { category: "Theme Parks", slug: "songkran-chennais-biggest-water-festival-in-a-theme-park-apr11-2026" },
+  },
+  {
+    id: "21104441",
+    display_title: "Kites",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/1/21104441/417c8a90f561508bf34837fc67fb4492.jpg",
+    metadata: { road_distance: "18.4", seo_url: "/chennai/kites-adyar" },
+  },
+  {
+    id: "1008671",
+    display_title: "Joyalukkas",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17527506941641.png",
+    metadata: { address: "Chromepet, Chennai", dist: "1.8", pay_config: "PayBill" },
+  },
+  {
+    id: "212782",
+    display_title: "Thaai Kizhavi",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/_Poster%20(8)-4487a990-11aa-11f1-b8e9-3913d9769fcc.jpg",
+    metadata: { format_id: "VDfa8k7vHR", language: "Tamil" },
+  },
+  {
+    id: "69b18a2042bf5f5afe4a5d33",
+    display_title: "Screening of CSK vs PBKS - TATA IPL 2026",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1773242820/eoirj7uoxjcvt361py0l.png",
+    metadata: { category: "TV Screenings", slug: "screening-of-csk-vs-pbks-tata-ipl-2026-apr3-2026" },
+  },
+  {
+    id: "20910053",
+    display_title: "Pind Chromepet",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/3/20910053/fb1c2dd75e5da9a57fd045ce6bc7cecc.jpg",
+    metadata: { road_distance: "5.3", seo_url: "/chennai/pind-chromepet-chromepet" },
+  },
+  {
+    id: "1015016",
+    display_title: "Wrogn",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17706219884364.png",
+    metadata: { address: "Velachery", dist: "10.5", pay_config: "PayBill" },
+  },
+  {
+    id: "214837",
+    display_title: "Leader",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Leader_Poster-4207eca0-2cbe-11f1-9e39-efcdb83019c6.jpg",
+    metadata: { format_id: "F3FCqmdq8M", language: "Tamil" },
+  },
+  {
+    id: "69a960e5e663f3e0f519f94f",
+    display_title: "TATA IPL 2026: Match 13 | Rajasthan Royals vs Mumbai Indians",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774424714/zspkhwyubr7xguz7bpxf.jpg",
+    metadata: { category: "Sports", slug: "tata-ipl-2026-match-13-rajasthan-royals-vs-mumbai-indians" },
+  },
+  {
+    id: "21316959",
+    display_title: "Macaw By Stories",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/chains/9/21316959/bb56f29ee344bd6ab362a6eef8c09ba6.jpg",
+    metadata: { road_distance: "16.6", seo_url: "/chennai/macaw-by-stories-sholinganallur" },
+  },
+  {
+    id: "1012445",
+    display_title: "Skechers",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17562024963001.jpg",
+    metadata: { address: "Selaiyur, Chennai", dist: "4.8", pay_config: "ScanAndPay" },
+  },
+  {
+    id: "203137",
+    display_title: "Kaalidas 2",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Kalidas-2_Poster-a49e5650-2b34-11f1-8c0c-ed167c06e8f9.jpg",
+    metadata: { format_id: "2MzrBQQmjY", language: "Tamil" },
+  },
+  {
+    id: "69b268f5ffb70f65f883a1ef",
+    display_title: "TATA IPL 2026: Match 14 | Delhi Capitals vs Gujarat Titans",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774423321/ivihrv3hypwsaggjz4j9.jpg",
+    metadata: { category: "Sports", slug: "tata-ipl-2026-match-14--delhi-capitals-vs-gujarat-titans" },
+  },
+  {
+    id: "21010042",
+    display_title: "Moon Man",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/chains/2/21010042/e3206e31c35419f7e9f7fe33f5b0724a.jpg",
+    metadata: { road_distance: "20.1", seo_url: "/chennai/moon-man-besant-nagar" },
+  },
+  {
+    id: "1009325",
+    display_title: "adidas",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174765456406935.jpeg",
+    metadata: { address: "Selaiyur, Chennai", dist: "5.0", pay_config: "PayBill" },
+  },
+  {
+    id: "214231",
+    display_title: "Vaazha II: Biopic of a Billion Bros",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Vaazha%202-43d71120-2c2b-11f1-a7d0-35090adde4d8.jpg",
+    metadata: { format_id: "6fluImUDpwl", language: "Malayalam" },
+  },
+  {
+    id: "697919fcf89c4f55645b9e67",
+    display_title: "Sukoon: A Grand Sufi Concert - Rais Anis Sabri Live in Chennai",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774899229/zd6mzunflv0hdpqmaxqs.jpg",
+    metadata: { category: "Music", slug: "sukoon-chennais-grand-sufi-concert-apr5-2026" },
+  },
+  {
+    id: "18752937",
+    display_title: "Barbeque Nation",
+    display_subtitle: "restaurant",
+    entity_type: "EntityTypeRes",
+    image_url: "https://b.zmtcdn.com/data/pictures/7/18752937/f15f179083b8d904ad28841a90091806.jpg",
+    metadata: { road_distance: "4.0", seo_url: "/chennai/barbeque-nation-chromepet" },
+  },
+  {
+    id: "1007431",
+    display_title: "Bounce Salons",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17495521777531.avif",
+    metadata: { address: "Rajiv Gandhi Salai, Chennai", dist: "11.9", pay_config: "PayBill" },
+  },
+  {
+    id: "206127",
+    display_title: "The Super Mario Galaxy Movie",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/portrait%20(20)-97115df0-2a64-11f1-a444-5502f378ea93.jpg",
+    metadata: { format_id: "r_kASn_n6z", language: "English" },
+  },
+  {
+    id: "69c55491a88326cd1f04b44f",
+    display_title: "BMW M DRIFT ACADEMY | CHENNAI",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774539774/ybcyt48ww5cpbs60z7n3.jpg",
+    metadata: { category: "Workshops", slug: "bmw-m-drift-academy-chennai-2026" },
+  },
+  {
+    id: "1011489",
+    display_title: "Snitch",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17653476645621.png",
+    metadata: { address: "Phoenix Market City, Velachery, Chennai", dist: "10.6", pay_config: "PayBill" },
+  },
+  {
+    id: "208898",
+    display_title: "Biker",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Biker-4cab8cc0-29d5-11f1-b563-9d23ea210a10.jpg",
+    metadata: { format_id: "4YvtpYPiFd", language: "Tamil +1 more" },
+  },
+  {
+    id: "69b2e880c6989e2e619f1964",
+    display_title: "Screening of RCB vs CSK | IPL 2026",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1773332399/bs7abal9vgaaa2qaaobs.png",
+    metadata: { category: "TV Screenings", slug: "screening-of-rcb-vs-csk-ipl-2026-apr5-2026" },
+  },
+  {
+    id: "1002287",
+    display_title: "Bodycraft Salon",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174144005660413.png",
+    metadata: { address: "Anna Nagar West, Chennai", dist: "16.2", pay_config: "PayBill" },
+  },
+  {
+    id: "217190",
+    display_title: "Satan - The Dark",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Satan---The-Dark-s-5c2821b0-2145-11f1-9d94-bf8c6496c731.jpg",
+    metadata: { format_id: "Zyd~3ZMKqf", language: "Tamil" },
+  },
+  {
+    id: "69c4ffdaa3499f92e805c2cd",
+    display_title: "Board Games Meetup - Chennai",
+    display_subtitle: "event",
+    entity_type: "EntityTypeEvent",
+    image_url: "https://media.insider.in/image/upload/c_crop,g_custom/v1774518219/g33zwsn9l22ndzhod3ue.jpg",
+    metadata: { category: "Social Mixers", slug: "board-games-meetup-chennai-apr4-2026" },
+  },
+  {
+    id: "1008068",
+    display_title: "Lakmē Salon",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/17528215234191.jpg",
+    metadata: { address: "Kilpauk, Chennai", dist: "18.6", pay_config: "PayBill" },
+  },
+  {
+    id: "217217",
+    display_title: "Neelira",
+    display_subtitle: "movie",
+    entity_type: "EntityTypeMovie",
+    image_url: "https://cdn.district.in/movies-assets/images/cinema/Neelira-9acd1d80-2cc1-11f1-964a-c1e672ed4c9b.jpg",
+    metadata: { format_id: "y9kxxHubK~", language: "Tamil" },
+  },
+  {
+    id: "1000127",
+    display_title: "Make Your Own Perfume (MYOP)",
+    display_subtitle: "store",
+    entity_type: "EntityTypeStore",
+    image_url: "https://b.zmtcdn.com//data/edition_assets/174073198012815.jpg",
+    metadata: { address: "Phoenix Market City, Velachery, Chennai", dist: "10.4", pay_config: "PayBill" },
+  },
+];
+
+// export const searchPlaceholders: string[] = [
+
+//   "Search for events,  movies,  restaurants...",
+//   "Search for 'Hoppers'",
+//   "Search for 'Verses and Voices'",
+//   "Search for 'Michael Bibi'",
+//   "Search for 'Pubs & Bars'",
+//   "Search for 'South Indian Spots'",
+//   "Search for 'Sushi'",
+//   "Search for 'Cafes'",
+//   "Search for 'Vegan Treats'",
+//   "Search for 'Asian Restaurants'",
+// ];
+
+type Show = {
+  time: string;
+  screen: string;
+};
+
+export type Theatre = {
+  id: number;
+  name: string;
+  location: string;
+  distance: string;
+  cancellable: boolean;
+  image: string;
+  alt: string;
+  shows: Show[];
+};
+
+export const theatres : Theatre[] = [
+  {
+    id: 1,
+    name: "Sangam Cinemas 4K RGB Laser Dolby Atmos",
+    location: "Kilpauk, Chennai",
+    distance: "18.8 km away",
+    cancellable: false,
+    image: "/sangamCinemas.jpg",
+    alt: "Sangam Cinemas 4K RGB Laser Dolby Atmos",
+    shows: [
+      { time: "10:40 AM", screen: "D-LOUNGE 4K" },
+      { time: "01:30 PM", screen: "D-LOUNGE 4K" },
+      { time: "04:45 PM", screen: "RGB SCREEN" },
+      { time: "07:30 PM", screen: "D-LOUNGE 4K" },
+      { time: "10:40 PM", screen: "D-LOUNGE 4K" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Kamala Cinemas 4K RGB Laser Dolby",
+    location: "Vadapalani, Chennai",
+    distance: "13.4 km away",
+    cancellable: true,
+    image: "/kamalaCinemas.jpg",
+    alt: "Kamala Cinemas 4K RGB Laser Dolby",
+    shows: [
+      { time: "11:00 AM", screen: "SCREEN 1" },
+      { time: "02:15 PM", screen: "SCREEN 2" },
+      { time: "05:30 PM", screen: "SCREEN 1" },
+      { time: "08:45 PM", screen: "SCREEN 3" },
+      { time: "11:55 PM", screen: "SCREEN 1" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Devi Cineplex",
+    location: "Anna Salai, Chennai",
+    distance: "19.6 km away",
+    cancellable: false,
+    image: "/deviCinemas.jpg",
+    alt: "Devi Cineplex",
+    shows: [
+      { time: "10:30 AM", screen: "BALA" },
+      { time: "01:45 PM", screen: "DEVI" },
+      { time: "04:30 PM", screen: "BALA" },
+      { time: "07:15 PM", screen: "DEVI" },
+      { time: "10:45 PM", screen: "BALA" }
+    ]
+  },
+  {
+    id: 4,
+    name: "Woodlands Complex",
+    location: "Royapettah, Chennai",
+    distance: "18.5 km away",
+    cancellable: false,
+    image: "/woodlandCinemas.jpg",
+    alt: "Woodlands Complex",
+    shows: [
+      { time: "09:45 AM", screen: "SCREEN 1" },
+      { time: "12:30 PM", screen: "SCREEN 2" },
+      { time: "03:15 PM", screen: "SCREEN 1" },
+      { time: "06:30 PM", screen: "SCREEN 2" },
+      { time: "10:15 PM", screen: "SCREEN 1" }
+    ]
+  }
+];
+
+
+export const sangamCinemas = [
+  {
+    "section": "Corporate",
+    "price": 170,
+    "prefix": "C",
+    // Each row = 18 total slots
+    "rows": [
+      {
+        "rowId": "CA",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "CA_gap1", "type": "gap" }, { "id": "CA_gap2", "type": "gap"},
+          { "id": "CA1", "type": "seat" }, { "id": "CA2", "type": "seat" },
+          { "id": "CA3", "type": "seat" }, { "id": "CA4", "type": "seat" },
+          { "id": "CA5", "type": "seat" }, { "id": "CA6", "type": "seat" },
+          { "id": "CA7", "type": "seat" }, { "id": "CA8", "type": "seat" },
+          { "id": "CA9", "type": "seat" }, { "id": "CA10", "type": "seat" },
+          { "id": "CA11", "type": "seat" }, { "id": "CA12", "type": "seat" },
+          { "id": "CA13", "type": "seat" }, { "id": "CA14", "type": "seat" },
+          { "id": "CA15", "type": "seat" }, { "id": "CA16", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CB",
+        // 1 gap + 17 seats = 18
+        "seats": [
+          { "id": "CB1", "type": "seat" }, { "id": "CB2", "type": "seat" },
+          { "id": "CB3", "type": "seat" }, { "id": "CB4", "type": "seat" },
+          { "id": "CB5", "type": "seat" }, { "id": "CB6", "type": "seat" },
+          { "id": "CB7", "type": "seat" }, { "id": "CB8", "type": "seat" },
+          { "id": "CB_gap1", "type": "gap" },
+          { "id": "CB9", "type": "seat" }, { "id": "CB10", "type": "seat" },
+          { "id": "CB11", "type": "seat" }, { "id": "CB12", "type": "seat" },
+          { "id": "CB13", "type": "seat" }, { "id": "CB14", "type": "seat" },
+          { "id": "CB15", "type": "seat" }, { "id": "CB16", "type": "seat" },
+          { "id": "CB17", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CC",
+        // 3 gaps + 15 seats = 18
+        "seats": [
+          { "id": "CC1", "type": "seat" }, { "id": "CC2", "type": "seat" },
+          { "id": "CC3", "type": "seat" }, { "id": "CC4", "type": "seat" },
+          { "id": "CC5", "type": "seat" },
+          { "id": "CC_gap1", "type": "gap" },
+          { "id": "CC6", "type": "seat" }, { "id": "CC7", "type": "seat" },
+          { "id": "CC8", "type": "seat" }, { "id": "CC9", "type": "seat" },
+          { "id": "CC10", "type": "seat" },
+          { "id": "CC_gap2", "type": "gap" },
+          { "id": "CC11", "type": "seat" }, { "id": "CC12", "type": "seat" },
+          { "id": "CC13", "type": "seat" }, { "id": "CC14", "type": "seat" },
+          { "id": "CC15", "type": "seat" },
+          { "id": "CC_gap3", "type": "gap" }
+        ]
+      },
+      {
+        "rowId": "CD",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "CD1", "type": "seat" }, { "id": "CD2", "type": "seat" },
+          { "id": "CD3", "type": "seat" },
+          { "id": "CD_gap1", "type": "gap" },
+          { "id": "CD4", "type": "seat" }, { "id": "CD5", "type": "seat" },
+          { "id": "CD6", "type": "seat" }, { "id": "CD7", "type": "seat" },
+          { "id": "CD8", "type": "seat" }, { "id": "CD9", "type": "seat" },
+          { "id": "CD10", "type": "seat" }, { "id": "CD11", "type": "seat" },
+          { "id": "CD12", "type": "seat" },
+          { "id": "CD_gap2", "type": "gap" },
+          { "id": "CD13", "type": "seat" }, { "id": "CD14", "type": "seat" },
+          { "id": "CD15", "type": "seat" }, { "id": "CD16", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CE",
+        // 4 gaps + 14 seats = 18
+        "seats": [
+          { "id": "CE_gap1", "type": "gap" },
+          { "id": "CE1", "type": "seat" }, { "id": "CE2", "type": "seat" },
+          { "id": "CE3", "type": "seat" }, { "id": "CE4", "type": "seat" },
+          { "id": "CE_gap2", "type": "gap" },
+          { "id": "CE5", "type": "seat" }, { "id": "CE6", "type": "seat" },
+          { "id": "CE7", "type": "seat" }, { "id": "CE8", "type": "seat" },
+          { "id": "CE_gap3", "type": "gap" },
+          { "id": "CE9", "type": "seat" }, { "id": "CE10", "type": "seat" },
+          { "id": "CE11", "type": "seat" }, { "id": "CE12", "type": "seat" },
+          { "id": "CE_gap4", "type": "gap" },
+          { "id": "CE13", "type": "seat" }, { "id": "CE14", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Gold",
+    "price": 150,
+    "prefix": "G",
+    // Each row = 18 total slots
+    "rows": [
+      {
+        "rowId": "GA",
+        // 3 gaps + 15 seats = 18
+        "seats": [
+          { "id": "GA_gap1", "type": "gap" }, { "id": "GA_gap2", "type": "gap" },
+          { "id": "GA1", "type": "seat" }, { "id": "GA2", "type": "seat" },
+          { "id": "GA3", "type": "seat" }, { "id": "GA4", "type": "seat" },
+          { "id": "GA5", "type": "seat" }, { "id": "GA6", "type": "seat" },
+          { "id": "GA7", "type": "seat" }, { "id": "GA8", "type": "seat" },
+          { "id": "GA_gap3", "type": "gap" },
+          { "id": "GA9", "type": "seat" }, { "id": "GA10", "type": "seat" },
+          { "id": "GA11", "type": "seat" }, { "id": "GA12", "type": "seat" },
+          { "id": "GA13", "type": "seat" }, { "id": "GA14", "type": "seat" },
+          { "id": "GA15", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GB",
+        // 1 gap + 17 seats = 18
+        "seats": [
+          { "id": "GB1", "type": "seat" }, { "id": "GB2", "type": "seat" },
+          { "id": "GB3", "type": "seat" }, { "id": "GB4", "type": "seat" },
+          { "id": "GB5", "type": "seat" }, { "id": "GB6", "type": "seat" },
+          { "id": "GB7", "type": "seat" }, { "id": "GB8", "type": "seat" },
+          { "id": "GB9", "type": "seat" },
+          { "id": "GB_gap1", "type": "gap" },
+          { "id": "GB10", "type": "seat" }, { "id": "GB11", "type": "seat" },
+          { "id": "GB12", "type": "seat" }, { "id": "GB13", "type": "seat" },
+          { "id": "GB14", "type": "seat" }, { "id": "GB15", "type": "seat" },
+          { "id": "GB16", "type": "seat" }, { "id": "GB17", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GC",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "GC1", "type": "seat" }, { "id": "GC2", "type": "seat" },
+          { "id": "GC3", "type": "seat" }, { "id": "GC4", "type": "seat" },
+          { "id": "GC_gap1", "type": "gap" },
+          { "id": "GC5", "type": "seat" }, { "id": "GC6", "type": "seat" },
+          { "id": "GC7", "type": "seat" }, { "id": "GC8", "type": "seat" },
+          { "id": "GC9", "type": "seat" }, { "id": "GC10", "type": "seat" },
+          { "id": "GC11", "type": "seat" }, { "id": "GC12", "type": "seat" },
+          { "id": "GC_gap2", "type": "gap" },
+          { "id": "GC13", "type": "seat" }, { "id": "GC14", "type": "seat" },
+          { "id": "GC15", "type": "seat" }, { "id": "GC16", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GD",
+        // 4 gaps + 14 seats = 18
+        "seats": [
+          { "id": "GD1", "type": "seat" }, { "id": "GD2", "type": "seat" },
+          { "id": "GD_gap1", "type": "gap" },
+          { "id": "GD3", "type": "seat" }, { "id": "GD4", "type": "seat" },
+          { "id": "GD5", "type": "seat" }, { "id": "GD6", "type": "seat" },
+          { "id": "GD_gap2", "type": "gap" }, { "id": "GD_gap3", "type": "gap" },
+          { "id": "GD7", "type": "seat" }, { "id": "GD8", "type": "seat" },
+          { "id": "GD9", "type": "seat" }, { "id": "GD10", "type": "seat" },
+          { "id": "GD11", "type": "seat" }, { "id": "GD12", "type": "seat" },
+          { "id": "GD_gap4", "type": "gap" },
+          { "id": "GD13", "type": "seat" }, { "id": "GD14", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GE",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "GE1", "type": "seat" }, { "id": "GE2", "type": "seat" },
+          { "id": "GE3", "type": "seat" }, { "id": "GE4", "type": "seat" },
+          { "id": "GE5", "type": "seat" }, { "id": "GE6", "type": "seat" },
+          { "id": "GE_gap1", "type": "gap" },
+          { "id": "GE7", "type": "seat" }, { "id": "GE8", "type": "seat" },
+          { "id": "GE9", "type": "seat" }, { "id": "GE10", "type": "seat" },
+          { "id": "GE11", "type": "seat" }, { "id": "GE12", "type": "seat" },
+          { "id": "GE_gap2", "type": "gap" },
+          { "id": "GE13", "type": "seat" }, { "id": "GE14", "type": "seat" },
+          { "id": "GE15", "type": "seat" }, { "id": "GE16", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Exclusive",
+    "price": 200,
+    "prefix": "E",
+    // Each row = 18 total slots
+    "rows": [
+      {
+        "rowId": "EA",
+        // 5 gaps + 13 seats = 18
+        "seats": [
+          { "id": "EA_gap1", "type": "gap" }, { "id": "EA_gap2", "type": "gap" },
+          { "id": "EA_gap3", "type": "gap" },
+          { "id": "EA1", "type": "seat" }, { "id": "EA2", "type": "seat" },
+          { "id": "EA3", "type": "seat" }, { "id": "EA4", "type": "seat" },
+          { "id": "EA_gap4", "type": "gap" },
+          { "id": "EA5", "type": "seat" }, { "id": "EA6", "type": "seat" },
+          { "id": "EA7", "type": "seat" }, { "id": "EA8", "type": "seat" },
+          { "id": "EA9", "type": "seat" }, { "id": "EA10", "type": "seat" },
+          { "id": "EA_gap5", "type": "gap" },
+          { "id": "EA11", "type": "seat" }, { "id": "EA12", "type": "seat" },
+          { "id": "EA13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "EB",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "EB1", "type": "seat" }, { "id": "EB2", "type": "seat" },
+          { "id": "EB3", "type": "seat" }, { "id": "EB4", "type": "seat" },
+          { "id": "EB5", "type": "seat" }, { "id": "EB6", "type": "seat" },
+          { "id": "EB7", "type": "seat" }, { "id": "EB8", "type": "seat" },
+          { "id": "EB_gap1", "type": "gap" },
+          { "id": "EB9", "type": "seat" }, { "id": "EB10", "type": "seat" },
+          { "id": "EB11", "type": "seat" }, { "id": "EB12", "type": "seat" },
+          { "id": "EB13", "type": "seat" }, { "id": "EB14", "type": "seat" },
+          { "id": "EB15", "type": "seat" }, { "id": "EB16", "type": "seat" },
+          { "id": "EB_gap2", "type": "gap" }
+        ]
+      },
+      {
+        "rowId": "EC",
+        // 3 gaps + 15 seats = 18
+        "seats": [
+          { "id": "EC1", "type": "seat" }, { "id": "EC2", "type": "seat" },
+          { "id": "EC3", "type": "seat" },
+          { "id": "EC_gap1", "type": "gap" },
+          { "id": "EC4", "type": "seat" }, { "id": "EC5", "type": "seat" },
+          { "id": "EC6", "type": "seat" }, { "id": "EC7", "type": "seat" },
+          { "id": "EC8", "type": "seat" },
+          { "id": "EC_gap2", "type": "gap" },
+          { "id": "EC9", "type": "seat" }, { "id": "EC10", "type": "seat" },
+          { "id": "EC11", "type": "seat" }, { "id": "EC12", "type": "seat" },
+          { "id": "EC13", "type": "seat" }, { "id": "EC14", "type": "seat" },
+          { "id": "EC15", "type": "seat" },
+          { "id": "EC_gap3", "type": "gap" }
+        ]
+      },
+      {
+        "rowId": "ED",
+        // 1 gap + 17 seats = 18
+        "seats": [
+          { "id": "ED1", "type": "seat" }, { "id": "ED2", "type": "seat" },
+          { "id": "ED3", "type": "seat" }, { "id": "ED4", "type": "seat" },
+          { "id": "ED5", "type": "seat" }, { "id": "ED6", "type": "seat" },
+          { "id": "ED_gap1", "type": "gap" },
+          { "id": "ED7", "type": "seat" }, { "id": "ED8", "type": "seat" },
+          { "id": "ED9", "type": "seat" }, { "id": "ED10", "type": "seat" },
+          { "id": "ED11", "type": "seat" }, { "id": "ED12", "type": "seat" },
+          { "id": "ED13", "type": "seat" }, { "id": "ED14", "type": "seat" },
+          { "id": "ED15", "type": "seat" }, { "id": "ED16", "type": "seat" },
+          { "id": "ED17", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Budget",
+    "price": 120,
+    "prefix": "B",
+    // Each row = 18 total slots
+    "rows": [
+      {
+        "rowId": "BA",
+        // 1 gap + 17 seats = 18
+        "seats": [
+          { "id": "BA_gap1", "type": "gap" },
+          { "id": "BA1", "type": "seat" }, { "id": "BA2", "type": "seat" },
+          { "id": "BA3", "type": "seat" }, { "id": "BA4", "type": "seat" },
+          { "id": "BA5", "type": "seat" }, { "id": "BA6", "type": "seat" },
+          { "id": "BA7", "type": "seat" }, { "id": "BA8", "type": "seat" },
+          { "id": "BA9", "type": "seat" }, { "id": "BA10", "type": "seat" },
+          { "id": "BA11", "type": "seat" }, { "id": "BA12", "type": "seat" },
+          { "id": "BA13", "type": "seat" }, { "id": "BA14", "type": "seat" },
+          { "id": "BA15", "type": "seat" }, { "id": "BA16", "type": "seat" },
+          { "id": "BA17", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BB",
+        // 2 gaps + 16 seats = 18
+        "seats": [
+          { "id": "BB1", "type": "seat" }, { "id": "BB2", "type": "seat" },
+          { "id": "BB3", "type": "seat" }, { "id": "BB4", "type": "seat" },
+          { "id": "BB5", "type": "seat" }, { "id": "BB6", "type": "seat" },
+          { "id": "BB7", "type": "seat" }, { "id": "BB8", "type": "seat" },
+          { "id": "BB_gap1", "type": "gap" },
+          { "id": "BB9", "type": "seat" }, { "id": "BB10", "type": "seat" },
+          { "id": "BB11", "type": "seat" }, { "id": "BB12", "type": "seat" },
+          { "id": "BB13", "type": "seat" }, { "id": "BB14", "type": "seat" },
+          { "id": "BB15", "type": "seat" }, { "id": "BB16", "type": "seat" },
+          { "id": "BB_gap2", "type": "gap" }
+        ]
+      },
+      {
+        "rowId": "BC",
+        // 3 gaps + 15 seats = 18
+        "seats": [
+          { "id": "BC1", "type": "seat" }, { "id": "BC2", "type": "seat" },
+          { "id": "BC_gap1", "type": "gap" },
+          { "id": "BC3", "type": "seat" }, { "id": "BC4", "type": "seat" },
+          { "id": "BC5", "type": "seat" }, { "id": "BC6", "type": "seat" },
+          { "id": "BC7", "type": "seat" }, { "id": "BC8", "type": "seat" },
+          { "id": "BC_gap2", "type": "gap" },
+          { "id": "BC9", "type": "seat" }, { "id": "BC10", "type": "seat" },
+          { "id": "BC11", "type": "seat" }, { "id": "BC12", "type": "seat" },
+          { "id": "BC13", "type": "seat" }, { "id": "BC14", "type": "seat" },
+          { "id": "BC15", "type": "seat" },
+          { "id": "BC_gap3", "type": "gap" }
+        ]
+      },
+      {
+        "rowId": "BD",
+        // 4 gaps + 14 seats = 18
+        "seats": [
+          { "id": "BD_gap1", "type": "gap" },
+          { "id": "BD1", "type": "seat" }, { "id": "BD2", "type": "seat" },
+          { "id": "BD3", "type": "seat" }, { "id": "BD4", "type": "seat" },
+          { "id": "BD_gap2", "type": "gap" },
+          { "id": "BD5", "type": "seat" }, { "id": "BD6", "type": "seat" },
+          { "id": "BD7", "type": "seat" }, { "id": "BD8", "type": "seat" },
+          { "id": "BD_gap3", "type": "gap" },
+          { "id": "BD9", "type": "seat" }, { "id": "BD10", "type": "seat" },
+          { "id": "BD11", "type": "seat" }, { "id": "BD12", "type": "seat" },
+          { "id": "BD_gap4", "type": "gap" },
+          { "id": "BD13", "type": "seat" }, { "id": "BD14", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BE",
+        // 0 gaps + 18 seats = 18
+        "seats": [
+          { "id": "BE1", "type": "seat" }, { "id": "BE2", "type": "seat" },
+          { "id": "BE3", "type": "seat" }, { "id": "BE4", "type": "seat" },
+          { "id": "BE5", "type": "seat" }, { "id": "BE6", "type": "seat" },
+          { "id": "BE7", "type": "seat" }, { "id": "BE8", "type": "seat" },
+          { "id": "BE9", "type": "seat" }, { "id": "BE10", "type": "seat" },
+          { "id": "BE11", "type": "seat" }, { "id": "BE12", "type": "seat" },
+          { "id": "BE13", "type": "seat" }, { "id": "BE14", "type": "seat" },
+          { "id": "BE15", "type": "seat" }, { "id": "BE16", "type": "seat" },
+          { "id": "BE17", "type": "seat" }, { "id": "BE18", "type": "seat" }
+        ]
+      }
+    ]
+  }
+]
+
+export const kamalaCinemas = [
+  {
+    "section": "Exclusive",
+    "price": 200,
+    "prefix": "E",
+    "rows": [
+      {
+        "rowId": "EA",
+        "seats": [
+          { "id": "EA1", "type": "seat" }, { "id": "EA2", "type": "seat" },
+          { "id": "EA_gap1", "type": "gap" }, { "id": "EA_gap2", "type": "gap" },
+          { "id": "EA3", "type": "seat" }, { "id": "EA4", "type": "seat" }, { "id": "EA5", "type": "seat" },
+          { "id": "EA_gap3", "type": "gap" },
+          { "id": "EA6", "type": "seat" }, { "id": "EA7", "type": "seat" }, { "id": "EA8", "type": "seat" },
+          { "id": "EA9", "type": "seat" }, { "id": "EA10", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "EB",
+        "seats": [
+          { "id": "EB1", "type": "seat" }, { "id": "EB2", "type": "seat" }, { "id": "EB3", "type": "seat" },
+          { "id": "EB4", "type": "seat" }, { "id": "EB5", "type": "seat" },
+          { "id": "EB_gap1", "type": "gap" },
+          { "id": "EB6", "type": "seat" }, { "id": "EB7", "type": "seat" }, { "id": "EB8", "type": "seat" },
+          { "id": "EB9", "type": "seat" }, { "id": "EB10", "type": "seat" }, { "id": "EB11", "type": "seat" },
+          { "id": "EB12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "EC",
+        "seats": [
+          { "id": "EC1", "type": "seat" }, { "id": "EC2", "type": "seat" }, { "id": "EC3", "type": "seat" },
+          { "id": "EC_gap1", "type": "gap" },
+          { "id": "EC4", "type": "seat" }, { "id": "EC5", "type": "seat" }, { "id": "EC6", "type": "seat" },
+          { "id": "EC7", "type": "seat" }, { "id": "EC8", "type": "seat" },
+          { "id": "EC_gap2", "type": "gap" }, { "id": "EC_gap3", "type": "gap" },
+          { "id": "EC9", "type": "seat" }, { "id": "EC10", "type": "seat" }, { "id": "EC11", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "ED",
+        "seats": [
+          { "id": "ED_gap1", "type": "gap" },
+          { "id": "ED1", "type": "seat" }, { "id": "ED2", "type": "seat" }, { "id": "ED3", "type": "seat" },
+          { "id": "ED4", "type": "seat" }, { "id": "ED5", "type": "seat" }, { "id": "ED6", "type": "seat" },
+          { "id": "ED_gap2", "type": "gap" },
+          { "id": "ED7", "type": "seat" }, { "id": "ED8", "type": "seat" }, { "id": "ED9", "type": "seat" },
+          { "id": "ED10", "type": "seat" }, { "id": "ED11", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Gold",
+    "price": 150,
+    "prefix": "G",
+    "rows": [
+      {
+        "rowId": "GA",
+        "seats": [
+          { "id": "GA1", "type": "seat" }, { "id": "GA2", "type": "seat" }, { "id": "GA3", "type": "seat" },
+          { "id": "GA4", "type": "seat" },
+          { "id": "GA_gap1", "type": "gap" }, { "id": "GA_gap2", "type": "gap" },
+          { "id": "GA5", "type": "seat" }, { "id": "GA6", "type": "seat" }, { "id": "GA7", "type": "seat" },
+          { "id": "GA8", "type": "seat" }, { "id": "GA9", "type": "seat" }, { "id": "GA10", "type": "seat" },
+          { "id": "GA_gap3", "type": "gap" },
+          { "id": "GA11", "type": "seat" }, { "id": "GA12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GB",
+        "seats": [
+          { "id": "GB1", "type": "seat" }, { "id": "GB2", "type": "seat" }, { "id": "GB3", "type": "seat" },
+          { "id": "GB4", "type": "seat" }, { "id": "GB5", "type": "seat" },
+          { "id": "GB_gap1", "type": "gap" },
+          { "id": "GB6", "type": "seat" }, { "id": "GB7", "type": "seat" }, { "id": "GB8", "type": "seat" },
+          { "id": "GB9", "type": "seat" },
+          { "id": "GB_gap2", "type": "gap" },
+          { "id": "GB10", "type": "seat" }, { "id": "GB11", "type": "seat" }, { "id": "GB12", "type": "seat" },
+          { "id": "GB13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GC",
+        "seats": [
+          { "id": "GC_gap1", "type": "gap" }, { "id": "GC_gap2", "type": "gap" },
+          { "id": "GC1", "type": "seat" }, { "id": "GC2", "type": "seat" }, { "id": "GC3", "type": "seat" },
+          { "id": "GC4", "type": "seat" }, { "id": "GC5", "type": "seat" }, { "id": "GC6", "type": "seat" },
+          { "id": "GC_gap3", "type": "gap" },
+          { "id": "GC7", "type": "seat" }, { "id": "GC8", "type": "seat" }, { "id": "GC9", "type": "seat" },
+          { "id": "GC10", "type": "seat" }, { "id": "GC11", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GD",
+        "seats": [
+          { "id": "GD1", "type": "seat" }, { "id": "GD2", "type": "seat" }, { "id": "GD3", "type": "seat" },
+          { "id": "GD_gap1", "type": "gap" },
+          { "id": "GD4", "type": "seat" }, { "id": "GD5", "type": "seat" }, { "id": "GD6", "type": "seat" },
+          { "id": "GD7", "type": "seat" }, { "id": "GD8", "type": "seat" }, { "id": "GD9", "type": "seat" },
+          { "id": "GD10", "type": "seat" }, { "id": "GD11", "type": "seat" }, { "id": "GD12", "type": "seat" },
+          { "id": "GD13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GE",
+        "seats": [
+          { "id": "GE1", "type": "seat" }, { "id": "GE2", "type": "seat" },
+          { "id": "GE_gap1", "type": "gap" },
+          { "id": "GE3", "type": "seat" }, { "id": "GE4", "type": "seat" }, { "id": "GE5", "type": "seat" },
+          { "id": "GE6", "type": "seat" }, { "id": "GE7", "type": "seat" },
+          { "id": "GE_gap2", "type": "gap" }, { "id": "GE_gap3", "type": "gap" },
+          { "id": "GE8", "type": "seat" }, { "id": "GE9", "type": "seat" }, { "id": "GE10", "type": "seat" },
+          { "id": "GE11", "type": "seat" }, { "id": "GE12", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Corporate",
+    "price": 170,
+    "prefix": "C",
+    "rows": [
+      {
+        "rowId": "CA",
+        "seats": [
+          { "id": "CA1", "type": "seat" }, { "id": "CA2", "type": "seat" }, { "id": "CA3", "type": "seat" },
+          { "id": "CA4", "type": "seat" }, { "id": "CA5", "type": "seat" }, { "id": "CA6", "type": "seat" },
+          { "id": "CA_gap1", "type": "gap" }, { "id": "CA_gap2", "type": "gap" },
+          { "id": "CA7", "type": "seat" }, { "id": "CA8", "type": "seat" }, { "id": "CA9", "type": "seat" },
+          { "id": "CA10", "type": "seat" }, { "id": "CA11", "type": "seat" }, { "id": "CA12", "type": "seat" },
+          { "id": "CA13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CB",
+        "seats": [
+          { "id": "CB_gap1", "type": "gap" },
+          { "id": "CB1", "type": "seat" }, { "id": "CB2", "type": "seat" }, { "id": "CB3", "type": "seat" },
+          { "id": "CB4", "type": "seat" }, { "id": "CB5", "type": "seat" }, { "id": "CB6", "type": "seat" },
+          { "id": "CB_gap2", "type": "gap" },
+          { "id": "CB7", "type": "seat" }, { "id": "CB8", "type": "seat" }, { "id": "CB9", "type": "seat" },
+          { "id": "CB10", "type": "seat" }, { "id": "CB11", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CC",
+        "seats": [
+          { "id": "CC1", "type": "seat" }, { "id": "CC2", "type": "seat" }, { "id": "CC3", "type": "seat" },
+          { "id": "CC4", "type": "seat" },
+          { "id": "CC_gap1", "type": "gap" },
+          { "id": "CC5", "type": "seat" }, { "id": "CC6", "type": "seat" }, { "id": "CC7", "type": "seat" },
+          { "id": "CC8", "type": "seat" }, { "id": "CC9", "type": "seat" },
+          { "id": "CC_gap2", "type": "gap" }, { "id": "CC_gap3", "type": "gap" },
+          { "id": "CC10", "type": "seat" }, { "id": "CC11", "type": "seat" }, { "id": "CC12", "type": "seat" },
+          { "id": "CC13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CD",
+        "seats": [
+          { "id": "CD1", "type": "seat" }, { "id": "CD2", "type": "seat" }, { "id": "CD3", "type": "seat" },
+          { "id": "CD4", "type": "seat" }, { "id": "CD5", "type": "seat" },
+          { "id": "CD_gap1", "type": "gap" },
+          { "id": "CD6", "type": "seat" }, { "id": "CD7", "type": "seat" }, { "id": "CD8", "type": "seat" },
+          { "id": "CD9", "type": "seat" }, { "id": "CD10", "type": "seat" }, { "id": "CD11", "type": "seat" },
+          { "id": "CD12", "type": "seat" }, { "id": "CD13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CE",
+        "seats": [
+          { "id": "CE1", "type": "seat" }, { "id": "CE2", "type": "seat" }, { "id": "CE3", "type": "seat" },
+          { "id": "CE_gap1", "type": "gap" }, { "id": "CE_gap2", "type": "gap" },
+          { "id": "CE4", "type": "seat" }, { "id": "CE5", "type": "seat" }, { "id": "CE6", "type": "seat" },
+          { "id": "CE7", "type": "seat" }, { "id": "CE8", "type": "seat" }, { "id": "CE9", "type": "seat" },
+          { "id": "CE_gap3", "type": "gap" },
+          { "id": "CE10", "type": "seat" }, { "id": "CE11", "type": "seat" }, { "id": "CE12", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Budget",
+    "price": 120,
+    "prefix": "B",
+    "rows": [
+      {
+        "rowId": "BA",
+        "seats": [
+          { "id": "BA1", "type": "seat" }, { "id": "BA2", "type": "seat" }, { "id": "BA3", "type": "seat" },
+          { "id": "BA_gap1", "type": "gap" },
+          { "id": "BA4", "type": "seat" }, { "id": "BA5", "type": "seat" }, { "id": "BA6", "type": "seat" },
+          { "id": "BA7", "type": "seat" }, { "id": "BA8", "type": "seat" }, { "id": "BA9", "type": "seat" },
+          { "id": "BA10", "type": "seat" }, { "id": "BA11", "type": "seat" }, { "id": "BA12", "type": "seat" },
+          { "id": "BA13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BB",
+        "seats": [
+          { "id": "BB1", "type": "seat" }, { "id": "BB2", "type": "seat" }, { "id": "BB3", "type": "seat" },
+          { "id": "BB4", "type": "seat" }, { "id": "BB5", "type": "seat" }, { "id": "BB6", "type": "seat" },
+          { "id": "BB7", "type": "seat" },
+          { "id": "BB_gap1", "type": "gap" }, { "id": "BB_gap2", "type": "gap" },
+          { "id": "BB8", "type": "seat" }, { "id": "BB9", "type": "seat" }, { "id": "BB10", "type": "seat" },
+          { "id": "BB11", "type": "seat" }, { "id": "BB12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BC",
+        "seats": [
+          { "id": "BC_gap1", "type": "gap" }, { "id": "BC_gap2", "type": "gap" },
+          { "id": "BC1", "type": "seat" }, { "id": "BC2", "type": "seat" }, { "id": "BC3", "type": "seat" },
+          { "id": "BC4", "type": "seat" }, { "id": "BC5", "type": "seat" },
+          { "id": "BC_gap3", "type": "gap" },
+          { "id": "BC6", "type": "seat" }, { "id": "BC7", "type": "seat" }, { "id": "BC8", "type": "seat" },
+          { "id": "BC9", "type": "seat" }, { "id": "BC10", "type": "seat" }, { "id": "BC11", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BD",
+        "seats": [
+          { "id": "BD1", "type": "seat" }, { "id": "BD2", "type": "seat" }, { "id": "BD3", "type": "seat" },
+          { "id": "BD4", "type": "seat" },
+          { "id": "BD_gap1", "type": "gap" },
+          { "id": "BD5", "type": "seat" }, { "id": "BD6", "type": "seat" }, { "id": "BD7", "type": "seat" },
+          { "id": "BD8", "type": "seat" }, { "id": "BD9", "type": "seat" }, { "id": "BD10", "type": "seat" },
+          { "id": "BD11", "type": "seat" }, { "id": "BD12", "type": "seat" }, { "id": "BD13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BE",
+        "seats": [
+          { "id": "BE1", "type": "seat" }, { "id": "BE2", "type": "seat" }, { "id": "BE3", "type": "seat" },
+          { "id": "BE4", "type": "seat" }, { "id": "BE5", "type": "seat" },
+          { "id": "BE_gap1", "type": "gap" }, { "id": "BE_gap2", "type": "gap" },
+          { "id": "BE6", "type": "seat" }, { "id": "BE7", "type": "seat" }, { "id": "BE8", "type": "seat" },
+          { "id": "BE9", "type": "seat" }, { "id": "BE10", "type": "seat" }, { "id": "BE11", "type": "seat" },
+          { "id": "BE12", "type": "seat" }
+        ]
+      }
+    ]
+  }
+]
+
+export const deviCinemas = [
+  {
+    "section": "Exclusive",
+    "price": 200,
+    "prefix": "E",
+    "rows": [
+      {
+        "rowId": "EA",
+        "seats": [
+          { "id": "EA_gap1", "type": "gap" }, { "id": "EA_gap2", "type": "gap" },
+          { "id": "EA1", "type": "seat" }, { "id": "EA2", "type": "seat" }, { "id": "EA3", "type": "seat" },
+          { "id": "EA_gap3", "type": "gap" },
+          { "id": "EA4", "type": "seat" }, { "id": "EA5", "type": "seat" }, { "id": "EA6", "type": "seat" },
+          { "id": "EA7", "type": "seat" }, { "id": "EA8", "type": "seat" }, { "id": "EA9", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "EB",
+        "seats": [
+          { "id": "EB1", "type": "seat" }, { "id": "EB2", "type": "seat" }, { "id": "EB3", "type": "seat" },
+          { "id": "EB4", "type": "seat" },
+          { "id": "EB_gap1", "type": "gap" }, { "id": "EB_gap2", "type": "gap" },
+          { "id": "EB5", "type": "seat" }, { "id": "EB6", "type": "seat" }, { "id": "EB7", "type": "seat" },
+          { "id": "EB8", "type": "seat" }, { "id": "EB9", "type": "seat" }, { "id": "EB10", "type": "seat" },
+          { "id": "EB11", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "EC",
+        "seats": [
+          { "id": "EC1", "type": "seat" }, { "id": "EC2", "type": "seat" }, { "id": "EC3", "type": "seat" },
+          { "id": "EC4", "type": "seat" }, { "id": "EC5", "type": "seat" },
+          { "id": "EC_gap1", "type": "gap" },
+          { "id": "EC6", "type": "seat" }, { "id": "EC7", "type": "seat" }, { "id": "EC8", "type": "seat" },
+          { "id": "EC_gap2", "type": "gap" },
+          { "id": "EC9", "type": "seat" }, { "id": "EC10", "type": "seat" }, { "id": "EC11", "type": "seat" },
+          { "id": "EC12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "ED",
+        "seats": [
+          { "id": "ED1", "type": "seat" }, { "id": "ED2", "type": "seat" }, { "id": "ED3", "type": "seat" },
+          { "id": "ED_gap1", "type": "gap" }, { "id": "ED_gap2", "type": "gap" },
+          { "id": "ED4", "type": "seat" }, { "id": "ED5", "type": "seat" }, { "id": "ED6", "type": "seat" },
+          { "id": "ED7", "type": "seat" }, { "id": "ED8", "type": "seat" }, { "id": "ED9", "type": "seat" },
+          { "id": "ED10", "type": "seat" }, { "id": "ED11", "type": "seat" }, { "id": "ED12", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Gold",
+    "price": 150,
+    "prefix": "G",
+    "rows": [
+      {
+        "rowId": "GA",
+        "seats": [
+          { "id": "GA1", "type": "seat" }, { "id": "GA2", "type": "seat" }, { "id": "GA3", "type": "seat" },
+          { "id": "GA4", "type": "seat" }, { "id": "GA5", "type": "seat" }, { "id": "GA6", "type": "seat" },
+          { "id": "GA_gap1", "type": "gap" },
+          { "id": "GA7", "type": "seat" }, { "id": "GA8", "type": "seat" }, { "id": "GA9", "type": "seat" },
+          { "id": "GA10", "type": "seat" },
+          { "id": "GA_gap2", "type": "gap" }, { "id": "GA_gap3", "type": "gap" },
+          { "id": "GA11", "type": "seat" }, { "id": "GA12", "type": "seat" }, { "id": "GA13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GB",
+        "seats": [
+          { "id": "GB_gap1", "type": "gap" },
+          { "id": "GB1", "type": "seat" }, { "id": "GB2", "type": "seat" }, { "id": "GB3", "type": "seat" },
+          { "id": "GB4", "type": "seat" }, { "id": "GB5", "type": "seat" },
+          { "id": "GB_gap2", "type": "gap" },
+          { "id": "GB6", "type": "seat" }, { "id": "GB7", "type": "seat" }, { "id": "GB8", "type": "seat" },
+          { "id": "GB9", "type": "seat" }, { "id": "GB10", "type": "seat" }, { "id": "GB11", "type": "seat" },
+          { "id": "GB12", "type": "seat" }, { "id": "GB13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GC",
+        "seats": [
+          { "id": "GC1", "type": "seat" }, { "id": "GC2", "type": "seat" }, { "id": "GC3", "type": "seat" },
+          { "id": "GC_gap1", "type": "gap" }, { "id": "GC_gap2", "type": "gap" },
+          { "id": "GC4", "type": "seat" }, { "id": "GC5", "type": "seat" }, { "id": "GC6", "type": "seat" },
+          { "id": "GC7", "type": "seat" }, { "id": "GC8", "type": "seat" },
+          { "id": "GC_gap3", "type": "gap" },
+          { "id": "GC9", "type": "seat" }, { "id": "GC10", "type": "seat" }, { "id": "GC11", "type": "seat" },
+          { "id": "GC12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GD",
+        "seats": [
+          { "id": "GD1", "type": "seat" }, { "id": "GD2", "type": "seat" }, { "id": "GD3", "type": "seat" },
+          { "id": "GD4", "type": "seat" }, { "id": "GD5", "type": "seat" }, { "id": "GD6", "type": "seat" },
+          { "id": "GD7", "type": "seat" },
+          { "id": "GD_gap1", "type": "gap" },
+          { "id": "GD8", "type": "seat" }, { "id": "GD9", "type": "seat" }, { "id": "GD10", "type": "seat" },
+          { "id": "GD11", "type": "seat" }, { "id": "GD12", "type": "seat" }, { "id": "GD13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "GE",
+        "seats": [
+          { "id": "GE1", "type": "seat" }, { "id": "GE2", "type": "seat" },
+          { "id": "GE_gap1", "type": "gap" }, { "id": "GE_gap2", "type": "gap" },
+          { "id": "GE3", "type": "seat" }, { "id": "GE4", "type": "seat" }, { "id": "GE5", "type": "seat" },
+          { "id": "GE6", "type": "seat" }, { "id": "GE7", "type": "seat" }, { "id": "GE8", "type": "seat" },
+          { "id": "GE_gap3", "type": "gap" },
+          { "id": "GE9", "type": "seat" }, { "id": "GE10", "type": "seat" }, { "id": "GE11", "type": "seat" },
+          { "id": "GE12", "type": "seat" }, { "id": "GE13", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Corporate",
+    "price": 170,
+    "prefix": "C",
+    "rows": [
+      {
+        "rowId": "CA",
+        "seats": [
+          { "id": "CA1", "type": "seat" }, { "id": "CA2", "type": "seat" }, { "id": "CA3", "type": "seat" },
+          { "id": "CA4", "type": "seat" }, { "id": "CA5", "type": "seat" },
+          { "id": "CA_gap1", "type": "gap" }, { "id": "CA_gap2", "type": "gap" },
+          { "id": "CA6", "type": "seat" }, { "id": "CA7", "type": "seat" }, { "id": "CA8", "type": "seat" },
+          { "id": "CA9", "type": "seat" }, { "id": "CA10", "type": "seat" }, { "id": "CA11", "type": "seat" },
+          { "id": "CA12", "type": "seat" }, { "id": "CA13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CB",
+        "seats": [
+          { "id": "CB1", "type": "seat" }, { "id": "CB2", "type": "seat" }, { "id": "CB3", "type": "seat" },
+          { "id": "CB_gap1", "type": "gap" },
+          { "id": "CB4", "type": "seat" }, { "id": "CB5", "type": "seat" }, { "id": "CB6", "type": "seat" },
+          { "id": "CB7", "type": "seat" }, { "id": "CB8", "type": "seat" }, { "id": "CB9", "type": "seat" },
+          { "id": "CB_gap2", "type": "gap" }, { "id": "CB_gap3", "type": "gap" },
+          { "id": "CB10", "type": "seat" }, { "id": "CB11", "type": "seat" }, { "id": "CB12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CC",
+        "seats": [
+          { "id": "CC_gap1", "type": "gap" },
+          { "id": "CC1", "type": "seat" }, { "id": "CC2", "type": "seat" }, { "id": "CC3", "type": "seat" },
+          { "id": "CC4", "type": "seat" }, { "id": "CC5", "type": "seat" }, { "id": "CC6", "type": "seat" },
+          { "id": "CC7", "type": "seat" },
+          { "id": "CC_gap2", "type": "gap" },
+          { "id": "CC8", "type": "seat" }, { "id": "CC9", "type": "seat" }, { "id": "CC10", "type": "seat" },
+          { "id": "CC11", "type": "seat" }, { "id": "CC12", "type": "seat" }, { "id": "CC13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CD",
+        "seats": [
+          { "id": "CD1", "type": "seat" }, { "id": "CD2", "type": "seat" }, { "id": "CD3", "type": "seat" },
+          { "id": "CD4", "type": "seat" },
+          { "id": "CD_gap1", "type": "gap" }, { "id": "CD_gap2", "type": "gap" },
+          { "id": "CD5", "type": "seat" }, { "id": "CD6", "type": "seat" }, { "id": "CD7", "type": "seat" },
+          { "id": "CD8", "type": "seat" }, { "id": "CD9", "type": "seat" }, { "id": "CD10", "type": "seat" },
+          { "id": "CD11", "type": "seat" }, { "id": "CD12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "CE",
+        "seats": [
+          { "id": "CE1", "type": "seat" }, { "id": "CE2", "type": "seat" }, { "id": "CE3", "type": "seat" },
+          { "id": "CE4", "type": "seat" }, { "id": "CE5", "type": "seat" }, { "id": "CE6", "type": "seat" },
+          { "id": "CE_gap1", "type": "gap" },
+          { "id": "CE7", "type": "seat" }, { "id": "CE8", "type": "seat" }, { "id": "CE9", "type": "seat" },
+          { "id": "CE10", "type": "seat" },
+          { "id": "CE_gap2", "type": "gap" }, { "id": "CE_gap3", "type": "gap" },
+          { "id": "CE11", "type": "seat" }, { "id": "CE12", "type": "seat" }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Budget",
+    "price": 120,
+    "prefix": "B",
+    "rows": [
+      {
+        "rowId": "BA",
+        "seats": [
+          { "id": "BA1", "type": "seat" }, { "id": "BA2", "type": "seat" },
+          { "id": "BA_gap1", "type": "gap" },
+          { "id": "BA3", "type": "seat" }, { "id": "BA4", "type": "seat" }, { "id": "BA5", "type": "seat" },
+          { "id": "BA6", "type": "seat" }, { "id": "BA7", "type": "seat" }, { "id": "BA8", "type": "seat" },
+          { "id": "BA_gap2", "type": "gap" }, { "id": "BA_gap3", "type": "gap" },
+          { "id": "BA9", "type": "seat" }, { "id": "BA10", "type": "seat" }, { "id": "BA11", "type": "seat" },
+          { "id": "BA12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BB",
+        "seats": [
+          { "id": "BB_gap1", "type": "gap" }, { "id": "BB_gap2", "type": "gap" },
+          { "id": "BB1", "type": "seat" }, { "id": "BB2", "type": "seat" }, { "id": "BB3", "type": "seat" },
+          { "id": "BB4", "type": "seat" }, { "id": "BB5", "type": "seat" }, { "id": "BB6", "type": "seat" },
+          { "id": "BB_gap3", "type": "gap" },
+          { "id": "BB7", "type": "seat" }, { "id": "BB8", "type": "seat" }, { "id": "BB9", "type": "seat" },
+          { "id": "BB10", "type": "seat" }, { "id": "BB11", "type": "seat" }, { "id": "BB12", "type": "seat" },
+          { "id": "BB13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BC",
+        "seats": [
+          { "id": "BC1", "type": "seat" }, { "id": "BC2", "type": "seat" }, { "id": "BC3", "type": "seat" },
+          { "id": "BC4", "type": "seat" }, { "id": "BC5", "type": "seat" },
+          { "id": "BC_gap1", "type": "gap" }, { "id": "BC_gap2", "type": "gap" },
+          { "id": "BC6", "type": "seat" }, { "id": "BC7", "type": "seat" }, { "id": "BC8", "type": "seat" },
+          { "id": "BC9", "type": "seat" }, { "id": "BC10", "type": "seat" }, { "id": "BC11", "type": "seat" },
+          { "id": "BC12", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BD",
+        "seats": [
+          { "id": "BD1", "type": "seat" }, { "id": "BD2", "type": "seat" }, { "id": "BD3", "type": "seat" },
+          { "id": "BD_gap1", "type": "gap" },
+          { "id": "BD4", "type": "seat" }, { "id": "BD5", "type": "seat" }, { "id": "BD6", "type": "seat" },
+          { "id": "BD7", "type": "seat" }, { "id": "BD8", "type": "seat" },
+          { "id": "BD_gap2", "type": "gap" }, { "id": "BD_gap3", "type": "gap" },
+          { "id": "BD9", "type": "seat" }, { "id": "BD10", "type": "seat" }, { "id": "BD11", "type": "seat" },
+          { "id": "BD12", "type": "seat" }, { "id": "BD13", "type": "seat" }
+        ]
+      },
+      {
+        "rowId": "BE",
+        "seats": [
+          { "id": "BE1", "type": "seat" }, { "id": "BE2", "type": "seat" }, { "id": "BE3", "type": "seat" },
+          { "id": "BE4", "type": "seat" }, { "id": "BE5", "type": "seat" }, { "id": "BE6", "type": "seat" },
+          { "id": "BE7", "type": "seat" },
+          { "id": "BE_gap1", "type": "gap" }, { "id": "BE_gap2", "type": "gap" },
+          { "id": "BE8", "type": "seat" }, { "id": "BE9", "type": "seat" }, { "id": "BE10", "type": "seat" },
+          { "id": "BE11", "type": "seat" }, { "id": "BE12", "type": "seat" }, { "id": "BE13", "type": "seat" }
+        ]
+      }
+    ]
+  }
+]

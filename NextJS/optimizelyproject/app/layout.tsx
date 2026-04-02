@@ -4,6 +4,11 @@ import Providers from "./provider";
 import { StatusProvider } from "./StatusContext";
 import ThemeRegistry from "./ThemeRegistry";
 import { LeagueProvider } from "@/Context/LeagueContext";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner"
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Optimizely Project",
@@ -16,12 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className="flex w-full min-h-screen overflow-x-hidden">
         <Providers>
           <LeagueProvider>
             <ThemeRegistry>
               <StatusProvider>{children}</StatusProvider>
+                <Toaster />
             </ThemeRegistry>
           </LeagueProvider>
         </Providers>
