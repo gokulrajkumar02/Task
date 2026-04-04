@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="flex w-full min-h-screen overflow-x-hidden">
+      <body className="flex w-full min-h-screen">
         <Providers>
           <LeagueProvider>
             <ThemeRegistry>
