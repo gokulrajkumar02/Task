@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx"
 import {
   Dialog,
   DialogTrigger,
@@ -16,6 +17,44 @@ type LocationProps = {
   setSelectedCity: React.Dispatch<React.SetStateAction<string>>;
 };
 
+const getCity = async (
+  latitude: number,
+  longitude: number,
+  setSelectedCity: (city: string) => void,
+  setOpen: (open: boolean) => void,
+) => {
+  const res = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
+  );
+  const data = await res.json();
+  setSelectedCity(data.city);
+  setOpen(false);
+};
+
+const getLocation = (
+  setSelectedCity: (city: string) => void,
+  setOpen: (open: boolean) => void,
+) => {
+  if (!navigator.geolocation) {
+    alert("Not supported");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+      getCity(latitude, longitude, setSelectedCity, setOpen);
+    },
+    (error) => {
+      if (error.code === error.PERMISSION_DENIED) {
+        alert("Access denied");
+      } else {
+        alert("Unable to fetch location");
+      }
+    },
+  );
+};
+
 const DistrictCityDialog = ({
   selectedCity,
   setSelectedCity,
@@ -23,6 +62,7 @@ const DistrictCityDialog = ({
   const [searchedCity, setSearchedCity] = useState("");
   const [open, setOpen] = useState(false);
   const [selectCityAlphabet, setSelectCityAlphabet] = useState("a");
+  
   const filteredCities = locationOptions.filter((city) =>
     city.toLowerCase().startsWith(selectCityAlphabet.toLowerCase()),
   );
@@ -31,10 +71,25 @@ const DistrictCityDialog = ({
     city.toLowerCase().includes(searchedCity.toLowerCase()),
   );
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>, city: string) => {
-    if(e.key === "Enter") {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    city: string,
+  ) => {
+    if (e.key === "Enter") {
       setSelectedCity(city);
       setOpen(false);
+    }
+  };
+
+  const handleLocation = async () => {
+    const permission = await navigator.permissions.query({
+      name: "geolocation",
+    });
+
+    if (permission.state === "granted" || permission.state === "prompt") {
+      getLocation(setSelectedCity, setOpen);
+    } else if (permission.state === "denied") {
+      alert("Please enable location in browser settings");
     }
   };
 
@@ -43,7 +98,6 @@ const DistrictCityDialog = ({
       <DialogTrigger asChild>
         <button className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gray-100 transition hover:cursor-pointer">
           <MapPin className="text-purple-700 w-5 h-5 shrink-0" />
-
           <div className="text-left leading-tight">
             <p className="text-md font-semibold">{selectedCity}</p>
             <p className="text-sm text-gray-500">India</p>
@@ -51,7 +105,7 @@ const DistrictCityDialog = ({
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-md sm:max-w-2xl max-h-[85vh] overflow-hidden rounded-2xl p-6 flex flex-col z-50">
+      <DialogContent className="z-100 max-w-md sm:max-w-2xl max-h-[85vh] overflow-hidden rounded-2xl p-6 flex flex-col">
         <DialogTitle className="text-lg font-semibold text-gray-700 mb-3">
           Select Location
         </DialogTitle>
@@ -59,16 +113,20 @@ const DistrictCityDialog = ({
         <Input
           value={searchedCity}
           placeholder="Search city, area or locality"
-          className="h-10 mb-3 p-2 "
+          className="h-10 mb-3 p-2"
           onChange={(e) => setSearchedCity(e.target.value)}
         />
 
-        <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-2 rounded-md transition mb-4">
-          <LocateFixed className="w-5 h-5 text-[#6d49fd]"  tabIndex={0} />
+        <div
+          className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-2 rounded-md transition mb-4"
+          onClick={handleLocation}
+        >
+          <LocateFixed className="w-5 h-5 text-[#6d49fd]" tabIndex={0} />
           <span className="text-[15px] font-semibold">
             Use Current Location
           </span>
         </div>
+
         <div className="overflow-y-auto scrollbar-hide">
           {searchedCity ? (
             searchedCities.length > 0 ? (
@@ -93,7 +151,7 @@ const DistrictCityDialog = ({
               </div>
             )
           ) : (
-            <div className="">
+            <div>
               <div className="bg-white z-10">
                 <h5 className="text-[16px] font-semibold text-gray-700">
                   Popular Cities
@@ -132,11 +190,11 @@ const DistrictCityDialog = ({
                       tabIndex={0}
                       key={alphabet}
                       onClick={() => setSelectCityAlphabet(alphabet)}
-                      className={`text-sm font-semibold cursor-pointer px-2 py-1 rounded ${
+                      className={clsx("text-sm font-semibold cursor-pointer px-2 py-1 rounded",
                         selectCityAlphabet === alphabet
                           ? "text-blue-500 bg-blue-50"
                           : "text-gray-500 hover:text-blue-500"
-                      }`}
+                  )}
                     >
                       {alphabet.toUpperCase()}
                     </button>
@@ -146,7 +204,7 @@ const DistrictCityDialog = ({
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-5">
                   {filteredCities.map((city) => (
                     <div
-                        onKeyDown={(e) => handleKeyDown(e, city)}
+                      onKeyDown={(e) => handleKeyDown(e, city)}
                       tabIndex={0}
                       key={city}
                       onClick={() => {

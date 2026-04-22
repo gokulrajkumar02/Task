@@ -1,0 +1,122 @@
+.embla {
+  max-width: 100vw;
+  margin: auto;
+  --slide-height: 450px;
+  /* height: 100vh; */
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+
+/* Clips the scrolling content — overflow: hidden is required */
+.embla__viewport {
+  overflow: hidden;
+}
+
+/* Embla translates this div to create scroll movement */
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom; /* allow vertical scroll, intercept horizontal */
+  /* margin-left: calc(var(--slide-spacing) * -1); */
+}
+
+/* Each slide must have flex-shrink: 0 so they don't compress */
+.embla__slide {
+  transform: translate3d(0, 0, 0); /* GPU compositing */
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  margin: 0;
+}
+
+.embla__slide__inner {
+  border-radius: 12px;
+  /* aspect-ratio: 16 / 9;   or 3/2, 4/3 — pick what fits your images */
+  overflow: hidden;
+  user-select: none;
+  min-height: 200px;
+  height : var(--slide-height);
+  width:100%;
+  
+}
+
+/* Controls layout */
+.embla__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Dot styles */
+.embla__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.embla__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  /* transition: background 0.2s, width 0.2s, border-radius 0.2s; */
+}
+
+.embla__dot--selected {
+  width: 20px;
+  border-radius: 4px;
+  background: #000000;
+}
+
+/* Button styles */
+.embla__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.embla__button {
+  width: 40px;
+  height: 40px;
+  
+  cursor: pointer;
+  font-size: 18px;
+  transition: opacity 0.2s;
+}
+
+.embla__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.embla {
+  max-width: 100vw;
+  margin: auto;
+  /* --slide-height: 450px; */
+  /* --slide-size: 100%; */
+}
+
+@media screen and (max-width: 480px) {
+  .embla {
+    /* --slide-height: auto; */
+  }
+
+  .embla__slide__inner {
+    /* height: auto; */
+    /* min-height: auto; */
+  }
+}
+
+@media screen and (max-width:480px) {
+  .embla {
+    max-width: 100vw;
+    --slide-height : 480px;
+  }
+  .mbla__slide__inner{
+    width: 100%;
+  }
+  
+  
+}
+
+

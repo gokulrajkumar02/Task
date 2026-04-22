@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import Link from "next/link"
+import Link from "next/link";
 
 const NavBar = () => {
   const router = useRouter();
@@ -8,30 +8,27 @@ const NavBar = () => {
     await fetch("/api/logout");
     // router.push("/");
     router.refresh();
-  }
+  };
   return (
     <div className="flex w-[20%] border-r border-gray-300 box-border">
       <div className="w-full my-5 border-b border-gray-300 box-border">
         <div className="border-b border-gray-300">
           <p className="text-gray-500 text-[15px] mx-5 ">Rulesets</p>
         </div>
-        <Link href="/notFound"
+        <Link
+          href="/notFound"
           className="flex flex-col py-2  w-full border-b border-b-gray-300  hover:bg-gray-300"
-         
         >
-          <label
-            htmlFor=""
-            className="text-blue-800 mx-5 hover:cursor-pointer"
-          >
+          <label htmlFor="" className="text-blue-800 mx-5 hover:cursor-pointer">
             Production
           </label>
           <span className="text-gray-500 text-[12px] mx-5 hover:cursor-pointer ">
             Primary Environment
           </span>
         </Link>
-        <Link href="/Development"
+        <Link
+          href="/Development"
           className="flex flex-col py-2 w-full border-b border-b-gray-300 hover:bg-gray-300"
-          
         >
           <label
             htmlFor=""
@@ -48,9 +45,9 @@ const NavBar = () => {
           <p className="text-gray-500 text-[15px] w-full mx-5 ">Flag Setup</p>
         </div>
 
-        <Link href="/Variable"
+        <Link
+          href="/Variable"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300 hover:cursor-pointer"
-       
         >
           <label
             htmlFor=""
@@ -59,9 +56,9 @@ const NavBar = () => {
             Variables
           </label>
         </Link>
-        <Link href="/Variations"
+        <Link
+          href="/Variations"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
-          
         >
           <label
             htmlFor=""
@@ -70,10 +67,18 @@ const NavBar = () => {
             Variations
           </label>
         </Link>
-
-        <Link href="/notFound"
+        <Link
+          href="/District"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
-          
+        >
+          <label htmlFor="" className="text-blue-800 mx-5 hover:cursor-pointer">
+            District
+          </label>
+        </Link>
+
+        <Link
+          href="/notFound"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
           <label
             htmlFor=""
@@ -82,9 +87,9 @@ const NavBar = () => {
             API Values
           </label>
         </Link>
-        <Link href="/notFound"
+        <Link
+          href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
-          
         >
           <label
             htmlFor=""
@@ -93,7 +98,8 @@ const NavBar = () => {
             History
           </label>
         </Link>
-        <Link href="/Accordion"
+        <Link
+          href="/Accordion"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
           <label
@@ -103,7 +109,8 @@ const NavBar = () => {
             Accordion
           </label>
         </Link>
-        <Link href="/WeatherApp"
+        <Link
+          href="/WeatherApp"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
           <label
@@ -114,17 +121,18 @@ const NavBar = () => {
           </label>
         </Link>
 
-        <Link href="/notFound"
+        <Link
+          href="/notFound"
           className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
         >
-          <label
-            htmlFor=""
-            className="text-blue-800 mx-5 hover:cursor-pointer"
-          >
+          <label htmlFor="" className="text-blue-800 mx-5 hover:cursor-pointer">
             Settings
           </label>
         </Link>
-        <Link href ="/" className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300">
+        <Link
+          href="/"
+          className="flex flex-col justify-center py-5 w-full h-8.75 border-b border-b-gray-300 hover:bg-gray-300"
+        >
           <label
             htmlFor=""
             className="text-blue-800 mx-5 hover:cursor-pointer"

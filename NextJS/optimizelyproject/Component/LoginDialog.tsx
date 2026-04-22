@@ -11,9 +11,9 @@ const LoginDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="p-2 bg-gray-300 rounded-3xl cursor-pointer">
+        <button className="p-2 bg-gray-300 rounded-3xl cursor-pointer" aria-label="Open login">
           <User className="text-white" />
-        </div>
+        </button>
       </DialogTrigger>
       <DialogContent className="[&>button]:text-white [&>button]:hover:cursor-pointer sm:max-w-lg h-[70%] border border-black p-0 overflow-hidden flex flex-col gap-0"
       >

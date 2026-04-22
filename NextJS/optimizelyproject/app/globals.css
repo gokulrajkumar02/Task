@@ -65,6 +65,34 @@ html {
   margin-top: -5px; 
 }
 
+@layer base {
+  [data-vaul-drawer]::before {
+    display: none !important;
+  }
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[#f1f1f1];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#888] rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#555];
+  }
+}
+
+
+
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
