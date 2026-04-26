@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./provider";
 import { StatusProvider } from "./StatusContext";
@@ -12,6 +11,11 @@ const beVietnam = Be_Vietnam_Pro({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
 });
+
+export const metadata = {
+  title: "Optimizely Project",
+  description: "Project for Optimizely Frontend Engineer Role",
+}
 
 export default function RootLayout({
   children,

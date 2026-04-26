@@ -42,7 +42,7 @@ export const getInitialTimer = () => {
   return LOCK_TIME;
 };
 
-const IplPaymentPage = () => {
+const IplPaymentDetailsPage = () => {
   const [timer, setTimer] = useState<number | null>(null);
   const [selectMatch, setSelectMatch] = useState<Match>();
   const { iplTicketCount, iplDiscount, isIplDiscountApplied } = useDistrict();
@@ -363,4 +363,4 @@ const IplPaymentPage = () => {
   );
 };
 
-export default IplPaymentPage;
+export default IplPaymentDetailsPage;

@@ -9,11 +9,21 @@ import type { SearchEntity } from "@/DB/District";
 import { useRouter } from "next/navigation";
 import { getEndTime } from "@/Helper/getEndTime";
 import MoviePaymentPage from "@/Component/MoviePaymentPage";
+import { PageDataFetcher } from "@/lib/pageDataFetcher";
+
+
+type MovieDetailsType = {
+  title: string;
+  certificate: string;
+  genres: string;
+  image_url: string;
+  description: string;
+};
 
 const LOCK_TIME = 7 * 60;
 const PaymentLayout = () => {
   const [selectedDate, setSelectedDate] = useState<Dates | null>(null);
-  const [movieDetails, setMovieDetails] = useState<SearchEntity>();
+  const [movieDetails, setMovieDetails] = useState<MovieDetailsType | null>(null);
   const [timer, setTimer] = useState(LOCK_TIME);
   const [isLocked, setIsLocked] = useState(false);
   const [offerApplied, setOfferApplied] = useState<boolean>(false);
@@ -27,15 +37,20 @@ const PaymentLayout = () => {
   } = useDistrict();
   const router = useRouter();
 
+
   useEffect(() => {
     const selectItemId = localStorage.getItem("SelectItemId");
-    const getSelectItemDetails = trendingSearches.find(
-      (item) => item.id === selectItemId,
-    );
-    setMovieDetails(getSelectItemDetails);
-
     const date = localStorage.getItem("SelectedDate");
     if (date) setSelectedDate(JSON.parse(date));
+
+    const fetchData = async () => {
+      const fetchFunction = PageDataFetcher["movie_TheatrePage"];
+      if (!fetchFunction || !selectItemId) return;
+      const res = await fetchFunction(selectItemId);
+      setMovieDetails(res);
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -65,7 +80,7 @@ const PaymentLayout = () => {
       setTempBooking([]);
       setIsLocked(false);
     }
-    
+
   }, [timer, isLocked]);
 
   const handleApplyOffer = () => {
@@ -100,7 +115,7 @@ const PaymentLayout = () => {
               <div className="flex justify-between items-start gap-4 border-b border-gray-200 pb-3">
                 <div className="flex flex-col gap-2">
                   <h1 className="text-lg font-semibold text-gray-800">
-                    {movieDetails?.display_title}
+                    {movieDetails?.title}
                   </h1>
 
                   <div className="flex items-center gap-2 text-[12px] text-gray-700">

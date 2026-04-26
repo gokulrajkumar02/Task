@@ -1,28 +1,43 @@
 "use client";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
+import { useRouter } from "next/navigation";
 import { Dates } from "../TheatrePage/page";
 import { useDistrict } from "@/Context/DistrictContext";
-import {
-  Theatre,
-  sangamCinemas,
-  kamalaCinemas,
-  deviCinemas,
-  theatres,
-} from "@/DB/District";
-import { useRouter } from "next/navigation";
-import clsx from "clsx";
-type TheatreData = typeof sangamCinemas;
+import { getSeatLayoutData } from "@/ContentfulFetch/getSeatLayoutData";
 
-const theatreMap: Record<number, TheatreData> = {
-  1: sangamCinemas,
-  2: kamalaCinemas,
-  3: deviCinemas,
+type SeatEntry = {
+  id: string;
+  type: "seat" | "gap";
+};
+
+type Row = {
+  rowId: string;
+  seats: SeatEntry[];
+};
+
+type Section = {
+  section: string;
+  price: number;
+  prefix: string;
+  rows: Row[];
+};
+
+type TheatreData = {
+  id: number;
+  title: string;
+  location: string;
+  distance: string;
+  cancellable: boolean;
+  image_url: string;
+  shows: { time: string; screen: string }[];
+  seatLayout: Section[];
 };
 
 const SeatLayout = () => {
   const [selectDate, setSelectedDate] = useState<Dates | null>(null);
-  const [movieShowsDetails, setMovieShowsDetails] = useState<Theatre>();
-  const [theatreId, setTheatreId] = useState<number | null>();
+  const [theatreData, setTheatreData] = useState<TheatreData | null>(null);
+
   const {
     theatreDetails,
     setTheatreDeatils,
@@ -30,21 +45,24 @@ const SeatLayout = () => {
     setBookedSeat,
     tempBooking,
   } = useDistrict();
+
   const router = useRouter();
 
-  useEffect(() => {
-    console.log("Booked seat", bookedSeat);
-  }, [bookedSeat]);
   useEffect(() => {
     const date = localStorage.getItem("SelectedDate");
     if (date) setSelectedDate(JSON.parse(date));
 
-    const movieShows = theatres.find((items) => items.id === theatreDetails[3]);
+    const theatreId = theatreDetails[3];
+    if (!theatreId) return;
 
-    setMovieShowsDetails(movieShows);
+    const fetchData = async () => {
 
-    setTheatreId(theatreDetails[3]);
-  }, []);
+      const data = await getSeatLayoutData(Number(theatreId));
+      setTheatreData(data);
+    };
+
+    fetchData();
+  }, [theatreDetails[3]]);
 
   const handleBookSeat = (id: string) => {
     setBookedSeat((prev) =>
@@ -53,8 +71,8 @@ const SeatLayout = () => {
   };
 
   return (
-    <div className="flex-1 w-full h-full flex flex-col items-center overflow-hidden">
-      <div className="w-[90%] md:w-[80%]  h-full overflow-y-scroll">
+    <div className="flex-1 w-full flex flex-col items-center">
+      <div className="w-[90%] md:w-[80%]">
         <div className="shrink-0 w-full min-h-[15%] shadow-md flex flex-col sm:flex-row items-start sm:items-center p-4 sm:p-5 gap-4 sm:gap-5 z-50 bg-white">
           <div className="flex flex-col">
             <span className="text-sm sm:text-base">{selectDate?.day}</span>
@@ -64,98 +82,90 @@ const SeatLayout = () => {
           </div>
 
           <div className="flex gap-3 w-full sm:w-[90%] overflow-x-auto sm:overflow-visible scrollbar-hide">
-            {movieShowsDetails?.shows.map((show) => {
-              return (
-                <button
-                  onClick={() => {
-                    setBookedSeat([])
-                    setTheatreDeatils([
-                      show.time,
-                      theatreDetails[1],
-                      show.screen,
-                      theatreDetails[3],
-                    ]);
-                  }}
-                  key={show.time}
-                  className={`shrink-0 min-w-22.5 sm:w-auto py-2 border border-gray-500 rounded-lg text-xs sm:text-sm flex flex-col items-center justify-center ${
-                    show.time === theatreDetails[0] && "bg-gray-200"
+            {theatreData?.shows.map((show) => (
+              <button
+                onClick={() => {
+                  setBookedSeat([]);
+                  setTheatreDeatils([
+                    show.time,
+                    theatreDetails[1],
+                    show.screen,
+                    theatreDetails[3],
+                  ]);
+                }}
+                key={show.time}
+                className={`p-2 shrink-0 sm:w-auto border border-gray-500 rounded-lg text-xs sm:text-sm flex flex-col items-center justify-center ${show.time === theatreDetails[0] && "bg-gray-200"
                   }`}
-                >
-                  <span>{show.time}</span>
-                  <span className="text-gray-500 font-medium text-[10px] sm:text-xs">
-                    {show.screen}
-                  </span>
-                </button>
-              );
-            })}
+              >
+                <span>{show.time}</span>
+                <span className="text-gray-500 font-medium text-[10px] sm:text-xs">
+                  {show.screen}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
         <div className="w-full h-[65%] flex justify-center my-5">
           <div className="w-[90%] md:w-[75%] h-full overflow-x-auto p-5 border flex flex-col items-start mb-5">
-            {theatreId &&
-              theatreMap[theatreId]?.map((items) => {
-                return (
-                  <div key={items.section}>
-                    <div className="w-225">
-                      <div className="flex justify-center my-6">
-                        <h1 className="text-[18px]">
-                          {items.section.toUpperCase()} - ₹{items.price}
-                        </h1>
-                      </div>
-                      <div className="w-full p-2 flex flex-col gap-5">
-                        {items.rows.map((rows) => {
-                          return (
-                            <div
-                              key={rows.rowId}
-                              className="w-full flex justify-between"
-                            >
-                              <div className="w-[10%]">
-                                <h1 className="text-[20px]">{rows.rowId}</h1>
-                              </div>
-                              <div className="flex w-[90%] gap-4">
-                                {rows.seats.map((seat) => {
-                                  if (seat.type === "gap") {
-                                    return (
-                                      <div key={seat.id} className="w-8 h-8" />
-                                    );
-                                  }
-
-                                  return (
-                                    <div
-                                      onClick={() => {
-                                        if (!tempBooking.includes(seat.id))
-                                          handleBookSeat(seat.id);
-                                      }}
-                                      key={seat.id}
-                                      className={clsx(
-                                        "w-8 h-8 flex items-center justify-center border rounded-md text-xs transition",
-                                        tempBooking.includes(seat.id) &&
-                                          "bg-gray-400",
-                                        bookedSeat.includes(seat.id) &&
-                                          !tempBooking.includes(seat.id)
-                                          ? "bg-blue-500 text-white border-blue-500 hover:cursor-pointer"
-                                          : "border-black cursor-pointer hover:bg-gray-300 hover:text-black",
-                                      )}
-                                    >
-                                      {!tempBooking.includes(seat.id)
-                                        ? seat.id.replace(rows.rowId, "")
-                                        : "X"}
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+            {theatreData?.seatLayout.map((items) => (
+              <div key={items.section}>
+                <div className="w-225">
+                  <div className="flex justify-center my-6">
+                    <h1 className="text-[18px]">
+                      {items.section.toUpperCase()} - ₹{items.price}
+                    </h1>
                   </div>
-                );
-              })}
-              <div className="flex justify-center w-full my-10">
-                  <img src={'/theatreScreenImg.png'} alt="ScreenImage" className="h-15 w-[50%]"/>
+                  <div className="w-full p-2 flex flex-col gap-5">
+                    {items.rows.map((rows) => (
+                      <div
+                        key={rows.rowId}
+                        className="w-full flex justify-between"
+                      >
+                        <div className="w-[10%]">
+                          <h1 className="text-[20px]">{rows.rowId}</h1>
+                        </div>
+                        <div className="flex w-[90%] gap-4">
+                          {rows.seats.map((seat) => {
+                            if (seat.type === "gap") {
+                              return <div key={seat.id} className="w-8 h-8" />;
+                            }
+                            return (
+                              <div
+                                onClick={() => {
+                                  if (!tempBooking.includes(seat.id))
+                                    handleBookSeat(seat.id);
+                                }}
+                                key={seat.id}
+                                className={clsx(
+                                  "w-8 h-8 flex items-center justify-center border rounded-md text-xs transition",
+                                  tempBooking.includes(seat.id) && "bg-gray-400",
+                                  bookedSeat.includes(seat.id) &&
+                                    !tempBooking.includes(seat.id)
+                                    ? "bg-blue-500 text-white border-blue-500 hover:cursor-pointer"
+                                    : "border-black cursor-pointer hover:bg-gray-300 hover:text-black",
+                                )}
+                              >
+                                {!tempBooking.includes(seat.id)
+                                  ? seat.id.replace(rows.rowId, "")
+                                  : "X"}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+            ))}
+            <div className="flex justify-center w-full my-10">
+              <img
+                src={"/theatreScreenImg.png"}
+                alt="ScreenImage"
+                className="h-15 w-[50%]"
+              />
+            </div>
           </div>
         </div>
 
@@ -167,7 +177,7 @@ const SeatLayout = () => {
               <label className="text-[12px]">Booked Seat</label>
             </div>
             <div className="w-[50%] flex flex-col items-center">
-              <div className="w-4 h-4 rounded border  border-black" />
+              <div className="w-4 h-4 rounded border border-black" />
               <label className="text-[12px]">Booked Seat</label>
             </div>
             <div className="w-[50%] flex flex-col items-center">
@@ -189,7 +199,6 @@ const SeatLayout = () => {
                 {bookedSeat.length} Seats
               </span>
             </div>
-
             <button
               className="bg-black text-white px-10 py-2 rounded-lg font-medium hover:cursor-pointer"
               onClick={() => router.push("/movie/PaymentLayout")}

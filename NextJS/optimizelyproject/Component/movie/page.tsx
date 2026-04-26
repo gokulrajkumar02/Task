@@ -1,11 +1,34 @@
 "use client";
 import { useRouter } from "next/navigation";
 import MovieCarousel from "@/Component/EmblaCarousel/MovieCarousel";
-import {  theatreMovies } from "@/DB/District";
-import type {slidesType} from "@/DB/District"
+import { Slide } from "@/ContentfulFetch/getMovieData";
+import { useEffect, useState } from "react";
+import { PageDataFetcher } from "@/lib/pageDataFetcher";
 
-const MoviePage = ({ slideData }: { slideData: slidesType[] }) => {
+export type PageData = {
+  slides: Slide[];
+  movies: Slide[];
+};
+
+type MoviePagePropType = {
+  pageKey: string;
+};
+
+const MoviePage = ({ pageKey }: MoviePagePropType) => {
   const router = useRouter();
+
+  const [Data, setData] = useState<PageData | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchFunction = PageDataFetcher[pageKey];
+      if (!fetchFunction) return;
+      const response = await fetchFunction(pageKey);
+      setData(response);
+    };
+
+    fetchData();
+  }, [pageKey]);
 
   const handleBookMovie = (id: string) => {
     localStorage.setItem("SelectItemId", id.toString());
@@ -14,7 +37,7 @@ const MoviePage = ({ slideData }: { slideData: slidesType[] }) => {
   return (
     <div className="w-full h-full">
       <MovieCarousel
-        SliderData={slideData ?? []}
+        SliderData={Data?.slides ?? []}
         variant="movie"
         navigateTo={"/movie/TheatrePage"}
       />
@@ -23,7 +46,7 @@ const MoviePage = ({ slideData }: { slideData: slidesType[] }) => {
           <h1 className="text-[25px] font-semibold">Only in theatres</h1>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 my-5">
-            {theatreMovies.map((items) => {
+            {Data?.movies.map((items) => {
               return (
                 <div
                   key={items.id}
@@ -31,7 +54,7 @@ const MoviePage = ({ slideData }: { slideData: slidesType[] }) => {
                   onClick={() => handleBookMovie(items.id)}
                 >
                   <div className="">
-                    <img src={items.bg} alt={items.title} />
+                    <img src={items.image_url} alt={items.title} />
                   </div>
                   <div className="mt-2 flex flex-col gap-1 p-2 text-center">
                     <h1 className="text-[20px] font-semibold">{items.title}</h1>

@@ -1,37 +1,69 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { useDistrict } from "@/Context/DistrictContext";
-import { trendingSearches } from "@/DB/District";
-import type { SearchEntity } from "@/DB/District";
-import { theatres } from "@/DB/District";
-import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { MapPin } from "lucide-react";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { useDistrict } from "@/Context/DistrictContext";
+import { useRouter } from "next/navigation";
+import { PageDataFetcher } from "@/lib/pageDataFetcher";
 
 export type Dates = {
   date: number;
   day: string;
   month: string;
 };
+export type Theatre = {
+  id: number;
+  title: string;
+  location: string;
+  distance: string;
+  cancellable: boolean;
+  image_url: string;
+  alt: string;
+  shows: {
+    time: string;
+    screen: string;
+  }[];
+};
 
+type Slide = {
+  id: string;
+  title: string;
+  certificate: string;
+  genres: string;
+  description: string;
+  bg: string;
+  image_url: string;
+
+  theatres: Theatre[]; 
+};
 type Date = Dates[];
 
-const TheatrePage = () => {
+const TheatrePage = ({ pageKey }: { pageKey: string }) => {
   const { isDialogOpen, setTheatreDeatils } = useDistrict();
-  const [movieDeatils, setMovieDetails] = useState<SearchEntity>();
+  const [movieDeatils, setMovieDetails] = useState<Slide>();
 
   const [selected, setSelected] = useState(0);
   const [selectedDate, setSelectedDates] = useState<Date>([]);
   const router = useRouter();
 
   useEffect(() => {
+
     const selectItemId = localStorage.getItem("SelectItemId");
-    const getSelectItemDetails = trendingSearches.find(
-      (item) => item.id === selectItemId,
-    );
-    setMovieDetails(getSelectItemDetails);
-  }, [isDialogOpen]);
+
+    const fetchData = async () => {
+      const fetchFunction = PageDataFetcher[pageKey];
+      if (!fetchFunction) return;
+
+      const res = await fetchFunction(selectItemId || "");
+
+      console.log("res:", res);
+      
+      setMovieDetails(res);
+    };
+
+    fetchData();
+  }, [pageKey, isDialogOpen]);
 
   useEffect(() => {
     if (selectedDate.length > 0) {
@@ -75,12 +107,12 @@ const TheatrePage = () => {
             <div className="flex gap-5">
               <img
                 src={movieDeatils.image_url}
-                alt={movieDeatils.display_title}
+                alt={movieDeatils.title}
                 className="w-30 h-auto rounded-md"
               />
               <div className="flex flex-col justify-center">
                 <h1 className="text-[25px] font-semibold">
-                  {movieDeatils.display_title}
+                  {movieDeatils?.title}
                 </h1>
                 <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-gray-600">
                   <div className="flex gap-2 items-center p-0">
@@ -139,21 +171,21 @@ const TheatrePage = () => {
               <div>
                 <h2 className="text-[25px] font-semibold mb-2">Theatres</h2>
                 <div className="flex flex-col gap-3">
-                  {theatres.map((item) => (
+                  {movieDeatils?.theatres.map((item) => (
                     <div key={item.id} className="flex gap-3 flex-col p-3">
                       <div className="flex gap-5">
                         <img
-                          src={item.image}
-                          alt={item.alt}
+                          src={item.image_url}
+                          alt={item.title}
                           className="w-full max-w-15 h-17.5 sm:h-auto rounded-md"
                         />
                         <div className="flex flex-col">
                           <div className="flex gap-2">
                             <h3 className="text-md font-semibold">
-                              {item.name},{item.location}
+                              {item.title},{item.location}
                             </h3>
                             <a
-                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name)}`}
+                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title)}`}
                               target="_blank"
                             >
                               <MapPin />
@@ -179,7 +211,7 @@ const TheatrePage = () => {
                                 router.push("/movie/SeatLayout");
                                 setTheatreDeatils([
                                   show.time,
-                                  item.name,
+                                  item.title,
                                   show.screen,
                                   item.id,
                                 ]);

@@ -8,7 +8,7 @@ import {
   ticketAreas,
 } from "@/DB/District";
 
-const PaymentPage = () => {
+const IplPaymentPage = () => {
   const [qrValue, setQrValue] = useState<string>("");
   const [selectEventDetails, setSelectEventDetails] = useState<any>(null);
   const [showQR, setShowQR] = useState<boolean>(false);
@@ -178,4 +178,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default IplPaymentPage;

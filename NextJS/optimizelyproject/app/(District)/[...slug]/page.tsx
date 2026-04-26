@@ -1,32 +1,27 @@
 import { PageComponent } from "@/Helper/PageComponet";
-import { getPageDataBySlug } from "@/lib/getPageBySlug";
+import { PageDataFetcher } from "@/lib/pageDataFetcher";
+
 import { notFound } from "next/navigation";
+// export const CAROUSEL_PAGES = ["activities", "movie", "event"];
 
 type DistrictPagePropType = {
   params: { slug: string[] };
 };
 
-export const CAROUSEL_PAGES = ["activities", "movie", "event"];
-
 const DistrictPage = async ({ params }: DistrictPagePropType) => {
   const { slug } = await params;
 
-  const pageKey = slug[slug.length - 1]
-  const SelectedPageComponent  = PageComponent[pageKey];
+  const pageKey = slug.join('_')
+  const SelectedPageComponent = PageComponent[pageKey];
 
-  if (!SelectedPageComponent ) return notFound();
-  
-  const carouselData = CAROUSEL_PAGES.includes(pageKey)
-    ? await getPageDataBySlug(pageKey)
-    : null;
+  if (!SelectedPageComponent) return notFound();
+
+
 
   return (
     <div>
-      {CAROUSEL_PAGES.includes(pageKey) ? ( 
-        <SelectedPageComponent  slideData={carouselData?.slides} />
-      ) : (
-        <SelectedPageComponent  />
-      )}
+      <SelectedPageComponent pageKey={pageKey} />
+
     </div>
   );
 };

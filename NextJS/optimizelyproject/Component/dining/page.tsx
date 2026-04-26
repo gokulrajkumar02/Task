@@ -1,11 +1,22 @@
 "use client";
 
 import clsx from "clsx";
-import { offersData, signatureFeatures } from "@/DB/District";
+import { useEffect, useState } from "react";
 import { useDistrict } from "@/Context/DistrictContext";
+import { getDiningData } from "@/ContentfulFetch/getDiningData";
 
 const DiningPage = () => {
   const { setIsDialogOpen, setSelectedCategory } = useDistrict();
+
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getDiningData();
+      setData(res);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div
@@ -49,7 +60,7 @@ const DiningPage = () => {
             </h1>
 
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20">
-              {signatureFeatures.map((items, index) => {
+              {data?.signatureFeatures.map((items: any, index: number) => {
                 const rotateClass =
                   index % 2 === 0 ? "rotate-[-10deg]" : "rotate-[10deg]";
                 return (
@@ -87,7 +98,7 @@ const DiningPage = () => {
             </h1>
 
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20 my-15">
-              {offersData.map((items, index) => {
+              {data?.offers.map((items: any, index: number) => {
                 const rotateClass =
                   index % 2 === 0 ? "rotate-[-12deg]" : "rotate-[12deg]";
                 return (

@@ -239,11 +239,11 @@ export type SearchEntity = {
   image_url: string;
   images?: string[];
   entity_type:
-    | "EntityTypeMovie"
-    | "EntityTypeEvent"
-    | "EntityTypeRes"
-    | "EntityTypeArtist"
-    | "EntityTypeStore";
+  | "EntityTypeMovie"
+  | "EntityTypeEvent"
+  | "EntityTypeRes"
+  | "EntityTypeArtist"
+  | "EntityTypeStore";
   metadata: Record<string, string>;
 };
 
@@ -2418,14 +2418,14 @@ export const offersData = [
 
 
 export type slidesType = {
-  id:string,
-  title:string,
-  certificate:string,
-  genres:string,
-  description : string,
-  bg:string
+  id: string,
+  title: string,
+  certificate: string,
+  genres: string,
+  description: string,
+  bg: string
 }
-export const slides : slidesType[] = [
+export const slides: slidesType[] = [
   {
     id: "212782",
     title: "Thaai Kizhavi",

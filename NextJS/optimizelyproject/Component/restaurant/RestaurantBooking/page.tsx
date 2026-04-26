@@ -34,7 +34,7 @@ const RestaurantBooking = () => {
           <div className="flex items-center gap-2 mb-6">
             <ChevronLeft
               size={20}
-              onClick={() => router.push("/Restaurant")}
+              onClick={() => router.push("/restaurant")}
               className="hover:cursor-pointer"
             />
             <h1 className="text-xl font-semibold">Book a table</h1>

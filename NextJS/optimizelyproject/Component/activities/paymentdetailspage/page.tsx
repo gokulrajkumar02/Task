@@ -39,7 +39,7 @@ export const getInitialTimer = () => {
   return LOCK_TIME;
 };
 
-const ActivityPaymentPage = () => {
+const ActivityPaymentDetailsPage = () => {
   const [timer, setTimer] = useState<number | null>(null);
   const { activityTicketCount, activityDiscount, isActivityDiscountApplied } =
     useDistrict();
@@ -355,4 +355,4 @@ const ActivityPaymentPage = () => {
   );
 };
 
-export default ActivityPaymentPage;
+export default ActivityPaymentDetailsPage;

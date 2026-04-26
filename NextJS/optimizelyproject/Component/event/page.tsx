@@ -2,9 +2,8 @@
 
 import {
   EventSingersData,
-  events as SliderData,
+  EventType,
   eventCategories,
-  eventEachCategoryData,
 } from "@/DB/District";
 import MovieCarousel from "@/Component/EmblaCarousel/MovieCarousel";
 import {
@@ -16,11 +15,31 @@ import {
 } from "@/components/ui/carousel";
 import CategoryExplaore from "@/Component/CategoryExplaore";
 import CategoryAllEvents from "@/Component/CategoryAllEvents";
+import { useEffect, useState } from "react";
+import { EventPageData, getEventData } from "@/ContentfulFetch/getEventData";
 
 const Eventpage = () => {
+
+  
+  const [EventData, setEventData] = useState<EventPageData | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getEventData();
+
+      setEventData(data);
+
+      console.log("AllEVent", data.allEvents);
+
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="w-full h-full">
-      <MovieCarousel SliderData={SliderData} variant="event" navigateTo={"/event/EventBooking"} />
+      {EventData && (
+        <MovieCarousel SliderData={EventData.sliderEvents} variant="event" navigateTo={"/event/EventBooking"} />
+      )}
       <div className="mt-10 w-full flex flex-col items-center">
         <div className="w-[90%] md:w-[80%]">
           <div className="w-full">
@@ -33,7 +52,7 @@ const Eventpage = () => {
               <div className="w-full px-10 relative">
                 <Carousel className="w-full">
                   <CarouselContent>
-                    {EventSingersData.map((singer) => (
+                    {EventData?.artists.map((singer) => (
                       <CarouselItem
                         key={singer.id}
                         className="basis-1/3 md:basis-1/4 lg:basis-1/6 cursor-pointer"
@@ -59,8 +78,12 @@ const Eventpage = () => {
               </div>
             </div>
 
-
-            <CategoryAllEvents categoryAllEvents={eventEachCategoryData} navigateTo={"/event/EventBooking"} />
+            {EventData && (
+              <CategoryAllEvents
+                categoryAllEvents={EventData.allEvents}
+                navigateTo="/event/EventBooking"
+              />
+            )}
           </div>
         </div>
       </div>

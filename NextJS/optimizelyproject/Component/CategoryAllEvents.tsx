@@ -5,21 +5,19 @@ import { useRouter } from "next/navigation";
 import { CategoryType, EventType } from "@/DB/District";
 
 type Prop = {
-  categoryAllEvents: CategoryType[];
-  navigateTo ?:string
+  categoryAllEvents: EventType[];
+  navigateTo ?:string,
+
 };
 
-const CategoryAllEvents = ({ categoryAllEvents , navigateTo }: Prop) => {
+const CategoryAllEvents = ({ categoryAllEvents ,navigateTo }: Prop) => {
   const [allEvents, setAllEvents] = useState<EventType[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    const allEventsData = categoryAllEvents
-      .flatMap((cat) => cat.events)
-      .slice(0, 15);
 
-    setAllEvents(allEventsData);
-  }, []);
+    setAllEvents(categoryAllEvents);
+  }, [categoryAllEvents]);
 
   const handleEventCategory = (id: string) => {
     localStorage.setItem("SelectItemId", id);

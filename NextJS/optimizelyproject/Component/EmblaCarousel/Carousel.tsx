@@ -189,7 +189,7 @@ const Carousel = ({
                 )}
 
                 {variant === "event" && (
-                  <div
+                  <div key={slide.id}
                     className={`${styles.embla__slide__inner} relative z-100 flex items-center justify-between hover:cursor-pointer p-4 md:p-10`}
                     onClick={() => {
                       handleBookShow(slide.id);

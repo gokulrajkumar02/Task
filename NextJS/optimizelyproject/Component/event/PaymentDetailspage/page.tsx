@@ -42,7 +42,7 @@ export const getInitialTimer = () => {
 };
 
 
-const PaymentPage = () => {
+const AmountDetails = () => {
 
   const [timer, setTimer] = useState<number | null>(null);
   useEffect(() => {
@@ -295,4 +295,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default AmountDetails;
