@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { CategoryType, EventType } from "@/DB/District";
 
 type Prop = {
-  categoryAllEvents: EventType[];
+  categoryAllEvents: any[];
   navigateTo ?:string,
 
 };

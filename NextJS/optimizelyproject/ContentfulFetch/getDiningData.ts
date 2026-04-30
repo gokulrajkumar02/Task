@@ -8,5 +8,14 @@ export const getDiningData = async () => {
   const item = res.items[0];
   if (!item) return null;
 
-  return item.fields.data;
+  const fields: any = item.fields;
+  const diningData = fields.diningData;
+
+  return {
+    heroTitle: diningData.heroTitle,
+    districtSpecialTitle: diningData.districtSpecialTitle,
+    offerTitle : diningData.offerTitle,
+    signatureFeatures: diningData.signatureFeatures,
+    offers: diningData.offers,
+  };
 };

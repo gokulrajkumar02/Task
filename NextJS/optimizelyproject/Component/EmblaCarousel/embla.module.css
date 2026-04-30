@@ -25,6 +25,7 @@
   flex: 0 0 var(--slide-size);
   min-width: 0;
   margin: 0;
+  height: 100vh;
 }
 
 .embla__slide__inner {
@@ -103,6 +104,7 @@
 
   .embla__slide__inner {
     /* height: auto; */
+    height:100vh
     /* min-height: auto; */
   }
 }

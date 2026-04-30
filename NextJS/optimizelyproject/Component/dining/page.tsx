@@ -12,8 +12,10 @@ const DiningPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await getDiningData();
-      setData(res);
+      const response = await getDiningData();
+      console.log("Dining Data",response);
+      
+      setData(response);
     };
     fetchData();
   }, []);
@@ -30,8 +32,7 @@ const DiningPage = () => {
         <div className="from-purple-100 to-gray-100 rounded-3xl  text-center flex flex-col items-center">
           <div className="flex flex-col items-center p-3 md:px-15 md:py-12">
             <h1 className="text-[20px] md:text-[36px] font-bold text-gray-900 mb-8">
-              Discover restaurants, explore menus, book <br /> tables - all in
-              one place
+              {data?.heroTitle}
             </h1>
 
             <div className="flex items-center gap-3 bg-white rounded-xl p-3 md:p-5 max-w-67.5 sm:max-w-md border border-gray-300">
@@ -56,11 +57,11 @@ const DiningPage = () => {
 
           <div className="mt-15">
             <h1 className="text-[20px] md:text-4xl font-bold text-gray-900 mb-8">
-              Enjoy iconic District specials
+              {data?.districtSpecialTitle}
             </h1>
 
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20">
-              {data?.signatureFeatures.map((items: any, index: number) => {
+              {data?.signatureFeatures?.map((items: any, index: number) => {
                 const rotateClass =
                   index % 2 === 0 ? "rotate-[-10deg]" : "rotate-[10deg]";
                 return (
@@ -94,11 +95,11 @@ const DiningPage = () => {
 
           <div className="mt-20">
             <h1 className="text-[20px] md:text-4xl font-bold text-gray-900 mb-8">
-              Grab great deals and unlock extra savings
+             {data?.offerTitle}
             </h1>
 
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20 my-15">
-              {data?.offers.map((items: any, index: number) => {
+              {data?.offers?.map((items: any, index: number) => {
                 const rotateClass =
                   index % 2 === 0 ? "rotate-[-12deg]" : "rotate-[12deg]";
                 return (

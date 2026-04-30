@@ -2,29 +2,33 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { eventEachCategoryData } from "@/DB/District";
 import { useDistrict } from "@/Context/DistrictContext";
+import { getEventData } from "@/ContentfulFetch/getEventData";
 
 const ChooseTicket = () => {
-
   const [selectEventDetails, setSelectEventDetails] = useState<any>(null);
   const [showTicketCount, setShowTicketCount] = useState<boolean>(false);
 
-  const {ticketCount,setTicketCount,setIsDiscountApplied} = useDistrict()
+  const { ticketCount, setTicketCount } = useDistrict();
 
   const router = useRouter();
 
   useEffect(() => {
     const selectEventId = localStorage.getItem("SelectItemId");
 
-    const event = eventEachCategoryData
-      .flatMap((cat) => cat.events)
-      .find((event) => event.id === selectEventId);
+    const fetchData = async () => {
+      const data = await getEventData();
 
-    setSelectEventDetails(event || null);
-    setTicketCount(1)
-    setIsDiscountApplied(false)
-    
+      if (selectEventId) {
+        const selectedItems = data.allEvents.find(
+          (item) => item.id === selectEventId,
+        );
+
+        setSelectEventDetails(selectedItems);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -34,7 +38,7 @@ const ChooseTicket = () => {
           <h1 className="text-[20px] font-semibold">
             {selectEventDetails?.title}
           </h1>
-          <div className="flex gap-2 text-gray-600">
+          <div className="flex gap-2 text-gray-600 text-center">
             <span>{selectEventDetails?.date}</span>
             <span className="border-r-2 border-gray-400" />
             <span>{selectEventDetails?.venue}</span>
@@ -103,12 +107,19 @@ const ChooseTicket = () => {
         <div className="select-none border-t bg-white w-full h-20 fixed bottom-0 shadow-xl p-3 flex justify-center">
           <div className="w-full md:w-[40%] flex justify-between">
             <div className="flex flex-col">
-              <span className="font-semibold">₹{ticketCount * selectEventDetails.price}</span>
-              <span className="text-gray-500 text-[14px]">{ticketCount} Ticket</span>
+              <span className="font-semibold">
+                ₹{ticketCount * selectEventDetails.price}
+              </span>
+              <span className="text-gray-500 text-[14px]">
+                {ticketCount} Ticket
+              </span>
             </div>
-           <button className="hover:cursor-pointer bg-[#0c172f] text-white px-7 py-3 rounded-xl font-semibold"
-           onClick={() => router.push("/event/PaymentDetailspage")}
-           >Add to Cart</button>
+            <button
+              className="hover:cursor-pointer bg-[#0c172f] text-white px-7 py-3 rounded-xl font-semibold"
+              onClick={() => router.push("/event/PaymentDetailspage")}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       )}

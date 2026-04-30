@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { MapPin, CalendarClock } from "lucide-react";
+import { getEventData } from "@/ContentfulFetch/getEventData";
 
 const EventBooking = () => {
   const [selectEventDetails, setSelectEventDetails] = useState<any>(null);
@@ -21,14 +22,32 @@ const EventBooking = () => {
   useEffect(() => {
     const selectEventId = localStorage.getItem("SelectItemId");
 
-    const event = eventEachCategoryData
-      .flatMap((cat) => cat.events)
-      .find((event) => event.id === selectEventId);
+    const fetchData = async () => {
+      const data = await getEventData();
 
-    setSelectEventDetails(event || null);
+      if (selectEventId) {
+        const selectedItems = data.allEvents.find(
+          (item) => item.id === selectEventId,
+        );
 
-    console.log(event);
+        setSelectEventDetails(selectedItems);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   const selectEventId = localStorage.getItem("SelectItemId");
+
+  //   const event = eventEachCategoryData
+  //     .flatMap((cat) => cat.events)
+  //     .find((event) => event.id === selectEventId);
+
+  //   setSelectEventDetails(event || null);
+
+  //   console.log(event);
+  // }, []);
 
   return (
     <div className="w-full h-full flex flex-col items-center">

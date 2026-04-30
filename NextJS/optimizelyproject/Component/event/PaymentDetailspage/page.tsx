@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { useDistrict } from "@/Context/DistrictContext";
-import { eventEachCategoryData, eventTicketOffer } from "@/DB/District";
+
 import {
   Dialog,
   DialogContent,
@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { getEventData, OfferType } from "@/ContentfulFetch/getEventData";
 
 const LOCK_TIME = 7 * 60;
 
@@ -41,9 +42,7 @@ export const getInitialTimer = () => {
   return LOCK_TIME;
 };
 
-
 const AmountDetails = () => {
-
   const [timer, setTimer] = useState<number | null>(null);
   useEffect(() => {
     setTimer(getInitialTimer());
@@ -51,17 +50,26 @@ const AmountDetails = () => {
   const { ticketCount, isDiscountApplied, appliedDiscount } = useDistrict();
   const [selectEventDetails, setSelectEventDetails] = useState<any>();
 
+  const [ticketOffer, setTicketOffer] = useState<OfferType[]>([]);
+
   useEffect(() => {
     const selectEventId = localStorage.getItem("SelectItemId");
 
-    const event = eventEachCategoryData
-      .flatMap((cat) => cat.events)
-      .find((event) => event.id === selectEventId);
+    const fetchData = async () => {
+      const data = await getEventData();
+      setTicketOffer(data.offerDetails);
+      if (selectEventId) {
+        const selectedItems = data.allEvents.find(
+          (item) => item.id === selectEventId,
+        );
 
-    setSelectEventDetails(event || null);
+        setSelectEventDetails(selectedItems);
+      }
+    };
 
-    // setIsDiscountApplied(false);
+    fetchData();
   }, []);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -70,7 +78,7 @@ const AmountDetails = () => {
     if (timer === 0) {
       clearTimer();
       alert("Session expired. Seats released!");
-      router.push("/Event/Checkout");
+      router.push("/event/Checkout");
       return;
     }
 
@@ -95,12 +103,12 @@ const AmountDetails = () => {
 
   const handleRemoveCart = () => {
     clearTimer();
-    router.push("/Event/Checkout");
+    router.push("/event/Checkout");
   };
 
-  const offer = eventTicketOffer.find(
-      (offers) => offers.discount === appliedDiscount,
-    );
+  const offer = ticketOffer.find(
+    (offers) => offers.discount === appliedDiscount,
+  );
 
   return (
     <div className="w-full flex flex-col items-center overflow-auto scrollbar-hide">

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  EventSingersData,
-  EventType,
-  eventCategories,
-} from "@/DB/District";
+import { useEffect, useState } from "react";
 import MovieCarousel from "@/Component/EmblaCarousel/MovieCarousel";
 import {
   Carousel,
@@ -15,22 +11,19 @@ import {
 } from "@/components/ui/carousel";
 import CategoryExplaore from "@/Component/CategoryExplaore";
 import CategoryAllEvents from "@/Component/CategoryAllEvents";
-import { useEffect, useState } from "react";
 import { EventPageData, getEventData } from "@/ContentfulFetch/getEventData";
 
 const Eventpage = () => {
-
-  
   const [EventData, setEventData] = useState<EventPageData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getEventData();
-
+      
+      console.log("Event CategoryData",data.eventCategories);
+      
       setEventData(data);
-
-      console.log("AllEVent", data.allEvents);
-
+      // console.log("AllEVent", data.allEvents);
     };
 
     fetchData();
@@ -38,12 +31,21 @@ const Eventpage = () => {
   return (
     <div className="w-full h-full">
       {EventData && (
-        <MovieCarousel SliderData={EventData.sliderEvents} variant="event" navigateTo={"/event/EventBooking"} />
+        <MovieCarousel
+          SliderData={EventData.sliderEvents}
+          variant="event"
+          navigateTo={"/event/EventBooking"}
+        />
       )}
       <div className="mt-10 w-full flex flex-col items-center">
         <div className="w-[90%] md:w-[80%]">
           <div className="w-full">
-            <CategoryExplaore categoryData={eventCategories} navigateTo={"/event/EventCategory"} />
+            {EventData && (
+              <CategoryExplaore
+                categoryData={EventData?.eventCategories}
+                navigateTo={"/event/EventCategory"}
+              />
+            )}
 
             <div className="mt-10 w-full">
               <h1 className="text-[25px] font-semibold">

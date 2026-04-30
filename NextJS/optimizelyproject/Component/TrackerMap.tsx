@@ -1,16 +1,16 @@
 'use client'
 
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
 import { useEffect } from 'react'
+import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 
 type Props = {
   lat: number
   lng: number
 }
 
-const Map = ({ lat, lng }: Props) => {
+const TrackerMap = ({ lat, lng }: Props) => {
 
   useEffect(() => {
     delete (L.Icon.Default.prototype as any)._getIconUrl
@@ -27,12 +27,13 @@ const Map = ({ lat, lng }: Props) => {
       center={[lat, lng]}
       zoom={13}
       scrollWheelZoom={false}
-      className="w-full h-[400px]"
+      className="w-full h-full"
+      data-testid="map-container"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Marker position={[lat, lng]} />
+      <Marker position={[lat, lng]} data-testid="marker" />
     </MapContainer>
   )
 }
 
-export default Map
+export default TrackerMap
