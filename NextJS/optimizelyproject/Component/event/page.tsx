@@ -57,7 +57,7 @@ const Eventpage = () => {
                     {EventData?.artists.map((singer) => (
                       <CarouselItem
                         key={singer.id}
-                        className="basis-1/3 md:basis-1/4 lg:basis-1/6 cursor-pointer"
+                        className="basis-1/3 md:basis-1/4 lg:basis-1/6 hover:cursor-pointer"
                       >
                         <div className="flex flex-col items-center gap-2 py-4">
                           <div className="w-16 h-16 rounded-full overflow-hidden">

@@ -21,8 +21,6 @@ const labels = ["Tips & Wings", "About", "Clinical", "Blog"];
 const NextSenseNavBar = () => {
   const [isOpenSlider, setIsOpenSlider] = useState<boolean>(false);
 
-  const [isButtonHover, setIsButtonHover] = useState(false);
-
   return (
     <div className="w-full bg-white">
       <div className="max-w-[1400px] px-6 py-1 lg:px-8 lg:py-4 flex box-border justify-between min-[1100px]:justify-normal items-center mx-auto">
@@ -60,7 +58,7 @@ const NextSenseNavBar = () => {
             return (
               <div
                 key={items.id}
-                className="py-2 text-[20px] font-medium text-[#2B2E3F] hover:text-[#aeacff]"
+                className="py-2 text-[19px] font-medium text-[#2B2E3F] hover:text-[#aeacff]"
               >
                 {items.label}
               </div>
@@ -106,7 +104,7 @@ const NextSenseNavBar = () => {
       <Sheet open={isOpenSlider} onOpenChange={setIsOpenSlider}>
         <SheetContent
           side="left"
-          className="z-200 w-full min-[450px]:w-[440px] [&>button:first-of-type]:hidden p-0 m-0 overflow-auto scrollbar-hide"
+          className="z-999 w-full min-[450px]:w-[440px] [&>button:first-of-type]:hidden p-0 m-0 overflow-auto scrollbar-hide"
         >
           <SheetHeader className="space-y-0 text-left">
             <SheetTitle>
@@ -120,9 +118,10 @@ const NextSenseNavBar = () => {
                 </a>
                 <button
                   onClick={() => setIsOpenSlider(false)}
-                  className="h-9 w-9 text-[#2b2e3f] p-2 border border-gray-200 last:border-none bg-[rgba(43,46,63,0.06)] rounded-full"
+                  className="hover:cursor-pointer hover:bg-[#e9eaeb] hover:border-gray-300 text-[#2b2e3f] p-2.5 border border-gray-200 bg-[rgba(43,46,63,0.06)] rounded-full"
                 >
                   <svg
+                    className="w-3.5 h-3.5"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -213,18 +212,13 @@ const NextSenseNavBar = () => {
                 </span>
               </div>
 
-              <button
-                onMouseEnter={() => setIsButtonHover(true)}
-                onMouseLeave={() => setIsButtonHover(false)}
-                className="text-white flex justify-center items-center gap-2  hover:text-black hover:bg-[#aaa8ff] transition-colors duration-200 w-full rounded-full bg-[#2b2e3f] font-semibold text-[15px] py-[13px] px-[24px] hover:cursor-pointer"
-              >
+              <button className="group text-white flex justify-center items-center gap-2  hover:text-black hover:bg-[#aaa8ff] transition-colors duration-200 w-full rounded-full bg-[#2b2e3f] font-semibold text-[15px] py-[13px] px-[24px] hover:cursor-pointer">
                 Show Smartbuds
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 640 640"
                   className={clsx(
-                    "w-3 h-3 transition-all duration-200",
-                    isButtonHover ? "translate-x-2" : "translate-0",
+                    "w-3 h-3 transition-all duration-200 group-hover:translate-x-2",
                   )}
                 >
                   <path
@@ -247,17 +241,16 @@ const NextSenseNavBar = () => {
                 return (
                   <div
                     key={index}
-                    className="flex justify-between items-center px-1 py-4.5 border-b border-gray-200"
+                    className="text-[#484b59] hover:cursor-pointer w-full group flex justify-between items-center px-1 py-4.5 border-b border-gray-200 hover:text-[#AAA8FF]"
                   >
-                    <h1 className="text-[17px] text-[#484b59]">{item}</h1>
+                    <h1 className="text-[17px]">{item}</h1>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 640 640"
-                      className="w-4 h-4"
+                      className="w-4 h-4 group-hover:translate-x-2 transition-all duration-300"
                     >
                       <path
-                        fill="#bebfc4"
-                        stroke="currentColor"
+                        fill="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"

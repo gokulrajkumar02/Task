@@ -413,7 +413,7 @@ const Carousel = ({
       {variant != DINING_VARIENT && variant != "StoryFeature" && (
         <div className={styles.embla__controls}>
           <div className={styles.embla__dots}>
-            {slides.map((_: any, index: number) => (
+            {(slides ?? []).map((_: any, index: number) => (
               <button
                 key={index}
                 onClick={() => {

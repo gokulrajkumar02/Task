@@ -24,7 +24,8 @@ const slides = [
   },
   {
     id: 4,
-    image: "https://cdn.shopify.com/s/files/1/0612/0289/0840/files/20250919SS_NextSense0575_1.png?v=1776394106",
+    image:
+      "https://cdn.shopify.com/s/files/1/0612/0289/0840/files/20250919SS_NextSense0575_1.png?v=1776394106",
     highlight: "focus.",
   },
 ];
@@ -50,7 +51,7 @@ const ImageCarousel = () => {
     };
   }, []);
 
-  const goTo = (index: number) => {
+  const goToImage = (index: number) => {
     setCurrentIndex(index);
     startTimer();
   };
@@ -68,11 +69,12 @@ const ImageCarousel = () => {
             alt={slide.highlight}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-purple-500/5 via-black/30 to-transparent z-50" />
+          {/* <div className="absolute inset-0 bg-linear-to-r from-[#2b2e3f] via-black/30 to-transparent z-50" /> */}
+          <div className="absolute inset-0 bg-[#2b2e3f]/70 z-50"/>
         </div>
       ))}
 
-      <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-14 w-full md:max-w-[1100px] border border-[rgba(232,225,225,0.15)]">
+      <div className="absolute inset-0 z-100 h-full flex flex-col justify-center px-6 md:px-14 w-full md:max-w-[1100px] border border-[rgba(232,225,225,0.15)]">
         <p className="text-[#aaa8ff] text-[13px] md:text-[16px] mb-4">
           The world's first EEG-powered sleep earbuds
         </p>
@@ -109,8 +111,8 @@ const ImageCarousel = () => {
           {slides.map((_, index) => (
             <button
               key={index}
-              onClick={() => goTo(index)}
-              className={`h-[2px] rounded-full transition-all duration-300 cursor-pointer ${
+              onClick={() => goToImage(index)}
+              className={`h-[2px] rounded-full transition-all duration-300 hover:cursor-pointer ${
                 index === currentIndex
                   ? "w-14 bg-[#aaa8ff]"
                   : "w-7 bg-[#5b5e70]"
